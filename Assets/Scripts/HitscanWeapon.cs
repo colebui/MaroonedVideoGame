@@ -5,7 +5,7 @@ using UnityEngine;
 abstract public class HitscanWeapon : Weapon {
 
 
-    // TODO: This might be better as an interface, so that power weapons can use the appropriate code without repeating it
+    // TODO: This might be better done not through inheritance, so that power weapons can use the appropriate code without repeating it
 
     [SerializeField] float weaponRange = 100f;
 
