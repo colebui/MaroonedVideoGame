@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class HitscanWeapon : Weapon {
-
-
-    // TODO: This might be better done not through inheritance, so that power weapons can use the appropriate code without repeating it
+public class HitscanWeapon : DamageType {
 
     [SerializeField] float weaponRange = 100f;
 
-    protected virtual void ProcessShot() {
+    public virtual void ProcessShot() {
         ProcessShotWithDeviation(0f);
     }
 
-    protected virtual void ProcessShot(float shotDeviationFactor) {
+    public virtual void ProcessShot(float shotDeviationFactor) {
         ProcessShotWithDeviation(shotDeviationFactor);
     }
 
