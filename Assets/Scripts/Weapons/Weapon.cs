@@ -17,24 +17,29 @@ abstract public class Weapon : MonoBehaviour {
     protected DamageType damageType;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
-    public abstract void Attack();
+    public virtual void Attack() {
+        StartCoroutine(DelayAttack());
+    }
 
     // Start is called before the first frame update
-    void Start() {
+    protected virtual void Start() {
         damageType = GetComponent<DamageType>();
         if(damageType == null) {
             Debug.LogError("You MUST add a damage type to this object!");
         }
     }
 
-    // Update is called once per frame
-    protected virtual void Update() {
-        if(canAttack && Input.GetButtonDown(attackButtonName)) {
-            Attack();
-            canAttack = false;
-            StartCoroutine(DelayAttack());
-        }
+    // TODO: Make this like store itself or something so you can't swap spam
+    private void OnEnable() {
+        canAttack = true;
     }
+
+    //protected virtual void Update() {
+    //    if(canAttack && Input.GetButtonDown(attackButtonName)) {
+    //        //Attack();
+    //        //canAttack = false;
+    //    }
+    //}
 
     IEnumerator DelayAttack() {
         yield return new WaitForSeconds(timeBetweenAttacks);
@@ -43,5 +48,8 @@ abstract public class Weapon : MonoBehaviour {
 
     public float GetMinWeaponDamage() { return minWeaponDamage; }
     public float GetMaxWeaponDamage() { return maxWeaponDamage; }
+    public string GetAttackButtonName() { return attackButtonName; }
+    public bool GetCanAttack() { return canAttack; }
+    public void SetCanAttack(bool value) { this.canAttack = value; }
 
 }

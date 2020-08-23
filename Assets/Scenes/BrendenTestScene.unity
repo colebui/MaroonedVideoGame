@@ -122,6 +122,100 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &260921073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1228505872}
+    m_Modifications:
+    - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131266, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3553068225e6706478b5a3304e9bb5ac, type: 2}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.34716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5939851
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148140223422131277, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: m_Name
+      value: Pistol (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 842e743fe030774438d63b4828861c93, type: 3}
 --- !u!1 &522170942
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +282,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1228505872 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1228505872, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 8847852661857151176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1264325839
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +382,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762353247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+    type: 3}
+  m_PrefabInstance: {fileID: 260921073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c053fd105b14ace45823aab4f11c6903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1842801180
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +681,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 431346109, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277825430852790095, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: standardWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277825430852790095, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: standardWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1762353247}
     - target: {fileID: 8847852661674054838, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: m_Name
@@ -628,11 +754,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847852661712309102, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
-        type: 3}
-      propertyPath: m_Name
-      value: Pistol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
