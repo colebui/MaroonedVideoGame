@@ -18,6 +18,7 @@ abstract public class Weapon : MonoBehaviour {
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
+        canAttack = false;
         StartCoroutine(DelayAttack());
     }
 
@@ -50,6 +51,6 @@ abstract public class Weapon : MonoBehaviour {
     public float GetMaxWeaponDamage() { return maxWeaponDamage; }
     public string GetAttackButtonName() { return attackButtonName; }
     public bool GetCanAttack() { return canAttack; }
-    public void SetCanAttack(bool value) { this.canAttack = value; }
+    //public void SetCanAttack(bool value) { this.canAttack = value; }
 
 }

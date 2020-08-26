@@ -29,13 +29,15 @@ public class PlayerWeaponManager : MonoBehaviour {
         // If using a power weapon, then return until it is no longer in use
         if(powerWeaponInUse) { return; }
 
+        // Switching weapons
         if(Input.GetButtonDown("Switch Weapon")) {
             HandleWeaponSwitch();
         }
 
-        if(currentlySelectedWeapon.GetCanAttack() && Input.GetButtonDown(currentlySelectedWeapon.GetAttackButtonName())) {
+        // Attacking
+        if(Input.GetButtonDown(currentlySelectedWeapon.GetAttackButtonName()) && currentlySelectedWeapon.GetCanAttack()) {
             currentlySelectedWeapon.Attack();
-            currentlySelectedWeapon.SetCanAttack(false);
+            //currentlySelectedWeapon.SetCanAttack(false);
         }
 
         foreach(PowerWeapon powerWeapon in powerWeapons) {
