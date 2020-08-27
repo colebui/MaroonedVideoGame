@@ -10,8 +10,13 @@ public class MeleeDamage : DamageType {
     // TODO: This needs to be set in the animation at the start
     private bool hitboxActive = false;
 
-    public void SetHitboxActive(bool value) {
-        hitboxActive = value;
+    public void SetHitboxActive(int value) {
+        if(value == 0) {
+            hitboxActive = false;
+        }
+        else {
+            hitboxActive = true;
+        }
     }
 
     // Update is called once per frame
