@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitscanWeapon : DamageType {
+public class HitscanDamage : DamageType {
 
     [SerializeField] float weaponRange = 100f;
 
@@ -29,7 +29,11 @@ public class HitscanWeapon : DamageType {
 
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if(target == null) { return; } // protects against null reference
-            target.TakeDamage(UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage)); // Simple damage spread
+
+            float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
+            Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
+
+            target.TakeDamage(damageToDeal);
         }
         else { return; } // protects against null reference
     }
