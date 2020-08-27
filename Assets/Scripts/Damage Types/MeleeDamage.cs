@@ -14,18 +14,11 @@ public class MeleeDamage : DamageType {
         hitboxActive = value;
     }
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
     // Update is called once per frame
     void FixedUpdate() {
-        //if(!hitboxActive) { return; }
+        if(!hitboxActive) { return; }
 
-        //while(hitboxActive) {
         HitDetectionThisFrame();
-        //}
     }
 
     private void HitDetectionThisFrame() {

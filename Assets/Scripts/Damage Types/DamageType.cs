@@ -6,7 +6,7 @@ using UnityEngine;
 // Inherit from this class when making a new damage type, like hitscan, projectile, or melee
 abstract public class DamageType : MonoBehaviour {
 
-    protected Camera firstPersonCamera;
+    [SerializeField] protected Camera firstPersonCamera;
     protected Weapon weapon;
     protected float minWeaponDamage;
     protected float maxWeaponDamage;
@@ -17,10 +17,5 @@ abstract public class DamageType : MonoBehaviour {
         weapon = GetComponent<Weapon>();
         minWeaponDamage = weapon.GetMinWeaponDamage();
         maxWeaponDamage = weapon.GetMaxWeaponDamage();
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 }
