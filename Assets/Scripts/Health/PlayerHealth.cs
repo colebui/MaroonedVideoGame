@@ -6,6 +6,7 @@ public class PlayerHealth : Health {
 
     protected override void Die() {
         Debug.Log("Blegh");
+        FindObjectOfType<GameLogic>().PlayerDied();
     }
 
 }
