@@ -5,28 +5,44 @@ using UnityEngine;
 public class Rounds : MonoBehaviour
 {
     [SerializeField] static Spawner[] spawners;
-    private static int roundNum;
-    private static int enemysLeft;
+    private static int roundNum = 0;
+    private float timeBetweenChecks = 0.0f;
+    //private static int enemysLeft;
     private static int newEnemyCount;
+    public List<GameObject> enemysAlive = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        roundNum = 1;
+        //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
+        spawners = FindObjectsOfType<Spawner>();
+        Debug.Log("got all spawners: " + spawners.Length);
+        enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         newRound();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemysLeft <= 0)
+        timeBetweenChecks += Time.deltaTime;
+        if (timeBetweenChecks >= 5.0f)
         {
-            roundNum++;
-            newRound();
+            timeBetweenChecks = 0.0f;
+            enemysAlive.Clear();
+            enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+            Debug.Log("Enemy count updated " + enemysAlive.Count);
+
+
+            if (enemysAlive.Count <= 0 && spawners[0].getEnemysSpawned() >= newEnemyCount)
+            {
+                newRound();
+            }
         }
     }
 
     void newRound()
     {
+        roundNum++;
+        Debug.Log("Round number " + roundNum);
         calculateEnemyAmount();
         for (int i = 0; i < spawners.Length; i++)
         {
@@ -35,12 +51,14 @@ public class Rounds : MonoBehaviour
             spawners[i].setMaxSpawn(newEnemyCount);
             spawners[i].startNewRound();
         }
+
     }
 
-    public void newEnemy()
+    /*public void newEnemy()
     {
         enemysLeft++;
-    }
+        
+    }*/
 
     void calculateEnemyAmount()
     {
@@ -50,8 +68,8 @@ public class Rounds : MonoBehaviour
         }
         else
         {
-            newEnemyCount = (int)Mathf.Floor((1 / 5) * roundNum + roundNum);
+            newEnemyCount = (int)Mathf.Floor((1 / 5) * roundNum) + roundNum;
         }
-
+        Debug.Log("Max enemys: " + newEnemyCount);
     }
 }

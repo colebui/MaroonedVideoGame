@@ -8,8 +8,8 @@ public class Spawner : Rounds
 {
     [SerializeField] GameObject spawnee;
     [SerializeField] bool stopSpawning = false;
-    [SerializeField] float spawnTime;
-    [SerializeField] float spawnDelay;
+    [SerializeField] float spawnTime = 1;
+    [SerializeField] float spawnDelay = 2;
     private int enemysSpawned;
     [SerializeField] int maxSpawn;
 
@@ -27,7 +27,7 @@ public class Spawner : Rounds
     }
     void SpawnObject()
     {
-        base.newEnemy();
+        //base.newEnemy();
         if (stopSpawning||maxSpawn <= enemysSpawned)
         {
             CancelInvoke("SpawnObject");
@@ -37,6 +37,8 @@ public class Spawner : Rounds
         {
             stopSpawning = true;
         }
+
+        //needs to be the last thing in the method 
         Instantiate(spawnee, transform.position, transform.rotation);
     }
     
@@ -48,7 +50,10 @@ public class Spawner : Rounds
     }
 
     //getters
-    
+    public int getEnemysSpawned()
+    {
+        return enemysSpawned;
+    }
 
     //setters
     public void setMaxSpawn(int max)
