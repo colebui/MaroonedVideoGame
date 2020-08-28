@@ -7,18 +7,20 @@ using UnityEngine;
 // This component must be placed alongside the damage type of the weapon
 abstract public class Weapon : MonoBehaviour {
 
-    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] protected float timeBetweenAttacks;
     // The button in the input manager for firing
     [SerializeField] private string attackButtonName = "Fire1";
     [SerializeField] private float minWeaponDamage = 10;
     [SerializeField] private float maxWeaponDamage = 10;
 
-    private bool canAttack = true;
+    protected bool canAttack = true;
     protected DamageType damageType;
+    protected PlayerWeaponManager playerWeaponManager;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
         canAttack = false;
+        playerWeaponManager.SetAllowWeaponSwitching(false);
         StartCoroutine(DelayAttack());
     }
 
@@ -28,6 +30,8 @@ abstract public class Weapon : MonoBehaviour {
         if(damageType == null) {
             Debug.LogError("You MUST add a damage type to this object!");
         }
+
+        playerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
     }
 
     // TODO: Make this like store itself or something so you can't swap spam
@@ -45,6 +49,7 @@ abstract public class Weapon : MonoBehaviour {
     IEnumerator DelayAttack() {
         yield return new WaitForSeconds(timeBetweenAttacks);
         canAttack = true;
+        playerWeaponManager.SetAllowWeaponSwitching(true);
     }
 
     public float GetMinWeaponDamage() { return minWeaponDamage; }
