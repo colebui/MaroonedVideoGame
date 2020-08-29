@@ -4,24 +4,25 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private const float MAX_ATTACK_DISTANCE = 2F;
-    [SerializeField] private const float WAIT_TIME = 3.0f;
-    [SerializeField] private const float MIN_SPEED = 0.5f;
-    [SerializeField] private const float MAX_SPEED = 7.5f;
-    private int NEXT_UPDATE = 3;
+    [SerializeField] private float ATTACK_DAMAGE = 34F;
+    [SerializeField] private float MAX_ATTACK_DISTANCE = 2F;
+    [SerializeField] private float WAIT_TIME = 3.0f;
+    [SerializeField] private float MIN_SPEED = 0.5f;
+    [SerializeField] private float MAX_SPEED = 7.5f;
+    [SerializeField] private int TIME_BETWEEN_ENEMY_SPRINTS = 3;
 
     public NavMeshAgent agent;
     
-    private PlayerWeaponManager playerRef;
+    private PlayerHealth playerRef;
 
     private Vector3 playerPosition;
     void Start() {
-        playerRef = FindObjectOfType<PlayerWeaponManager>();
+        playerRef = FindObjectOfType<PlayerHealth>();
     }
 
     void Update() {
-        if (Time.time >= NEXT_UPDATE) { 
-            NEXT_UPDATE = Mathf.FloorToInt(Time.time) + 1;
+        if (Time.time >= TIME_BETWEEN_ENEMY_SPRINTS) { 
+            TIME_BETWEEN_ENEMY_SPRINTS = Mathf.FloorToInt(Time.time) + 1;
             UpdateEveryThreeSecond();
         }
 
@@ -31,7 +32,7 @@ public class EnemyController : MonoBehaviour
             UnityEngine.Debug.Log("Agent touches you");
             agent.isStopped = true;
             pauseAgent();
-            //todo call attack
+            dealDamage();
         }
         else {
             agent.SetDestination(playerPosition);
@@ -47,8 +48,12 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(WAIT_TIME);
         agent.isStopped = false;
     }
+
     void pauseAgent() {
         StartCoroutine(AgentTimer());
     }
 
+    void dealDamage() {
+        playerRef.TakeDamage(ATTACK_DAMAGE);
+    }
 }

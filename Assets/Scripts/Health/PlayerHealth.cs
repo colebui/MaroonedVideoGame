@@ -8,5 +8,4 @@ public class PlayerHealth : Health {
         Debug.Log("Blegh");
         FindObjectOfType<GameLogic>().PlayerDied();
     }
-
 }
