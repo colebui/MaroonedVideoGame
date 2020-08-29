@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(AgentTimer());
     }
 
+    // TODO: This is going to need to be changed to a hitbox or something to allow for dodges
     void dealDamage() {
         playerRef.TakeDamage(ATTACK_DAMAGE);
     }
