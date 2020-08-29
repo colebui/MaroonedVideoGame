@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // This script will handle things like game state, player death, score, etc
 public class GameLogic : MonoBehaviour {
 
     [SerializeField] Canvas GameOverCanvas;
+    [SerializeField] int score = 0;
 
     private void Start() {
         GameOverCanvas.gameObject.SetActive(false);
+    }
+
+    public void Update()
+    {
+        Debug.Log("Score is: " + score);
     }
 
     public void PlayerDied() {
@@ -26,4 +33,19 @@ public class GameLogic : MonoBehaviour {
         Cursor.visible = true;
     }
 
+    //getters
+    public int getScore()
+    {
+        return score;
+    }
+
+    //setters
+    public void setScore(int s)
+    {
+        score = s;
+    }
+    public void addScore(int s)
+    {
+        score += s;
+    }
 }

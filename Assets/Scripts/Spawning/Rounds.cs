@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Rounds : MonoBehaviour
 {
+    
     [SerializeField] static Spawner[] spawners;
+    [SerializeField] int roundPayout = 1000;
+    
+    private static int newEnemyCount;
     private static int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
-    //private static int enemysLeft;
-    private static int newEnemyCount;
+
     public List<GameObject> enemysAlive = new List<GameObject>();
     public bool readyForNewRound = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
@@ -54,6 +57,7 @@ public class Rounds : MonoBehaviour
 
     void newRound()
     {
+        FindObjectOfType<GameLogic>().addScore(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
         calculateEnemyAmount();

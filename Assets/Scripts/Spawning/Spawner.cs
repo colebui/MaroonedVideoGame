@@ -10,9 +10,10 @@ public class Spawner : Rounds
     [SerializeField] bool stopSpawning = false;
     [SerializeField] float spawnTime;
     [SerializeField] float spawnDelay;
-    private int enemysSpawned;
     [SerializeField] int maxSpawn;
 
+    private int enemysSpawned;
+    
     // Start is called before the first frame update
     void Start()
     {
