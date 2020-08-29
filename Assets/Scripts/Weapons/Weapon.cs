@@ -30,6 +30,7 @@ abstract public class Weapon : MonoBehaviour {
             weaponAttackParticles.Play();
         }
 
+        // Play the sound for attacking here
         if(weaponAttackSound != null) {
             // TODO: Play SFX
         }
