@@ -30,12 +30,15 @@ public class MeleeDamage : DamageType {
         // What we hit with the cast
         RaycastHit hit;
 
-        // FIXME: Need to tweak and also make more understandable
-        // Used to drag the sphere cast back into the player, need to avoid self collision though
-        Vector3 offsetBackwards = new Vector3(.5f, 0f, .5f);
+        //// FIXME: Need to tweak and also make more understandable
+        //// Used to drag the sphere cast back into the player, need to avoid self collision though
+        //Vector3 offsetBackwards = new Vector3(.5f, 0f, .5f);
 
+        // TODO: Add way to hit multiple enemies?
         // First is where to shoot the ray from, next is what direction, then what we hit, and finally the range
         if(Physics.SphereCast(firstPersonCamera.transform.position, spherecastRadius, firstPersonCamera.transform.forward, out hit, weaponRange)) { // If we hit something, and assigns this to "hit"
+
+            hitboxActive = false;
 
             Debug.Log("Hit " + hit.transform.name + " with raycast");
 
@@ -46,7 +49,6 @@ public class MeleeDamage : DamageType {
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 
             target.TakeDamage(damageToDeal);
-            hitboxActive = false;
         }
         else { return; } // protects against null reference
     }
