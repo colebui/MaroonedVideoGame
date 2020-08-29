@@ -10,6 +10,7 @@ public class PlayerWeaponManager : MonoBehaviour {
     private Weapon currentlySelectedWeapon;
     private int currentlySelectedWeaponIndex = 0;
     private bool powerWeaponInUse = false;
+    private bool allowWeaponSwitching = true;
 
     // Start is called before the first frame update
     void Start() {
@@ -30,7 +31,7 @@ public class PlayerWeaponManager : MonoBehaviour {
         if(powerWeaponInUse) { return; }
 
         // Switching weapons
-        if(Input.GetButtonDown("Switch Weapon")) {
+        if(Input.GetButtonDown("Switch Weapon") && allowWeaponSwitching) {
             HandleWeaponSwitch();
         }
 
@@ -69,6 +70,10 @@ public class PlayerWeaponManager : MonoBehaviour {
         currentlySelectedWeapon = standardWeapons[currentlySelectedWeaponIndex];
         // Enable next weapon
         currentlySelectedWeapon.gameObject.SetActive(true);
+    }
+
+    public void SetAllowWeaponSwitching(bool value) {
+        allowWeaponSwitching = value;
     }
 
     // TODO: Needs work, will be called by the power weapon

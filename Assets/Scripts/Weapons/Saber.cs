@@ -5,12 +5,15 @@ using UnityEngine;
 public class Saber : Weapon {
 
     Animator animator;
+    // Special case to programmatically set fire rate, as it is animation based
+    [SerializeField] AnimationClip swingAnimation;
 
     const string SWING_TRIGGER_NAME = "Swing";
 
     protected override void Start() {
         base.Start();
         animator = GetComponent<Animator>();
+        timeBetweenAttacks = swingAnimation.length;
     }
 
     public override void Attack() {
