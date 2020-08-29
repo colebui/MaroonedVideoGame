@@ -8,16 +8,19 @@ public class Spawner : Rounds
 {
     [SerializeField] GameObject spawnee;
     [SerializeField] bool stopSpawning = false;
-    [SerializeField] float spawnTime = 1;
-    [SerializeField] float spawnDelay = 2;
+    [SerializeField] float spawnTime;
+    [SerializeField] float spawnDelay;
     private int enemysSpawned;
     [SerializeField] int maxSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnTime = 1;
+        spawnDelay = 5;
         enemysSpawned = 0;
-        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        stopSpawning = false;
+        //InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
     // Update is called once per frame
@@ -33,13 +36,17 @@ public class Spawner : Rounds
             CancelInvoke("SpawnObject");
         }
         enemysSpawned++;
-        if(maxSpawn <= enemysSpawned)
+        if(maxSpawn <= enemysSpawned - 1)
         {
             stopSpawning = true;
         }
 
-        //needs to be the last thing in the method 
-        Instantiate(spawnee, transform.position, transform.rotation);
+        //needs to be the last thing in the method
+        if (!stopSpawning)
+        {
+            Instantiate(spawnee, transform.position, transform.rotation);
+        }
+        
     }
     
     public void startNewRound()

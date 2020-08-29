@@ -10,6 +10,7 @@ public class Rounds : MonoBehaviour
     //private static int enemysLeft;
     private static int newEnemyCount;
     public List<GameObject> enemysAlive = new List<GameObject>();
+    public bool readyForNewRound = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,13 @@ public class Rounds : MonoBehaviour
         spawners = FindObjectsOfType<Spawner>();
         Debug.Log("got all spawners: " + spawners.Length);
         enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        newRound();
+        //newRound();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //does every 5 seconds
         timeBetweenChecks += Time.deltaTime;
         if (timeBetweenChecks >= 5.0f)
         {
@@ -31,8 +33,19 @@ public class Rounds : MonoBehaviour
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
             Debug.Log("Enemy count updated " + enemysAlive.Count);
 
-
-            if (enemysAlive.Count <= 0 && spawners[0].getEnemysSpawned() >= newEnemyCount)
+            for(int i = 0; i< spawners.Length; i++)
+            {
+                if(spawners[i].getEnemysSpawned() >= newEnemyCount)
+                {
+                    readyForNewRound = true;
+                }
+                else
+                {
+                    readyForNewRound = false;
+                    break;
+                }
+            }
+            if (enemysAlive.Count <= 0 && readyForNewRound)
             {
                 newRound();
             }
@@ -70,6 +83,6 @@ public class Rounds : MonoBehaviour
         {
             newEnemyCount = (int)Mathf.Floor((1 / 5) * roundNum) + roundNum;
         }
-        Debug.Log("Max enemys: " + newEnemyCount);
+        Debug.Log("Max enemys: " + newEnemyCount * spawners.Length);
     }
 }
