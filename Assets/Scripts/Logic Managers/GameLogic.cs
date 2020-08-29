@@ -12,6 +12,9 @@ public class GameLogic : MonoBehaviour {
     }
 
     public void PlayerDied() {
+        FindObjectOfType<CustomFirstPersonController>().m_MouseLook.lockCursor = false;
+        FindObjectOfType<CustomFirstPersonController>().m_MouseLook.XSensitivity = 0;
+        FindObjectOfType<CustomFirstPersonController>().m_MouseLook.YSensitivity = 0;
         GameOverCanvas.gameObject.SetActive(true);
         Time.timeScale = 0;
         FindObjectOfType<PlayerWeaponManager>().enabled = false;
