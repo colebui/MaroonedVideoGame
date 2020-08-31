@@ -9,6 +9,7 @@ public class MenuLogic : MonoBehaviour
     [SerializeField] Canvas PrepareCanvas;
     [SerializeField] Canvas TitleCanvas;
     [SerializeField] Text TimerText;
+    [SerializeField] string nextSceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class MenuLogic : MonoBehaviour
             TimerText.text = "*" + i.ToString() + "*";
         }
         Time.timeScale = 1;
-        SceneManager.LoadScene("BrendenTestScene");
+        FindObjectOfType<SceneLoader>().LoadScene(nextSceneName);
     }
     public void StartButtonClicked()
     {
