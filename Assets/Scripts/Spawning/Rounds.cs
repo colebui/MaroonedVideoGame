@@ -5,11 +5,11 @@ using UnityEngine;
 public class Rounds : MonoBehaviour
 {
     
-    [SerializeField] static Spawner[] spawners;
+    [SerializeField] Spawner[] spawners;
     [SerializeField] int roundPayout = 1000;
     
-    private static int newEnemyCount;
-    private static int roundNum = 0;
+    private int newEnemyCount = 0;
+    private int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
@@ -31,6 +31,7 @@ public class Rounds : MonoBehaviour
         timeBetweenChecks += Time.deltaTime;
         if (timeBetweenChecks >= 5.0f)
         {
+            //Debug.Log("Time between checks ellapsed");
             timeBetweenChecks = 0.0f;
             enemysAlive.Clear();
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -40,6 +41,7 @@ public class Rounds : MonoBehaviour
             {
                 if(spawners[i].getEnemysSpawned() >= newEnemyCount)
                 {
+                    //Debug.Log("We are ready for a new round");
                     readyForNewRound = true;
                 }
                 else

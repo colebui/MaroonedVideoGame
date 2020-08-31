@@ -19,8 +19,8 @@ public class Spawner : Rounds
     {
         //spawnTime = 1;
         //spawnDelay = 5;
-        //enemysSpawned = 0;
-        //stopSpawning = false;
+        enemysSpawned = 0;
+        stopSpawning = false;
         //InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
