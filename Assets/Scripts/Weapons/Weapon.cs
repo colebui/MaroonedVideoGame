@@ -13,6 +13,9 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] private float minWeaponDamage = 10;
     [SerializeField] private float maxWeaponDamage = 10;
 
+    [SerializeField] ParticleSystem weaponAttackParticles;
+    [SerializeField] AudioClip weaponAttackSound;
+
     protected bool canAttack = true;
     protected DamageType damageType;
     protected PlayerWeaponManager playerWeaponManager;
@@ -21,6 +24,17 @@ abstract public class Weapon : MonoBehaviour {
     public virtual void Attack() {
         canAttack = false;
         playerWeaponManager.SetAllowWeaponSwitching(false);
+
+        // Not all weapons might actually have these (like melee), so best to check
+        if(weaponAttackParticles != null) {
+            weaponAttackParticles.Play();
+        }
+
+        // Play the sound for attacking here
+        if(weaponAttackSound != null) {
+            // TODO: Play SFX
+        }
+
         StartCoroutine(DelayAttack());
     }
 
