@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafdb0c2aa4b41a45818f86d1dc08725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeathCanvas: {fileID: 0}
+  GameOverCanvas: {fileID: 0}
+  score: 0
+  scoreText: {fileID: 0}

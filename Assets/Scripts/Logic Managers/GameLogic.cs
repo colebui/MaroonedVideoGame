@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // This script will handle things like game state, player death, score, etc
 public class GameLogic : MonoBehaviour {
 
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] int score = 0;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     private void Start() {
+        // Set score text
+        scoreText.text = "Score: " + score;
+
         GameOverCanvas.gameObject.SetActive(false);
     }
 
-    public void Update()
-    {
-        Debug.Log("Score is: " + score);
+    public void Update() {
+        //Debug.Log("Score is: " + score);
     }
 
     public void PlayerDied() {
@@ -34,18 +38,19 @@ public class GameLogic : MonoBehaviour {
     }
 
     //getters
-    public int getScore()
-    {
+    public int getScore() {
         return score;
     }
 
     //setters
-    public void setScore(int s)
-    {
+    public void setScore(int s) {
         score = s;
+        // Set score text
+        scoreText.text = "Score: " + score;
     }
-    public void addScore(int s)
-    {
+    public void addScore(int s) {
         score += s;
+        // Set score text
+        scoreText.text = "Score: " + score;
     }
 }

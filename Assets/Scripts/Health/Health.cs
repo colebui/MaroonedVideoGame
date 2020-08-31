@@ -4,10 +4,10 @@ using UnityEngine;
 
 abstract public class Health : MonoBehaviour {
 
-    [SerializeField] float maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
 
     // TODO: Should not be serialized, just is now for debugging
-    [SerializeField] float currentHealth = 0f;
+    [SerializeField] protected float currentHealth = 0f;
 
     protected virtual void Start() {
         currentHealth = maxHealth;
