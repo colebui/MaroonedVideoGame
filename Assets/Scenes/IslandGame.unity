@@ -833,26 +833,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8707391748888370217, guid: b09e6533e9357114e9df406f61dd745d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8707391748888370217, guid: b09e6533e9357114e9df406f61dd745d,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 8707391748888370217, guid: b09e6533e9357114e9df406f61dd745d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8707391748888370217, guid: b09e6533e9357114e9df406f61dd745d,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 350
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
 --- !u!224 &412441731 stripped
@@ -861,6 +841,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 412441730}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &457341758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 457341758, guid: b09e6533e9357114e9df406f61dd745d,
+    type: 3}
+  m_PrefabInstance: {fileID: 412441730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &459255070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Over Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5098016757804954093, guid: 4c82b7550340e5047b2999f8f0c149e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5098016758811536375, guid: 4c82b7550340e5047b2999f8f0c149e3,
         type: 3}
@@ -2860,7 +2857,7 @@ PrefabInstance:
     - target: {fileID: 3669235869284905800, guid: fa8a77f2485b65d47ade4d9cc8d5150f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3669235869284905802, guid: fa8a77f2485b65d47ade4d9cc8d5150f,
         type: 3}
@@ -3342,6 +3339,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1061664200}
     m_Modifications:
+    - target: {fileID: 587629777137666327, guid: 470b054dc46ab17439b5b1830e7b633d,
+        type: 3}
+      propertyPath: roundText
+      value: 
+      objectReference: {fileID: 457341758}
     - target: {fileID: 2340713746484176679, guid: 470b054dc46ab17439b5b1830e7b633d,
         type: 3}
       propertyPath: m_Name

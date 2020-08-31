@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Rounds : MonoBehaviour
 {
     
     [SerializeField] Spawner[] spawners;
     [SerializeField] int roundPayout = 1000;
+    [SerializeField] TextMeshProUGUI roundText;
     
     private int newEnemyCount = 0;
     private int roundNum = 0;
@@ -22,6 +24,9 @@ public class Rounds : MonoBehaviour
         Debug.Log("got all spawners: " + spawners.Length);
         enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         //newRound();
+
+        // Updates the round text
+        roundText.text = "Round " + roundNum;
     }
 
     // Update is called once per frame
@@ -62,6 +67,10 @@ public class Rounds : MonoBehaviour
         FindObjectOfType<GameLogic>().addScore(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
+
+        // Updates the round text
+        roundText.text = "Round " + roundNum;
+
         calculateEnemyAmount();
         for (int i = 0; i < spawners.Length; i++)
         {
