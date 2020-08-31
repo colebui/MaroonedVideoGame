@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BrendenTestScene.unity
-    guid: 7d901e6f80fd1bb409cf79b7a4290c61
+    path: Assets/Scenes/IslandGame.unity
+    guid: cce75bb1287351c4f82f1bb32009876e
   m_configObjects: {}

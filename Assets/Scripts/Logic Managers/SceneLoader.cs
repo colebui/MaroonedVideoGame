@@ -17,6 +17,7 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void ReloadScene() {
+        Debug.Log("Called");
         LoadScene(SceneManager.GetActiveScene().name);
     }
 

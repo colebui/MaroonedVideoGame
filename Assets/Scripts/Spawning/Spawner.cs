@@ -8,19 +8,19 @@ public class Spawner : Rounds
 {
     [SerializeField] GameObject spawnee;
     [SerializeField] bool stopSpawning = false;
-    [SerializeField] float spawnTime;
-    [SerializeField] float spawnDelay;
+    [SerializeField] float spawnTime = 1;
+    [SerializeField] float spawnDelay = 5;
     [SerializeField] int maxSpawn;
 
-    private int enemysSpawned;
+    private int enemysSpawned = 0;
     
     // Start is called before the first frame update
     void Start()
     {
-        spawnTime = 1;
-        spawnDelay = 5;
-        enemysSpawned = 0;
-        stopSpawning = false;
+        //spawnTime = 1;
+        //spawnDelay = 5;
+        //enemysSpawned = 0;
+        //stopSpawning = false;
         //InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
