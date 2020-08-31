@@ -8,6 +8,7 @@ public class MenuLogic : MonoBehaviour
 {
     [SerializeField] Canvas PrepareCanvas;
     [SerializeField] Canvas TitleCanvas;
+    [SerializeField] Text TimerText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,15 +16,20 @@ public class MenuLogic : MonoBehaviour
         Cursor.visible = true;
         Debug.Log("Hello, World"); 
     }
-    void StartPrepMenu()
+    IEnumerator StartPrepMenu()
     {
         TitleCanvas.gameObject.SetActive(false);
         PrepareCanvas.gameObject.SetActive(true);
+        for (int i = 7; i > -1; i--)
+        {
+            yield return new WaitForSeconds(1);
+            TimerText.text = "*" + i.ToString() + "*";
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene("BrendenTestScene");
     }
     public void StartButtonClicked()
     {
-        StartPrepMenu();
+        StartCoroutine( StartPrepMenu());
     }
 }
