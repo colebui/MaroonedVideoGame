@@ -21,6 +21,7 @@ abstract public class Weapon : MonoBehaviour {
     protected bool canAttack = true;
     protected DamageType damageType;
     protected PlayerWeaponManager playerWeaponManager;
+    protected float timeSinceAttacking = 0f;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
@@ -37,10 +38,11 @@ abstract public class Weapon : MonoBehaviour {
 
         // Play the sound for attacking here
         if(weaponAttackSound != null) {
-            weaponAttackSound.PlayOneShot(weaponAttackClip,0.3f);
+            weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
         }
 
-        StartCoroutine(DelayAttack());
+        //StartCoroutine(DelayAttack());
+        timeSinceAttacking = 0f;
     }
 
     // Start is called before the first frame update
@@ -53,9 +55,24 @@ abstract public class Weapon : MonoBehaviour {
         playerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
     }
 
+    protected virtual void Update() {
+
+        if(canAttack) { return; } // Optimization, as none of this is needed if we can attack
+
+        timeSinceAttacking += Time.deltaTime;
+
+        if(timeSinceAttacking >= timeBetweenAttacks) {
+            canAttack = true;
+            playerWeaponManager.SetAllowWeaponSwitching(true);
+        }
+    }
+
     // TODO: Make this like store itself or something so you can't swap spam
     private void OnEnable() {
-        canAttack = true;
+        //canAttack = true;
+        if(!canAttack) {
+            //StartCoroutine(DelayAttack());
+        }
     }
 
     //protected virtual void Update() {
@@ -65,11 +82,11 @@ abstract public class Weapon : MonoBehaviour {
     //    }
     //}
 
-    IEnumerator DelayAttack() {
-        yield return new WaitForSeconds(timeBetweenAttacks);
-        canAttack = true;
-        playerWeaponManager.SetAllowWeaponSwitching(true);
-    }
+    //IEnumerator DelayAttack() {
+    //    yield return new WaitForSeconds(timeBetweenAttacks);
+    //    canAttack = true;
+    //    playerWeaponManager.SetAllowWeaponSwitching(true);
+    //}
 
     public float GetMinWeaponDamage() { return minWeaponDamage; }
     public float GetMaxWeaponDamage() { return maxWeaponDamage; }
