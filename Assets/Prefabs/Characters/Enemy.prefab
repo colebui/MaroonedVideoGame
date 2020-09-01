@@ -91,7 +91,7 @@ MonoBehaviour:
   ATTACK_DAMAGE_MAX: 34
   ATTACK_DAMAGE_MIN: 20
   MAX_ATTACK_DISTANCE: 2
-  WAIT_TIME: 0.5
+  WAIT_TIME: 0.3
   MIN_SPEED: 1.5
   MAX_SPEED: 7.5
   TIME_BETWEEN_ENEMY_SPRINTS: 3
@@ -130,7 +130,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 773d740e042d3e142a22ddff03ab53f9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -174,7 +174,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
