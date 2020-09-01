@@ -52,5 +52,6 @@ public class GameLogic : MonoBehaviour {
         score += s;
         // Set score text
         scoreText.text = "Score: " + score;
+        Debug.Log("Score is: " + score);
     }
 }
