@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : Health {
 
@@ -16,6 +17,7 @@ public class EnemyHealth : Health {
         var enemyAI = GetComponent<EnemyController>();
         enemyAI.StopAllCoroutines();
         enemyAI.enabled = false;
+        GetComponent<NavMeshAgent>().speed = 0;
         // Play the death sound attatched to this object
         deathSound.Play();
         // Set isDead so no more damage is taken
