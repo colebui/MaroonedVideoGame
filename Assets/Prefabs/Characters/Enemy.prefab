@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3926593790028234046}
   - component: {fileID: 148348905}
   - component: {fileID: 148348906}
-  - component: {fileID: 4115143799949672392}
+  - component: {fileID: 699900231}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -114,6 +114,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   enemyPayout: 100
+  deathSound: {fileID: 0}
 --- !u!114 &148348905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +156,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!82 &4115143799949672392
+--- !u!82 &699900231
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

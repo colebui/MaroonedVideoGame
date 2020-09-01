@@ -10,11 +10,12 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] protected float timeBetweenAttacks;
     // The button in the input manager for firing
     [SerializeField] private string attackButtonName = "Fire1";
-    [SerializeField] private float minWeaponDamage = 10;
-    [SerializeField] private float maxWeaponDamage = 10;
+    [SerializeField] private float minWeaponDamage = 20;
+    [SerializeField] private float maxWeaponDamage = 20;
 
     [SerializeField] ParticleSystem weaponAttackParticles;
-    [SerializeField] AudioClip weaponAttackSound;
+    [SerializeField] AudioSource weaponAttackSound;
+    [SerializeField] AudioClip weaponAttackClip;
 
     protected bool canAttack = true;
     protected DamageType damageType;
@@ -32,7 +33,7 @@ abstract public class Weapon : MonoBehaviour {
 
         // Play the sound for attacking here
         if(weaponAttackSound != null) {
-            // TODO: Play SFX
+            weaponAttackSound.PlayOneShot(weaponAttackClip,0.3f);
         }
 
         StartCoroutine(DelayAttack());

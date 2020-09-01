@@ -6,6 +6,8 @@ public class MeleeDamage : DamageType {
 
     [SerializeField] float weaponRange = 1f;
     [SerializeField] float spherecastRadius = 1f;
+    [SerializeField] AudioSource weaponAttackSound;
+    [SerializeField] AudioClip weaponAttackClip;
 
     // TODO: This needs to be set in the animation at the start
     private bool hitboxActive = false;
@@ -48,6 +50,7 @@ public class MeleeDamage : DamageType {
             float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 
+            weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
             target.TakeDamage(damageToDeal);
         }
         else { return; } // protects against null reference
