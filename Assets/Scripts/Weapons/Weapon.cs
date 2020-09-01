@@ -5,7 +5,6 @@ using UnityEngine;
 // Abstract class that all weapons should inherit from
 // Inherit from this class when making a new weapon, like a sword or gun
 // This component must be placed alongside the damage type of the weapon
-[RequireComponent(typeof(AudioSource))]
 abstract public class Weapon : MonoBehaviour {
 
     [SerializeField] protected float timeBetweenAttacks;
@@ -13,6 +12,7 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] private string attackButtonName = "Fire1";
     [SerializeField] private float minWeaponDamage = 20;
     [SerializeField] private float maxWeaponDamage = 20;
+    [SerializeField] private bool canSwitchDuringCooldown = false;
 
     [SerializeField] ParticleSystem weaponAttackParticles;
     [SerializeField] AudioSource weaponAttackSound;
@@ -25,7 +25,10 @@ abstract public class Weapon : MonoBehaviour {
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
         canAttack = false;
-        playerWeaponManager.SetAllowWeaponSwitching(false);
+
+        if(!canSwitchDuringCooldown) {
+            playerWeaponManager.SetAllowWeaponSwitching(false);
+        }
 
         // Not all weapons might actually have these (like melee), so best to check
         if(weaponAttackParticles != null) {
