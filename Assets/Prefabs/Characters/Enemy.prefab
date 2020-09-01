@@ -88,9 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346fb6be5851f424d8522bf36dba2ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATTACK_DAMAGE: 34
+  ATTACK_DAMAGE_MAX: 34
+  ATTACK_DAMAGE_MIN: 20
   MAX_ATTACK_DISTANCE: 2
-  WAIT_TIME: 3
+  WAIT_TIME: 0.5
   MIN_SPEED: 0.5
   MAX_SPEED: 7.5
   TIME_BETWEEN_ENEMY_SPRINTS: 3
