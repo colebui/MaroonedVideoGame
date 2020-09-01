@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using System.Media;
+using System.Collections.Specialized;
+using System.IO;
 
 public class Rounds : MonoBehaviour
 {
-    
+
     [SerializeField] Spawner[] spawners;
     [SerializeField] int roundPayout = 1000;
     [SerializeField] TextMeshProUGUI roundText;
-    
+
     private int newEnemyCount = 0;
     private int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
@@ -42,9 +46,9 @@ public class Rounds : MonoBehaviour
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
             Debug.Log("Enemy count updated " + enemysAlive.Count);
 
-            for(int i = 0; i< spawners.Length; i++)
+            for (int i = 0; i < spawners.Length; i++)
             {
-                if(spawners[i].getEnemysSpawned() >= newEnemyCount)
+                if (spawners[i].getEnemysSpawned() >= newEnemyCount)
                 {
                     //Debug.Log("We are ready for a new round");
                     readyForNewRound = true;
@@ -72,11 +76,20 @@ public class Rounds : MonoBehaviour
         roundText.text = "Round " + roundNum;
 
         calculateEnemyAmount();
+        Spawner[] currentSpawns = findBestSpawns();
         for (int i = 0; i < spawners.Length; i++)
         {
             //add if in range of player here
-
-            spawners[i].setMaxSpawn(newEnemyCount);
+            spawners[i].setMaxSpawn(0);
+        }
+        for (int i = 0; i < currentSpawns.Length; i++)
+        {
+            //add if in range of player here
+            currentSpawns[i].setMaxSpawn(newEnemyCount);
+        }
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            //add if in range of player here
             spawners[i].startNewRound();
         }
 
@@ -88,6 +101,27 @@ public class Rounds : MonoBehaviour
         
     }*/
 
+    // Finds the two closest spawns to the player
+    Spawner[] findBestSpawns()
+    {
+
+        Vector3 playerPos = GameObject.FindWithTag("MainCamera").transform.position;
+        float distance = 0;
+        Spawner[] returns = new Spawner[2];
+        float[] returnsDistance = { float.MaxValue, float.MaxValue };
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            float maximum = Mathf.Max(returnsDistance);
+            if (maximum > distance)
+            {
+                // Found a closer spawn, update
+                returns[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
+                returnsDistance[Array.IndexOf(returnsDistance, maximum)] = distance;
+            }
+        }
+        return returns;
+    }
     void calculateEnemyAmount()
     {
         if (newEnemyCount > 9)
