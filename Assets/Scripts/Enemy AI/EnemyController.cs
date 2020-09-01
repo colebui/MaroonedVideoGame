@@ -17,6 +17,10 @@ public class EnemyController : MonoBehaviour
     private PlayerHealth playerRef;
 
     private Vector3 playerPosition;
+
+    // Used for the dodging mechanic
+    //private bool playerWithinRange = false;
+
     void Start() {
         playerRef = FindObjectOfType<PlayerHealth>();
     }
@@ -28,10 +32,18 @@ public class EnemyController : MonoBehaviour
         }
 
         playerPosition = playerRef.transform.position;
+
+        //// If player leaves the enemy's range, then start following them again
+        //if(playerWithinRange && !(Vector3.Distance(playerPosition, this.agent.transform.position) < MAX_ATTACK_DISTANCE)) {
+        //    playerWithinRange = false;
+        //    agent.isStopped = false;
+        //}
+
         //if touching
         if (Vector3.Distance(playerPosition, this.agent.transform.position) < MAX_ATTACK_DISTANCE && agent.isStopped == false) {
             UnityEngine.Debug.Log("Agent touches you");
             agent.isStopped = true;
+            //playerWithinRange = true;
             pauseAgent();
             // removed dealing damage here to after a delay in the AgentTimer
         }
@@ -52,6 +64,7 @@ public class EnemyController : MonoBehaviour
             dealDamage();
         }
         agent.isStopped = false;
+        //playerWithinRange = false;
     }
 
     void pauseAgent() {

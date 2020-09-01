@@ -13,7 +13,9 @@ public class EnemyHealth : Health {
         FindObjectOfType<GameLogic>().addScore(enemyPayout);
 
         // Turn off the enemy AI
-        GetComponent<EnemyController>().enabled = false;
+        var enemyAI = GetComponent<EnemyController>();
+        enemyAI.StopAllCoroutines();
+        enemyAI.enabled = false;
         // Play the death sound attatched to this object
         deathSound.Play();
         // Set isDead so no more damage is taken
