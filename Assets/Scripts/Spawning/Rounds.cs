@@ -19,7 +19,6 @@ public class Rounds : MonoBehaviour
     private float timeBetweenChecks = 0.0f;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
-    public bool readyForNewRound = false;
 
     void Start()
     {
@@ -45,21 +44,7 @@ public class Rounds : MonoBehaviour
             enemysAlive.Clear();
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
             Debug.Log("Enemy count updated " + enemysAlive.Count);
-
-            for (int i = 0; i < spawners.Length; i++)
-            {
-                if (spawners[i].getEnemysSpawned() >= newEnemyCount)
-                {
-                    //Debug.Log("We are ready for a new round");
-                    readyForNewRound = true;
-                }
-                else
-                {
-                    readyForNewRound = false;
-                    break;
-                }
-            }
-            if (enemysAlive.Count <= 0 && readyForNewRound)
+            if (enemysAlive.Count <= 0)
             {
                 newRound();
             }
