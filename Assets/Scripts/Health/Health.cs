@@ -9,11 +9,16 @@ abstract public class Health : MonoBehaviour {
     // TODO: Should not be serialized, just is now for debugging
     [SerializeField] protected float currentHealth = 0f;
 
+    protected bool isDead = false;
+
     protected virtual void Start() {
         currentHealth = maxHealth;
     }
 
     public virtual void TakeDamage(float damageToTake) {
+
+        if(isDead) { return; }
+
         currentHealth -= damageToTake;
         //Debug.Log("Current HP"+currentHealth);
         if (currentHealth <= 0) {

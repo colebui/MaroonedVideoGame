@@ -16,13 +16,13 @@ public class PlayerHealth : Health {
     protected override void Start() {
         // Display player health
         base.Start();
-        healthText.text = currentHealth.ToString();
+        healthText.text = ((int)currentHealth).ToString();
     }
 
     public override void TakeDamage(float damageToTake) {
         base.TakeDamage(damageToTake);
         // Display player health
-        healthText.text = currentHealth.ToString();
+        healthText.text = ((int)currentHealth).ToString();
         timeSinceTakingDamage = 0f;
     }
 

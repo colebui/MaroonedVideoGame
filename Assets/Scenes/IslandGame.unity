@@ -2334,6 +2334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 431346109, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8607278278596079830, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: healthText
