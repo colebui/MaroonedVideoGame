@@ -5467,7 +5467,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 80bc81a58303df44783bfccfab4b0521, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5563,7 +5563,7 @@ PrefabInstance:
     - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
@@ -5579,7 +5579,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponAttackClip
       value: 
-      objectReference: {fileID: 8300000, guid: 80bc81a58303df44783bfccfab4b0521, type: 3}
+      objectReference: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
     - target: {fileID: 1385715550526560339, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
       propertyPath: m_CastShadows

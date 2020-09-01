@@ -5,6 +5,7 @@ using UnityEngine;
 // Abstract class that all weapons should inherit from
 // Inherit from this class when making a new weapon, like a sword or gun
 // This component must be placed alongside the damage type of the weapon
+[RequireComponent(typeof(AudioSource))]
 abstract public class Weapon : MonoBehaviour {
 
     [SerializeField] protected float timeBetweenAttacks;

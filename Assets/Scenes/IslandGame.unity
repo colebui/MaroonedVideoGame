@@ -3002,6 +3002,14 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 431346109, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
+      propertyPath: weaponAttackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
+    - target: {fileID: 1217663717, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
     - target: {fileID: 8607278278596079830, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: healthText
