@@ -5549,7 +5549,7 @@ MonoBehaviour:
     BobDuration: 0.2
     BobAmount: 0.1
   m_StepInterval: 5
-  footstepAudioVolume: 0.6
+  footstepAudioVolume: 0.25
   m_FootstepSounds:
   - {fileID: 8300000, guid: 00dcb784a864a3b49864e9f3481e1788, type: 3}
   - {fileID: 8300000, guid: d8a75920b5d289f48a0e4a6925247f02, type: 3}
