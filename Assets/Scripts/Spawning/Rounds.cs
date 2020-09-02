@@ -15,7 +15,7 @@ public class Rounds : MonoBehaviour
     [SerializeField] TextMeshProUGUI roundText;
 
     private int newEnemyCount = 0;
-    private int roundNum = 0;
+    [SerializeField] private int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
 
     public List<GameObject> enemysAlive = new List<GameObject>();

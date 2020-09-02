@@ -21833,6 +21833,11 @@ PrefabInstance:
       propertyPath: roundText
       value: 
       objectReference: {fileID: 457341758}
+    - target: {fileID: 587629777137666327, guid: 470b054dc46ab17439b5b1830e7b633d,
+        type: 3}
+      propertyPath: roundNum
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2340713746484176679, guid: 470b054dc46ab17439b5b1830e7b633d,
         type: 3}
       propertyPath: m_Name
