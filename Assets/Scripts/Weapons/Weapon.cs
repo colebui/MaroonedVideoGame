@@ -18,6 +18,9 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] AudioSource weaponAttackSound;
     [SerializeField] AudioClip weaponAttackClip;
 
+    [SerializeField] AudioSource weaponReloadSound;
+    [SerializeField] AudioClip weaponReloadClip;
+
     protected bool canAttack = true;
     protected DamageType damageType;
     protected PlayerWeaponManager playerWeaponManager;
@@ -63,6 +66,10 @@ abstract public class Weapon : MonoBehaviour {
 
         if(timeSinceAttacking >= timeBetweenAttacks) {
             canAttack = true;
+            if (weaponReloadSound != null)
+            {
+                weaponReloadSound.PlayOneShot(weaponReloadClip, 2f);
+            }
             playerWeaponManager.SetAllowWeaponSwitching(true);
         }
     }

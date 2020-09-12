@@ -14,6 +14,7 @@ public class Rounds : MonoBehaviour
     [SerializeField] int roundPayout = 1000;
     [SerializeField] TextMeshProUGUI roundText;
     [SerializeField] TextMeshProUGUI roundTitle;
+    [SerializeField] TextMeshProUGUI scoreAdditionText;
 
     private int newEnemyCount = 0;
     [SerializeField] private int roundNum = 0;
@@ -32,6 +33,7 @@ public class Rounds : MonoBehaviour
         // Updates the round text
         roundText.text = "Round " + roundNum;
         roundTitle.enabled = false;
+        scoreAdditionText.enabled = false;
     }
 
     // Update is called once per frame
@@ -125,7 +127,9 @@ public class Rounds : MonoBehaviour
     {
         roundTitle.text = message;
         roundTitle.enabled = true;
+        scoreAdditionText.enabled = true;
         yield return new WaitForSeconds(delay);
         roundTitle.enabled = false;
+        scoreAdditionText.enabled = false;
     }
 }
