@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Security.Cryptography;
+using System.Collections.Specialized;
 
 public class PlayerHealth : Health {
 
@@ -10,19 +12,19 @@ public class PlayerHealth : Health {
     [SerializeField] float healthRegenTimer = 5f;
     // The amount of health healed per second
     [SerializeField] float healthRegenPerSecond = 10f;
-
+    [SerializeField] RectTransform anchor;
     private float timeSinceTakingDamage = 0f;
 
     protected override void Start() {
-        // Display player health
-        base.Start();
-        healthText.text = ((int)currentHealth).ToString();
+        // Display player health 
+        base.Start(); 
+        anchor.localScale = new Vector3(1f, 1f); 
     }
 
     public override void TakeDamage(float damageToTake) {
         base.TakeDamage(damageToTake);
         // Display player health
-        healthText.text = ((int)currentHealth).ToString();
+        anchor.localScale = new Vector3(currentHealth / 100, 1f);
         timeSinceTakingDamage = 0f;
     }
 
@@ -36,7 +38,12 @@ public class PlayerHealth : Health {
 
         if(timeSinceTakingDamage >= healthRegenTimer) {
             currentHealth = Mathf.Clamp(currentHealth + (healthRegenPerSecond * Time.deltaTime), 0f, maxHealth);
-            healthText.text = ((int)currentHealth).ToString();
+            if (currentHealth < 0) {
+                //Don't show negative health
+                anchor.localScale = new Vector3(0, 0f);
+                return;
+            }
+            anchor.localScale = new Vector3(currentHealth/100, 1f);
         }
     }
 }
