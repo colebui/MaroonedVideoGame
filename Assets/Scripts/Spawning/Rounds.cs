@@ -13,6 +13,7 @@ public class Rounds : MonoBehaviour
     [SerializeField] Spawner[] spawners;
     [SerializeField] int roundPayout = 1000;
     [SerializeField] TextMeshProUGUI roundText;
+    [SerializeField] TextMeshProUGUI roundTitle;
 
     private int newEnemyCount = 0;
     [SerializeField] private int roundNum = 0;
@@ -30,6 +31,7 @@ public class Rounds : MonoBehaviour
 
         // Updates the round text
         roundText.text = "Round " + roundNum;
+        roundTitle.enabled = false;
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class Rounds : MonoBehaviour
 
         // Updates the round text
         roundText.text = "Round " + roundNum;
-
+        StartCoroutine(ShowRoundTitle("Round " + roundNum, 2));
         calculateEnemyAmount();
         Spawner[] currentSpawns = findBestSpawns();
         for (int i = 0; i < spawners.Length; i++)
@@ -118,5 +120,12 @@ public class Rounds : MonoBehaviour
             newEnemyCount = (int)Mathf.Floor((1 / 5) * roundNum) + roundNum;
         }
         Debug.Log("Max enemys: " + newEnemyCount * spawners.Length);
+    }
+    IEnumerator ShowRoundTitle(string message, float delay)
+    {
+        roundTitle.text = message;
+        roundTitle.enabled = true;
+        yield return new WaitForSeconds(delay);
+        roundTitle.enabled = false;
     }
 }
