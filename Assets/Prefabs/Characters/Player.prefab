@@ -5539,7 +5539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_RunSpeed: 7
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -5653,8 +5653,8 @@ MonoBehaviour:
   maxStamina: 100
   currentStamina: 100
   staminaUsePerSecond: 40
-  staminaRecoveryDelay: 1
-  staminaRecoveryPerSecond: 50
+  staminaRecoveryDelay: 3
+  staminaRecoveryPerSecond: 20
 --- !u!82 &1217663717
 AudioSource:
   m_ObjectHideFlags: 0

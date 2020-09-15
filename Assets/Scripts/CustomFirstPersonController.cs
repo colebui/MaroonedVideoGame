@@ -107,6 +107,7 @@ public class CustomFirstPersonController : MonoBehaviour {
     private void FixedUpdate() {
         float speed;
         GetInput(out speed);
+        StaminaLogic();
         // always move along the camera forward as it is the direction that it being aimed at
         Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
@@ -213,17 +214,6 @@ public class CustomFirstPersonController : MonoBehaviour {
 #endif
         speed = (m_IsWalking || (currentStamina <= 0)) ? m_WalkSpeed : m_RunSpeed;
 
-        if(!m_IsWalking) {
-            currentStamina = Mathf.Clamp((currentStamina - (staminaUsePerSecond * Time.deltaTime)), 0, maxStamina);
-            timeSinceSprinting = 0;
-        }
-        else {
-            timeSinceSprinting += Time.deltaTime;
-            if(timeSinceSprinting >= staminaRecoveryDelay) {
-                currentStamina = Mathf.Clamp((currentStamina + (staminaRecoveryPerSecond * Time.deltaTime)), 0, maxStamina);
-            }
-        }
-
         staminaUI.text = "Stamina: " + (int)currentStamina + "/" + maxStamina;
 
         m_Input = new Vector2(horizontal, vertical);
@@ -241,6 +231,19 @@ public class CustomFirstPersonController : MonoBehaviour {
         }
     }
 
+    // Handles the stamina logic for sprinting
+    private void StaminaLogic() {
+        if(!m_IsWalking) {
+            currentStamina = Mathf.Clamp((currentStamina - (staminaUsePerSecond * Time.deltaTime)), 0, maxStamina);
+            timeSinceSprinting = 0;
+        }
+        else {
+            timeSinceSprinting += Time.deltaTime;
+            if(timeSinceSprinting >= staminaRecoveryDelay) {
+                currentStamina = Mathf.Clamp((currentStamina + (staminaRecoveryPerSecond * Time.deltaTime)), 0, maxStamina);
+            }
+        }
+    }
 
     private void RotateView() {
         m_MouseLook.LookRotation(transform, m_Camera.transform);
