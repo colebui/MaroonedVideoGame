@@ -6,7 +6,7 @@ using UnityEngine;
 // Inherit from this class when making a new damage type, like hitscan, projectile, or melee
 abstract public class DamageType : MonoBehaviour {
 
-    [SerializeField] protected Camera firstPersonCamera;
+    protected Camera firstPersonCamera;
     protected Weapon weapon;
     protected float minWeaponDamage;
     protected float maxWeaponDamage;
