@@ -36,6 +36,7 @@ public class CustomFirstPersonController : MonoBehaviour {
     [SerializeField] float staminaUsePerSecond = 40;
     [SerializeField] float staminaRecoveryDelay = 1;
     [SerializeField] float staminaRecoveryPerSecond = 50;
+    private float timeSinceSprinting = 0;
 
     private Camera m_Camera;
     private bool m_Jump;
@@ -214,7 +215,16 @@ public class CustomFirstPersonController : MonoBehaviour {
 
         if(!m_IsWalking) {
             currentStamina = Mathf.Clamp((currentStamina - (staminaUsePerSecond * Time.deltaTime)), 0, maxStamina);
+            timeSinceSprinting = 0;
         }
+        else {
+            timeSinceSprinting += Time.deltaTime;
+            if(timeSinceSprinting >= staminaRecoveryDelay) {
+                currentStamina = Mathf.Clamp((currentStamina + (staminaRecoveryPerSecond * Time.deltaTime)), 0, maxStamina);
+            }
+        }
+
+        staminaUI.text = "Stamina: " + (int)currentStamina + "/" + maxStamina;
 
         m_Input = new Vector2(horizontal, vertical);
 
