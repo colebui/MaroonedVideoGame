@@ -489,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628952904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.61, y: 2.07, z: 1.7631049}
+  m_LocalPosition: {x: -8, y: 3, z: 2}
   m_LocalScale: {x: 4.387599, y: 4.387599, z: 4.387599}
   m_Children: []
   m_Father: {fileID: 0}
@@ -975,6 +975,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 125935512}
     m_Modifications:
+    - target: {fileID: 207660434, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 207660434, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 265
+      objectReference: {fileID: 0}
+    - target: {fileID: 207660435, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
+      propertyPath: m_text
+      value: 'Ammo: 20/20'
+      objectReference: {fileID: 0}
     - target: {fileID: 8707391747455854531, guid: b09e6533e9357114e9df406f61dd745d,
         type: 3}
       propertyPath: m_Name
