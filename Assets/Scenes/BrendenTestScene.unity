@@ -371,18 +371,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356126915 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1265843911, guid: b09e6533e9357114e9df406f61dd745d,
-    type: 3}
-  m_PrefabInstance: {fileID: 8707391748115449895}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1469613688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9219441937690769488, guid: dfe94d85ce2be044faf1cad64643ec4c,
@@ -975,18 +963,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 125935512}
     m_Modifications:
-    - target: {fileID: 207660434, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1700
-      objectReference: {fileID: 0}
-    - target: {fileID: 207660434, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 265
-      objectReference: {fileID: 0}
-    - target: {fileID: 207660435, guid: b09e6533e9357114e9df406f61dd745d, type: 3}
-      propertyPath: m_text
-      value: 'Ammo: 20/20'
-      objectReference: {fileID: 0}
     - target: {fileID: 8707391747455854531, guid: b09e6533e9357114e9df406f61dd745d,
         type: 3}
       propertyPath: m_Name
@@ -1106,10 +1082,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 431346109, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
-      propertyPath: reloadingText
-      value: 
-      objectReference: {fileID: 1356126915}
     - target: {fileID: 8607278278596079830, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: anchor
