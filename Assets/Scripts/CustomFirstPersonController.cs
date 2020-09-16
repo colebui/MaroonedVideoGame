@@ -4,6 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 using UnityStandardAssets.Characters.FirstPerson;
+using TMPro;
 
 #pragma warning disable 618, 649
 //namespace UnityStandardAssets.Characters.FirstPerson {
@@ -29,6 +30,14 @@ public class CustomFirstPersonController : MonoBehaviour {
     [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
     //[SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+    [Header("Stamina System")]
+    [SerializeField] float maxStamina = 100;
+    [SerializeField] float currentStamina = 100;
+    [SerializeField] float staminaUsePerSecond = 40;
+    [SerializeField] float staminaRecoveryDelay = 1;
+    [SerializeField] float staminaRecoveryPerSecond = 50;
+    private float timeSinceSprinting = 0;
+
     private Camera m_Camera;
     private bool m_Jump;
     private float m_YRotation;
@@ -43,6 +52,9 @@ public class CustomFirstPersonController : MonoBehaviour {
     private bool m_Jumping;
     private AudioSource m_AudioSource;
 
+    // Used to keep visually track of the current stamina
+    private TextMeshProUGUI staminaUI;
+
     // Use this for initialization
     private void Start() {
         m_CharacterController = GetComponent<CharacterController>();
@@ -56,8 +68,9 @@ public class CustomFirstPersonController : MonoBehaviour {
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
-        // TODO: GET RID OF THIS TO RE-ENABLE SPRINTING
         m_IsWalking = true;
+
+        staminaUI = GameObject.FindWithTag("StaminaUI").GetComponent<TextMeshProUGUI>();
 
     }
 
@@ -94,6 +107,7 @@ public class CustomFirstPersonController : MonoBehaviour {
     private void FixedUpdate() {
         float speed;
         GetInput(out speed);
+        StaminaLogic();
         // always move along the camera forward as it is the direction that it being aimed at
         Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
@@ -196,11 +210,12 @@ public class CustomFirstPersonController : MonoBehaviour {
 #if !MOBILE_INPUT
         // On standalone builds, walk/run speed is modified by a key press.
         // keep track of whether or not the character is walking or running
-        // TODO: uncomment this to re-enable sprinting
-        //m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+        m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
-        // set the desired speed to be walking or running
-        speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+        speed = (m_IsWalking || (currentStamina <= 0)) ? m_WalkSpeed : m_RunSpeed;
+
+        staminaUI.text = "Stamina: " + (int)currentStamina + "/" + maxStamina;
+
         m_Input = new Vector2(horizontal, vertical);
 
         // normalize input if it exceeds 1 in combined length:
@@ -216,6 +231,19 @@ public class CustomFirstPersonController : MonoBehaviour {
         }
     }
 
+    // Handles the stamina logic for sprinting
+    private void StaminaLogic() {
+        if(!m_IsWalking) {
+            currentStamina = Mathf.Clamp((currentStamina - (staminaUsePerSecond * Time.deltaTime)), 0, maxStamina);
+            timeSinceSprinting = 0;
+        }
+        else {
+            timeSinceSprinting += Time.deltaTime;
+            if(timeSinceSprinting >= staminaRecoveryDelay) {
+                currentStamina = Mathf.Clamp((currentStamina + (staminaRecoveryPerSecond * Time.deltaTime)), 0, maxStamina);
+            }
+        }
+    }
 
     private void RotateView() {
         m_MouseLook.LookRotation(transform, m_Camera.transform);
