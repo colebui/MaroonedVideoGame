@@ -918,6 +918,11 @@ PrefabInstance:
       propertyPath: weaponReloadSound
       value: 
       objectReference: {fileID: 259853815}
+    - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
       propertyPath: m_LocalPosition.x

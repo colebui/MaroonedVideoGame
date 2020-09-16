@@ -5,6 +5,8 @@ using TMPro;
 
 public class Pistol : Weapon {
 
+    [Header("UI Elements")]
+    [SerializeField] TextMeshProUGUI ammoText;
     [SerializeField] TextMeshProUGUI reloadingText;
 
     [Header("Ammo System")]
@@ -14,6 +16,7 @@ public class Pistol : Weapon {
     protected override void Start() {
         base.Start();
         currentAmmo = maxAmmo;
+        SetAmmoText();
     }
 
     protected override void Update() {
@@ -30,10 +33,16 @@ public class Pistol : Weapon {
         ((HitscanDamage)damageType).ProcessShot();
 
         currentAmmo--;
+        SetAmmoText();
     }
 
     public void AddAmmo(int ammountToAdd) {
         currentAmmo = Mathf.Clamp(currentAmmo + ammountToAdd, 0, maxAmmo);
+        SetAmmoText();
+    }
+
+    private void SetAmmoText() {
+        ammoText.text = "Ammo: " + currentAmmo + "/" + maxAmmo;
     }
 
     // No start or update, because they don't need to be overridden
