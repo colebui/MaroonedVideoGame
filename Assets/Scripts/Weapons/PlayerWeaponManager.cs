@@ -46,7 +46,7 @@ public class PlayerWeaponManager : MonoBehaviour {
         }
 
         foreach(PowerWeapon powerWeapon in powerWeapons) {
-            if(Input.GetButtonDown(powerWeapon.GetAttackButtonName())) {
+            if(Input.GetButtonDown(powerWeapon.GetAttackButtonName()) && powerWeapon.GetCanAttack()) {
                 // TODO: Replace this with starting an animation that calls this method in an event
                 // TODO: Also needs to lock all other weapons, which will need to happen on switch, as well
                 // TODO: Probably a good idea to use each weapon's canAttack member for that

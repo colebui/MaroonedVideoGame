@@ -24,7 +24,9 @@ abstract public class Weapon : MonoBehaviour {
     protected bool canAttack = true;
     protected DamageType damageType;
     protected PlayerWeaponManager playerWeaponManager;
-    protected float timeSinceAttacking = 0f;
+
+    // FIXME: Only serialized for debugging, don't change
+    [SerializeField] protected float timeSinceAttacking = 0f;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
