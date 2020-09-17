@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerWeaponManager : MonoBehaviour {
 
     [SerializeField] Weapon[] standardWeapons;
-    [SerializeField] PowerWeapon[] powerWeapons;
+
+    // TODO: Power weapons should always be active, just out of view, maybe turn off their models in an anim
+    PowerWeapon[] powerWeapons;
 
     private Weapon currentlySelectedWeapon;
     private int currentlySelectedWeaponIndex = 0;
@@ -14,6 +16,8 @@ public class PlayerWeaponManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+
+        powerWeapons = GetComponentsInChildren<PowerWeapon>();
 
         currentlySelectedWeapon = standardWeapons[currentlySelectedWeaponIndex];
 

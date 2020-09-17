@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class PowerWeapon : Weapon {
+public class PowerWeapon : Weapon {
 
     private PlayerWeaponManager playerWeaponManager;
 
@@ -18,8 +18,19 @@ abstract public class PowerWeapon : Weapon {
     }
 
     public override void Attack() {
-        // TODO: Put some code in here for locking other weapons and switching to the power weapon
-        // TODO: Then unlock and switch back after the attack is launched
+
+        // TODO: Start some animation, which calls an attack through an animation event, and then re-enables things after that
+
+        Debug.Log("Shoot power weapon!");
+        StartCoroutine(WaitForTimeOrSomething());
+    }
+
+    IEnumerator WaitForTimeOrSomething() {
+        yield return new WaitForSeconds(1.0f);
+        FinishPowerWeaponAttack();
+    }
+
+    private void FinishPowerWeaponAttack() {
         playerWeaponManager.EnableOtherWeapons();
     }
 }

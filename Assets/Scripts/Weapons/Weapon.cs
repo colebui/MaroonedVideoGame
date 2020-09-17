@@ -74,13 +74,13 @@ abstract public class Weapon : MonoBehaviour {
         }
     }
 
-    // TODO: Make this like store itself or something so you can't swap spam
-    private void OnEnable() {
-        //canAttack = true;
-        if(!canAttack) {
-            //StartCoroutine(DelayAttack());
-        }
-    }
+    //// TODO: Make this like store itself or something so you can't swap spam
+    //private void OnEnable() {
+    //    //canAttack = true;
+    //    if(!canAttack) {
+    //        //StartCoroutine(DelayAttack());
+    //    }
+    //}
 
     //protected virtual void Update() {
     //    if(canAttack && Input.GetButtonDown(attackButtonName)) {
