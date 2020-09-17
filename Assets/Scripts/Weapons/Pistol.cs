@@ -5,9 +5,8 @@ using TMPro;
 
 public class Pistol : Weapon {
 
-    [Header("UI Elements")]
-    [SerializeField] TextMeshProUGUI ammoText;
-    [SerializeField] TextMeshProUGUI reloadingText;
+    private TextMeshProUGUI ammoText;
+    private TextMeshProUGUI reloadingText;
 
     [Header("Ammo System")]
     [SerializeField] int maxAmmo = 20;
@@ -15,6 +14,10 @@ public class Pistol : Weapon {
 
     protected override void Start() {
         base.Start();
+
+        ammoText = GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<TextMeshProUGUI>();
+        reloadingText = GameObject.FindGameObjectWithTag("ReloadingUI").GetComponent<TextMeshProUGUI>();
+
         currentAmmo = maxAmmo;
         SetAmmoText();
     }

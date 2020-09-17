@@ -8,6 +8,8 @@ TagManager:
   - Spawner
   - Fire
   - StaminaUI
+  - ReloadingUI
+  - AmmoUI
   layers:
   - Default
   - TransparentFX
