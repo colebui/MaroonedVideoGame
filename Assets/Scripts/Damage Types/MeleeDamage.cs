@@ -9,43 +9,80 @@ public class MeleeDamage : DamageType {
     [SerializeField] AudioSource weaponAttackSound;
     [SerializeField] AudioClip weaponAttackClip;
 
-    // TODO: This needs to be set in the animation at the start
-    private bool hitboxActive = false;
+    private CapsuleCollider hitbox;
 
-    public void SetHitboxActive(int value) {
+    // Used to prevent hitting the same enemy twice
+    private List<EnemyHealth> enemiesHitThisSwing = new List<EnemyHealth>();
+
+    //private bool hitboxActive = false;
+
+    protected override void Start() {
+        base.Start();
+        hitbox = GetComponent<CapsuleCollider>();
+        hitbox.enabled = false;
+    }
+
+    private void SetHitboxActive(int value) {
         if(value == 0) {
-            hitboxActive = false;
+            //hitboxActive = false;
+            hitbox.enabled = false;
+            enemiesHitThisSwing.Clear();
         }
         else {
-            hitboxActive = true;
+            //hitboxActive = true;
+            hitbox.enabled = true;
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
-        if(!hitboxActive) { return; }
+    //// Update is called once per frame
+    //void FixedUpdate() {
+    //    if(!hitboxActive) { return; }
 
-        HitDetectionThisFrame();
-    }
+    //    HitDetectionThisFrame();
+    //}
 
-    private void HitDetectionThisFrame() {
-        // What we hit with the cast
-        RaycastHit hit;
+    //private void HitDetectionThisFrame() {
+    //    //// What we hit with the cast
+    //    //RaycastHit hit;
 
-        //// FIXME: Need to tweak and also make more understandable
-        //// Used to drag the sphere cast back into the player, need to avoid self collision though
-        //Vector3 offsetBackwards = new Vector3(.5f, 0f, .5f);
+    //    ////// FIXME: Need to tweak and also make more understandable
+    //    ////// Used to drag the sphere cast back into the player, need to avoid self collision though
+    //    ////Vector3 offsetBackwards = new Vector3(.5f, 0f, .5f);
 
-        // TODO: Add way to hit multiple enemies?
-        // First is where to shoot the ray from, next is what direction, then what we hit, and finally the range
-        if(Physics.SphereCast(firstPersonCamera.transform.position, spherecastRadius, firstPersonCamera.transform.forward, out hit, weaponRange)) { // If we hit something, and assigns this to "hit"
+    //    //// TODO: Add way to hit multiple enemies?
+    //    //// First is where to shoot the ray from, next is what direction, then what we hit, and finally the range
+    //    //if(Physics.SphereCast(firstPersonCamera.transform.position, spherecastRadius, firstPersonCamera.transform.forward, out hit, weaponRange)) { // If we hit something, and assigns this to "hit"
 
-            hitboxActive = false;
+    //    //    hitboxActive = false;
 
-            Debug.Log("Hit " + hit.transform.name + " with raycast");
+    //    //    Debug.Log("Hit " + hit.transform.name + " with raycast");
 
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-            if(target == null) { return; } // protects against null reference
+    //    //    EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+    //    //    if(target == null) { return; } // protects against null reference
+
+    //    //    float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
+    //    //    Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
+
+    //    //    weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
+    //    //    target.TakeDamage(damageToDeal);
+    //    //}
+    //    //else { return; } // protects against null reference
+    //}
+
+    private void OnTriggerEnter(Collider other) {
+
+        //if(!hitboxActive) { return; }
+
+        Debug.Log("Hit " + other.name + " with sword");
+
+        EnemyHealth target = other.GetComponent<EnemyHealth>();
+        if(target == null) { return; } // protects against null reference
+
+        if(!enemiesHitThisSwing.Contains(target)) {
+
+            enemiesHitThisSwing.Add(target);
+
+            //hitboxActive = false;
 
             float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
@@ -53,6 +90,5 @@ public class MeleeDamage : DamageType {
             weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
             target.TakeDamage(damageToDeal);
         }
-        else { return; } // protects against null reference
     }
 }

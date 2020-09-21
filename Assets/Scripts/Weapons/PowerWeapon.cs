@@ -24,10 +24,6 @@ abstract public class PowerWeapon : Weapon {
 
         attackFinished = false;
 
-        // TODO: This is temporary, this function will call an animation, which will call 2 events,
-        // TODO: being the next 2 listed functions
-        //StartCoroutine(WaitForTimeOrSomething());
-
         // Start animation
         animator.SetTrigger(ATTACK_TRIGGER_NAME);
     }
