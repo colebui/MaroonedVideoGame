@@ -5,6 +5,7 @@ using TMPro;
 
 public class Blunderbuss : PowerWeapon {
 
+    // TODO: Definitely a placeholder, gonna need to change this (and probably the base class) to have actual icons at some point
     [SerializeField] TextMeshProUGUI CDText;
 
     protected override void LaunchAttack() {
