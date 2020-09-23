@@ -41,7 +41,6 @@ public class EnemyController : MonoBehaviour
 
         //if touching
         if (Vector3.Distance(playerPosition, this.agent.transform.position) < MAX_ATTACK_DISTANCE && agent.isStopped == false) {
-            UnityEngine.Debug.Log("Agent touches you");
             agent.isStopped = true;
             //playerWithinRange = true;
             pauseAgent();
