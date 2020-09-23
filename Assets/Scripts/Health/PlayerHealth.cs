@@ -46,4 +46,9 @@ public class PlayerHealth : Health {
             anchor.localScale = new Vector3(currentHealth/100, 1f);
         }
     }
+
+    public float GetHealthRegenTimer() { return healthRegenTimer; }
+    public void SetHealthRegenTimer(float value) { healthRegenTimer = value; }
+    public float GetHealthRegenPerSecond() { return healthRegenPerSecond; }
+    public void SetHealthRegenPerSecond(float value) { healthRegenPerSecond = value; }
 }

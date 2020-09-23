@@ -7,7 +7,7 @@ public class PlayerWeaponManager : MonoBehaviour {
     [SerializeField] Weapon[] standardWeapons;
 
     // TODO: Power weapons should always be active, just out of view, maybe turn off their models in an anim
-    PowerWeapon[] powerWeapons;
+    List<PowerWeapon> powerWeapons = new List<PowerWeapon>();
 
     private Weapon currentlySelectedWeapon;
     private int currentlySelectedWeaponIndex = 0;
@@ -17,7 +17,8 @@ public class PlayerWeaponManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 
-        powerWeapons = GetComponentsInChildren<PowerWeapon>();
+        //// FIXME: Change this to only have blunderbuss at start
+        //powerWeapons = new List<PowerWeapon>(GetComponentsInChildren<PowerWeapon>());
 
         currentlySelectedWeapon = standardWeapons[currentlySelectedWeaponIndex];
 
@@ -80,9 +81,15 @@ public class PlayerWeaponManager : MonoBehaviour {
         allowWeaponSwitching = value;
     }
 
-    // TODO: Needs work, will be called by the power weapon
     public void EnableOtherWeapons() {
         currentlySelectedWeapon.gameObject.SetActive(true);
         powerWeaponInUse = false;
     }
+
+    public void AddPowerWeapon(PowerWeapon powerWeapon) {
+        powerWeapons.Add(powerWeapon);
+    }
+
+    public Weapon[] GetStandardWeapons() { return standardWeapons; }
+    public List<PowerWeapon> GetPowerWeapons() { return powerWeapons; }
 }

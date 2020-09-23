@@ -50,4 +50,8 @@ abstract public class PowerWeapon : Weapon {
             timeSinceAttacking = 0;
         }
     }
+
+    public void AddPowerWeapon() {
+        playerWeaponManager.AddPowerWeapon(this);
+    }
 }

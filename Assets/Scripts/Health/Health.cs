@@ -29,4 +29,7 @@ abstract public class Health : MonoBehaviour {
 
     // Overridden by the type of entity with health
     protected abstract void Die();
+
+    public float GetMaxHealth() { return maxHealth; }
+    public void SetMaxHealth(float value) { maxHealth = value; }
 }

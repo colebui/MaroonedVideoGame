@@ -55,6 +55,11 @@ public class CustomFirstPersonController : MonoBehaviour {
     // Used to keep visually track of the current stamina
     private TextMeshProUGUI staminaUI;
 
+    public float GetMaxStamina() { return maxStamina; }
+    public void SetMaxStamina(float value) { maxStamina = value; }
+    public float GetStaminaRecoveryPerSecond() { return staminaRecoveryPerSecond; }
+    public void SetStaminaRecoveryPerSecond(float value) { staminaRecoveryPerSecond = value; }
+
     // Use this for initialization
     private void Start() {
         m_CharacterController = GetComponent<CharacterController>();
