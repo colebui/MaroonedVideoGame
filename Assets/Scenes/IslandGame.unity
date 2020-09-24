@@ -6240,6 +6240,11 @@ PrefabInstance:
       propertyPath: anchor
       value: 
       objectReference: {fileID: 1389018742}
+    - target: {fileID: 8847852661068239862, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: CDText
+      value: 
+      objectReference: {fileID: 1583510170}
     - target: {fileID: 8847852661673596566, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -47270,6 +47275,18 @@ CapsuleCollider:
   m_Height: 11
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1583510170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 852988252, guid: b09e6533e9357114e9df406f61dd745d,
+    type: 3}
+  m_PrefabInstance: {fileID: 412441730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1585632200
 GameObject:
   m_ObjectHideFlags: 0

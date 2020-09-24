@@ -10,7 +10,9 @@ public class Blunderbuss : PowerWeapon {
 
     protected override void Update() {
         base.Update();
-        CDText.text = "Blunderbuss CD: " + Mathf.Clamp((timeBetweenAttacks - timeSinceAttacking), 0f, timeBetweenAttacks).ToString("0.00");
+        if(CDText != null) {
+            CDText.text = "Blunderbuss CD: " + Mathf.Clamp((timeBetweenAttacks - timeSinceAttacking), 0f, timeBetweenAttacks).ToString("0.00");
+        }
     }
 
     protected override void LaunchAttack() {
