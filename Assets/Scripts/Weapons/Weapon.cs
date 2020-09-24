@@ -98,9 +98,15 @@ abstract public class Weapon : MonoBehaviour {
     //}
 
     public float GetMinWeaponDamage() { return minWeaponDamage; }
+    public void SetMinWeaponDamage(float value) { minWeaponDamage = value; }
     public float GetMaxWeaponDamage() { return maxWeaponDamage; }
+    public void SetMaxWeaponDamage(float value) { maxWeaponDamage = value; }
+    public float GetTimeBetweenAttacks() { return timeBetweenAttacks; }
+    public void SetTimeBetweenAttacks(float value) { timeBetweenAttacks = value; }
     public string GetAttackButtonName() { return attackButtonName; }
     public bool GetCanAttack() { return canAttack; }
+
+    //public void
     //public void SetCanAttack(bool value) { this.canAttack = value; }
 
 }
