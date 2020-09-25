@@ -6278,7 +6278,7 @@ PrefabInstance:
     - target: {fileID: 8847852661674084502, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8847852661674084502, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
@@ -36902,6 +36902,26 @@ CapsuleCollider:
   m_Height: 11
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1202711203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4128632072140903366, guid: 1c8efb55a65ed2b4f9ca7d102e1ab003,
+    type: 3}
+  m_PrefabInstance: {fileID: 342458002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1202711205
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202711203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1552869193571101529, guid: 1c8efb55a65ed2b4f9ca7d102e1ab003, type: 3}
 --- !u!1 &1203986491
 GameObject:
   m_ObjectHideFlags: 0
