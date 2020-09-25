@@ -57,6 +57,7 @@ public class Rounds : MonoBehaviour
 
     void newRound()
     {
+        FindObjectOfType<TreasureHuntMain>().roll();
         FindObjectOfType<GameLogic>().addScore(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
