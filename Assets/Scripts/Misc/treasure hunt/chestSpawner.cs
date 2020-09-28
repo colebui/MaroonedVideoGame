@@ -39,6 +39,7 @@ public class chestSpawner : MonoBehaviour
         }
         else if (type == 2)
         {
+            FindObjectOfType<Blunderbuss>().AddPowerWeapon();
             gameObject.transform.Find("blunderbussChest").gameObject.SetActive(io);
         }
         else if (type == 3)
