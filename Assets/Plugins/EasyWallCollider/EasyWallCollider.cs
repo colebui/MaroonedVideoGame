@@ -166,7 +166,7 @@ namespace PepijnWillekens.EasyWallColliderUnity {
                 }
                     
             }
-            ColliderContainer.hideFlags = HideFlags.None;
+            ColliderContainer.hideFlags = (DEBUG || CanBeEdited()) ? HideFlags.None : HideFlags.HideInHierarchy;
         }
 
         public Transform ColliderContainer {
