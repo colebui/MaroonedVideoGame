@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MeleeDamage : DamageType {
 
-    [SerializeField] float weaponRange = 1f;
-    [SerializeField] float spherecastRadius = 1f;
+    //[SerializeField] float weaponRange = 1f;
+    //[SerializeField] float spherecastRadius = 1f;
     [SerializeField] AudioSource weaponAttackSound;
     [SerializeField] AudioClip weaponAttackClip;
+
+    [Tooltip("Whether the hitbox collider is on this object, or its child")]
+    [SerializeField] bool HitboxOnParent = true;
 
     private CapsuleCollider hitbox;
 
@@ -18,7 +21,16 @@ public class MeleeDamage : DamageType {
 
     protected override void Start() {
         base.Start();
-        hitbox = GetComponent<CapsuleCollider>();
+
+        if(HitboxOnParent)
+        {
+            hitbox = GetComponent<CapsuleCollider>();
+        }
+        else
+        {
+            // TODO: get the collider in the child
+            hitbox = GetComponentInChildren<CapsuleCollider>();
+        }
         hitbox.enabled = false;
     }
 
@@ -69,7 +81,7 @@ public class MeleeDamage : DamageType {
     //    //else { return; } // protects against null reference
     //}
 
-    private void OnTriggerEnter(Collider other) {
+    public void TriggerEntered(Collider other) {
 
         //if(!hitboxActive) { return; }
 
