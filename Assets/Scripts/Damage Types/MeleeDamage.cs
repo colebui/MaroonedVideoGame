@@ -12,7 +12,7 @@ public class MeleeDamage : DamageType {
     [Tooltip("Whether the hitbox collider is on this object, or its child")]
     [SerializeField] bool HitboxOnParent = true;
 
-    private CapsuleCollider hitbox;
+    private Collider hitbox;
 
     // Used to prevent hitting the same enemy twice
     private List<EnemyHealth> enemiesHitThisSwing = new List<EnemyHealth>();
@@ -24,12 +24,12 @@ public class MeleeDamage : DamageType {
 
         if(HitboxOnParent)
         {
-            hitbox = GetComponent<CapsuleCollider>();
+            hitbox = GetComponent<Collider>();
         }
         else
         {
             // TODO: get the collider in the child
-            hitbox = GetComponentInChildren<CapsuleCollider>();
+            hitbox = GetComponentInChildren<Collider>();
         }
         hitbox.enabled = false;
     }
