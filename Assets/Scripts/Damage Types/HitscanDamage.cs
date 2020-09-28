@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitscanDamage : DamageType {
 
     [SerializeField] float weaponRange = 100f;
+    [SerializeField] LayerMask layersToHit;
 
     public virtual void ProcessShot() {
         ProcessShotWithDeviation(0f);
@@ -23,7 +24,7 @@ public class HitscanDamage : DamageType {
             UnityEngine.Random.Range(-shotDeviationFactor, shotDeviationFactor), UnityEngine.Random.Range(-shotDeviationFactor, shotDeviationFactor));
 
         // First is where to shoot the ray from, next is what direction, then what we hit, and finally the range
-        if(Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward + shotDeviation, out hit, weaponRange)) { // If we hit something, and assigns this to "hit"
+        if(Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward + shotDeviation, out hit, weaponRange, layersToHit)) { // If we hit something, and assigns this to "hit"
 
             Debug.Log("Hit " + hit.transform.name + " with raycast");
 
