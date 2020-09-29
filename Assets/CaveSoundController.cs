@@ -2,43 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JungleMusicCounter : MonoBehaviour
+public class CaveSoundController : MonoBehaviour
 {
     public bool inside;
-    public int colliderCount = 0;
+    private string lastTouched = "";
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip jungleAmbient;
+    [SerializeField] AudioClip caveAmbient;
     [SerializeField] float FADETIME = 5.0f;
 
-    public void Enter(Collider other) {
-            colliderCount += 1;
-            UpdateState();
-    }
-
-    public void Exit(Collider other) {
-            colliderCount -= 1;
-            UpdateState();
-    }
-
-    void UpdateState() {
-        Debug.Log("colliderCount: " + colliderCount);
-        if (colliderCount == 0) {
-            inside = false;
-            StopMusic();
-        }
-        else if (colliderCount > 0 && !audioSource.isPlaying) { 
-            inside = true;
+    public void InnerWallTriggered(Collider other) {
+        if (lastTouched == "outer") {
             PlayMusic();
         }
+        lastTouched = "inner";
     }
 
+    public void OuterWallTriggered(Collider other) {
+        if (lastTouched == "inner") {
+            StopMusic();
+        }
+        lastTouched = "outer";
+    }
     void PlayMusic() {
+        Debug.Log("play music");
         if (!audioSource.isPlaying) {
-            audioSource.PlayOneShot(jungleAmbient, 1.0f);
+            audioSource.PlayOneShot(caveAmbient, 1.0f);
         }
     }
 
     void StopMusic() {//cole fix later
+        Debug.Log("stop music");
         if (audioSource.isPlaying) {
             float startVolume = audioSource.volume;
             while (audioSource.volume > 0) {
@@ -48,4 +41,5 @@ public class JungleMusicCounter : MonoBehaviour
             audioSource.volume = startVolume;
         }
     }
+
 }

@@ -9,14 +9,14 @@ public class JungleCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         // Debug.Log("tag: " + gameObject.tag);
-        if (gameObject.tag == "Jungle") {
+        if (gameObject.tag == "Jungle" && other.tag == "Player") {
             gameObject.transform.GetComponentInParent<JungleMusicCounter>().Enter(other);
         }
     }
 
     void OnTriggerExit(Collider other) {
         //Debug.Log("tag: " + gameObject.tag);
-        if (gameObject.tag == "Jungle") {
+        if (gameObject.tag == "Jungle" && other.tag == "Player") {
             gameObject.transform.GetComponentInParent<JungleMusicCounter>().Exit(other);
         }
     }
