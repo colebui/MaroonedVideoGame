@@ -34,7 +34,7 @@ public class JungleMusicCounter : MonoBehaviour
 
     void PlayMusic() {
         if (!audioSource.isPlaying) {
-            audioSource.PlayOneShot(jungleAmbient, 1.0f);
+            audioSource.PlayOneShot(jungleAmbient, 0.4f);
         }
     }
 

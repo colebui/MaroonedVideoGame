@@ -26,7 +26,7 @@ public class CaveSoundController : MonoBehaviour
     void PlayMusic() {
         Debug.Log("play music");
         if (!audioSource.isPlaying) {
-            audioSource.PlayOneShot(caveAmbient, 1.0f);
+            audioSource.PlayOneShot(caveAmbient, 0.4f);
         }
     }
 
