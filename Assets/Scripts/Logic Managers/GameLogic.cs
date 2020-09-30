@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 // This script will handle things like game state, player death, score, etc
-public class GameLogic : MonoBehaviour {
+public class GameLogic : MonoSingleton<GameLogic> {
 
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] int score = 0;

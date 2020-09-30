@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class chestSpawner : MonoBehaviour
 {
-    [SerializeField] GameLogic gl;
     [SerializeField] AudioSource foundSound;
     [SerializeField] AudioClip foundClip;
     [SerializeField] AudioClip bluderbussUnlocked;
@@ -82,7 +81,7 @@ public class chestSpawner : MonoBehaviour
             else if (chestType == 3)
             {
                 Debug.Log("Picked up points\n");
-                gl.addScore(420);
+                GameLogic.Instance.addScore(420);
             }
             else if (chestType == 4)
             {

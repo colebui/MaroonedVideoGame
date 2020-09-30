@@ -11,7 +11,7 @@ public class EnemyHealth : Health {
     [SerializeField] AudioSource deathSound;
     // TODO: Very basic, just to test
     protected override void Die() {
-        FindObjectOfType<GameLogic>().addScore(enemyPayout);
+        GameLogic.Instance.addScore(enemyPayout);
 
         // Turn off the enemy AI
         var enemyAI = GetComponent<EnemyController>();
