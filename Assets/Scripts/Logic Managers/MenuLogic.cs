@@ -27,7 +27,7 @@ public class MenuLogic : MonoBehaviour
             TimerText.text = "*" + i.ToString() + "*";
         }
         Time.timeScale = 1;
-        FindObjectOfType<SceneLoader>().LoadScene(nextSceneName);
+        SceneLoader.Instance.LoadScene(nextSceneName);
     }
     public void StartButtonClicked()
     {

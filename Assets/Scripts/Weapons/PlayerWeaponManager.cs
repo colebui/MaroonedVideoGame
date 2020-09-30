@@ -33,7 +33,7 @@ public class PlayerWeaponManager : MonoBehaviour {
     void Update() {
 
         // If using a power weapon, then return until it is no longer in use
-        if(powerWeaponInUse) { return; }
+        if(powerWeaponInUse || PauseMenu.Instance.isPaused) { return; }
 
         // Switching weapons
         if(Input.GetButtonDown("Switch Weapon") && allowWeaponSwitching) {
