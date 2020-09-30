@@ -39,7 +39,6 @@ public class chestSpawner : MonoBehaviour
         }
         else if (type == 2)
         {
-            FindObjectOfType<Blunderbuss>().AddPowerWeapon();
             gameObject.transform.Find("blunderbussChest").gameObject.SetActive(io);
         }
         else if (type == 3)
@@ -76,6 +75,7 @@ public class chestSpawner : MonoBehaviour
             }
             else if (chestType == 2)
             {
+                FindObjectOfType<Blunderbuss>().AddPowerWeapon();
                 sound = bluderbussUnlocked;
                 Debug.Log("Picked up power weapon 2\n");
             }
