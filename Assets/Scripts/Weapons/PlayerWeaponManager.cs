@@ -87,7 +87,7 @@ public class PlayerWeaponManager : MonoBehaviour {
     }
 
     public void AddPowerWeapon(PowerWeapon powerWeapon) {
-        Debug.LogError("Power weapon added");
+        //Debug.LogError("Power weapon added");
         powerWeapons.Add(powerWeapon);
     }
 

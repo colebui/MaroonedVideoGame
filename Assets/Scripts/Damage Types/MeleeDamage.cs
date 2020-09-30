@@ -99,7 +99,10 @@ public class MeleeDamage : DamageType {
             float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 
-            weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
+            if(weaponAttackClip != null)
+            {
+                weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
+            }
             target.TakeDamage(damageToDeal);
         }
     }
