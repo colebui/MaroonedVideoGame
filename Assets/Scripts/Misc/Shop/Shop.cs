@@ -187,7 +187,7 @@ public class Shop : MonoBehaviour
 
             //change to ammo
             //pistolGO.SetMaxAmmo(pistolGO.GetMaxAmmo() + pistolAddAmmo);
-            pistolGO.AddAmmo(pistolAddAmmo);
+            Pistol.AddMaxAmmo(pistolAddAmmo);
             pistolAmmoCount++;
             return;
         }

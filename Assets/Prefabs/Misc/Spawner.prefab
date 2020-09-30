@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43,9 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1157d6e01bcadef468e00abe91740f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawners: []
   roundPayout: 1000
+  roundText: {fileID: 0}
+  roundTitle: {fileID: 0}
+  scoreAdditionText: {fileID: 0}
+  roundNum: 0
   enemysAlive: []
-  readyForNewRound: 0
   spawnee: {fileID: 3926593790028234041, guid: 9c9aebaeba1be1144a136915495800fd, type: 3}
   stopSpawning: 0
   spawnTime: 1

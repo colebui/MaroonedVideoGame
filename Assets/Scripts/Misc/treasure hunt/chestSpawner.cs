@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Security.Cryptography;
-using System.Security.Policy;
+//using System.ComponentModel;
+//using System.Security.Cryptography;
+//using System.Security.Policy;
 using UnityEngine;
 
 public class chestSpawner : MonoBehaviour
@@ -86,7 +86,7 @@ public class chestSpawner : MonoBehaviour
             }
             else if (chestType == 4)
             {
-                FindObjectOfType<Pistol>().AddAmmo(20);
+                Pistol.AddAmmo(20);
                 Debug.Log("Picked up ammo \n");
             }
             else

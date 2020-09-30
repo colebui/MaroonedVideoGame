@@ -4801,17 +4801,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c053fd105b14ace45823aab4f11c6903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 4
+  timeBetweenAttacks: 1.15
   attackButtonName: Fire1
-  minWeaponDamage: 80
-  maxWeaponDamage: 110
+  minWeaponDamage: 35
+  maxWeaponDamage: 35
   canSwitchDuringCooldown: 1
   weaponAttackParticles: {fileID: 737492945}
   weaponAttackSound: {fileID: 0}
   weaponAttackClip: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
   weaponReloadSound: {fileID: 0}
   weaponReloadClip: {fileID: 8300000, guid: a1f8b1ff0c1bb49419765680fe3cc192, type: 3}
-  reloadingText: {fileID: 0}
+  timeSinceAttacking: 0
+  maxAmmo: 30
+  currentAmmo: 0
 --- !u!114 &3240051024324784849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,6 +4827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 100
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!82 &1217663717
 AudioSource:
   m_ObjectHideFlags: 0

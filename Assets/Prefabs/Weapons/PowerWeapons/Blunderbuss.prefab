@@ -50,7 +50,7 @@ MonoBehaviour:
   attackButtonName: Pow1
   minWeaponDamage: 100
   maxWeaponDamage: 100
-  canSwitchDuringCooldown: 0
+  canSwitchDuringCooldown: 1
   weaponAttackParticles: {fileID: 0}
   weaponAttackSound: {fileID: 0}
   weaponAttackClip: {fileID: 0}
