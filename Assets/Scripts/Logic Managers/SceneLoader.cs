@@ -26,6 +26,11 @@ public class SceneLoader : MonoSingleton<SceneLoader> {
         LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void LoadMainMenu()
+    {
+        LoadScene("MainMenu");
+    }
+
     public void QuitGame() {
         Application.Quit();
     }

@@ -8,6 +8,10 @@ public class PauseMenu : MonoSingleton<PauseMenu>
     [SerializeField] GameObject PauseCanvas;
     [SerializeField] GameObject ConfirmCanvas;
 
+
+    private delegate void ConfirmBehavior();
+    private ConfirmBehavior confirmBehavior;
+
     public bool isPaused { get; private set; }
 
     private void Start()
@@ -57,23 +61,25 @@ public class PauseMenu : MonoSingleton<PauseMenu>
 
     public void RestartGame()
     {
-        //SceneLoader.Instance.ReloadScene();
+        confirmBehavior = () => SceneLoader.Instance.ReloadScene();
         ShowConfirmationMenu();
     }
 
     public void ReturnToMenu()
     {
+        confirmBehavior = () => SceneLoader.Instance.LoadMainMenu();
         ShowConfirmationMenu();
     }
 
     public void QuitGame()
     {
+        confirmBehavior = () => SceneLoader.Instance.QuitGame();
         ShowConfirmationMenu();
     }
 
     public void Confirm()
     {
-
+        confirmBehavior();
     }
 
     public void Deny()
