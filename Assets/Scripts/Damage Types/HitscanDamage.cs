@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitscanDamage : DamageType {
+public class HitscanDamage : DamageType
+{
 
-    [SerializeField] float weaponRange = 100f;
-    [SerializeField] LayerMask layersToHit;
+    [SerializeField] protected float weaponRange = 100f;
+    [SerializeField] protected LayerMask layersToHit;
 
-    public virtual void ProcessShot() {
+    [SerializeField] protected bool drawRays = false;
+
+    public void ProcessShot()
+    {
         ProcessShotWithDeviation(0f);
     }
 
-    public virtual void ProcessShot(float shotDeviationFactor) {
+    public void ProcessShot(float shotDeviationFactor)
+    {
         ProcessShotWithDeviation(shotDeviationFactor);
     }
 
-    private void ProcessShotWithDeviation(float shotDeviationFactor) {
+    protected virtual void ProcessShotWithDeviation(float shotDeviationFactor)
+    {
         // What we hit with the cast
         RaycastHit hit;
 
@@ -23,8 +29,14 @@ public class HitscanDamage : DamageType {
         Vector3 shotDeviation = new Vector3(UnityEngine.Random.Range(-shotDeviationFactor, shotDeviationFactor),
             UnityEngine.Random.Range(-shotDeviationFactor, shotDeviationFactor), UnityEngine.Random.Range(-shotDeviationFactor, shotDeviationFactor));
 
+        if(drawRays)
+        {
+            Debug.DrawRay(firstPersonCamera.transform.position, (firstPersonCamera.transform.forward + shotDeviation) * weaponRange, Color.red, 5.0f);
+        }
+
         // First is where to shoot the ray from, next is what direction, then what we hit, and finally the range
-        if(Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward + shotDeviation, out hit, weaponRange, layersToHit)) { // If we hit something, and assigns this to "hit"
+        if(Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward + shotDeviation, out hit, weaponRange, layersToHit))
+        { // If we hit something, and assigns this to "hit"
 
             Debug.Log("Hit " + hit.transform.name + " with raycast");
 
@@ -38,5 +50,6 @@ public class HitscanDamage : DamageType {
         }
         else { return; } // protects against null reference
     }
+
 
 }

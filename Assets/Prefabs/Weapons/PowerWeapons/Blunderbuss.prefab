@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 999875344332609169}
   - component: {fileID: 999875344332609170}
-  - component: {fileID: 3390745261723328982}
+  - component: {fileID: 9002152815866410092}
   - component: {fileID: 7091904820793197513}
   m_Layer: 9
   m_Name: Blunderbuss
@@ -59,7 +59,9 @@ MonoBehaviour:
   timeSinceAttacking: 0
   ATTACK_TRIGGER_NAME: Attack
   CDText: {fileID: 0}
---- !u!114 &3390745261723328982
+  numberOfPelletsToFire: 20
+  shotDeviation: 0.2
+--- !u!114 &9002152815866410092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,12 +70,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 999875344332609168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3313cbd235ecfc449b61c26b2610416, type: 3}
+  m_Script: {fileID: 11500000, guid: e82fb935aae924346841a11bb188a641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAttackSound: {fileID: 0}
-  weaponAttackClip: {fileID: 0}
-  HitboxOnParent: 0
+  weaponRange: 100
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 256
+  drawRays: 1
+  bulletRadius: 0.1
 --- !u!95 &7091904820793197513
 Animator:
   serializedVersion: 3
@@ -112,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1710005359880868816
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e189d3a207d16e41b2689ca7988901e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeDamage: {fileID: 3390745261723328982}
+  meleeDamage: {fileID: 0}
 --- !u!1001 &6623920140084896051
 PrefabInstance:
   m_ObjectHideFlags: 0
