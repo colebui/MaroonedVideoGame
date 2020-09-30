@@ -23,7 +23,6 @@ abstract public class Weapon : MonoBehaviour {
 
     protected bool canAttack = true;
     protected DamageType damageType;
-    protected PlayerWeaponManager playerWeaponManager;
 
     // FIXME: Only serialized for debugging, don't change
     [SerializeField] protected float timeSinceAttacking = 0f;
@@ -33,7 +32,7 @@ abstract public class Weapon : MonoBehaviour {
         canAttack = false;
 
         if(!canSwitchDuringCooldown) {
-            playerWeaponManager.SetAllowWeaponSwitching(false);
+            PlayerWeaponManager.Instance.SetAllowWeaponSwitching(false);
         }
 
         // Not all weapons might actually have these (like melee), so best to check
@@ -56,8 +55,6 @@ abstract public class Weapon : MonoBehaviour {
         if(damageType == null) {
             Debug.LogError("You MUST add a damage type to this object!");
         }
-
-        playerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
     }
 
     protected virtual void Update() {
@@ -72,7 +69,7 @@ abstract public class Weapon : MonoBehaviour {
             {
                 weaponReloadSound.PlayOneShot(weaponReloadClip, 2f);
             }
-            playerWeaponManager.SetAllowWeaponSwitching(true);
+            PlayerWeaponManager.Instance.SetAllowWeaponSwitching(true);
         }
     }
 

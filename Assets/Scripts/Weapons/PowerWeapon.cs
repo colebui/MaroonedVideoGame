@@ -34,7 +34,7 @@ abstract public class PowerWeapon : Weapon {
     // Is called by animation event to finish the attack up
     private void FinishPowerWeaponAttack() {
         attackFinished = true;
-        playerWeaponManager.EnableOtherWeapons();
+        PlayerWeaponManager.Instance.EnableOtherWeapons();
     }
 
     IEnumerator WaitForTimeOrSomething() {
@@ -52,6 +52,6 @@ abstract public class PowerWeapon : Weapon {
     }
 
     public void AddPowerWeapon() {
-        playerWeaponManager.AddPowerWeapon(this);
+        PlayerWeaponManager.Instance.AddPowerWeapon(this);
     }
 }

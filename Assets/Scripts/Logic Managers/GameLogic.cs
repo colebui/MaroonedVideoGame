@@ -32,7 +32,7 @@ public class GameLogic : MonoSingleton<GameLogic> {
         // Typical game over stuff, load the game over screen
         GameOverCanvas.gameObject.SetActive(true);
         Time.timeScale = 0;
-        FindObjectOfType<PlayerWeaponManager>().enabled = false;
+        PlayerWeaponManager.Instance.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponManager : MonoBehaviour {
+public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager> {
 
     [SerializeField] Weapon[] standardWeapons;
 
