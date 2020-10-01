@@ -673,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 5
-  m_RunSpeed: 7
+  m_RunSpeed: 8.5
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   maxStamina: 100
   currentStamina: 100
-  staminaUsePerSecond: 40
+  staminaUsePerSecond: 20
   staminaRecoveryDelay: 3
   staminaRecoveryPerSecond: 20
 --- !u!1001 &773628289
@@ -926,6 +926,21 @@ PrefabInstance:
       propertyPath: weaponReloadSound
       value: 
       objectReference: {fileID: 259853815}
+    - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: minWeaponDamage
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
+        type: 3}
+      propertyPath: maxWeaponDamage
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 8148140223422131276, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
       propertyPath: m_LocalPosition.x
