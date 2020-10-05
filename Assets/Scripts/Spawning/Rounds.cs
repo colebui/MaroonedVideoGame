@@ -54,6 +54,12 @@ public class Rounds : MonoBehaviour
 
     void newRound()
     {
+<<<<<<< Updated upstream
+=======
+        FindObjectOfType<TreasureHuntMain>().roll();
+        GameLogic.Instance.addScore(roundPayout);
+        FindObjectOfType<Shop>().AddMoney(roundPayout);
+>>>>>>> Stashed changes
         roundNum++;
         Debug.Log("Round number " + roundNum);
         calculateEnemyAmount();
