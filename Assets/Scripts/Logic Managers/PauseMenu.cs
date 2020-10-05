@@ -27,16 +27,22 @@ public class PauseMenu : MonoSingleton<PauseMenu>
         {
             if(isPaused)
             {
-                ResumeGame();
+                ClosePauseMenu();
             }
             else
             {
-                PauseGame();
+                OpenPauseMenu();
             }
         }
     }
 
-    private void PauseGame()
+    private void OpenPauseMenu()
+    {
+        PauseGame();
+        PauseCanvas.SetActive(true);
+    }
+
+    public void PauseGame()
     {
         isPaused = true;
 
@@ -44,7 +50,13 @@ public class PauseMenu : MonoSingleton<PauseMenu>
         Cursor.visible = true;
 
         Time.timeScale = 0;
-        PauseCanvas.SetActive(true);
+    }
+
+    public void ClosePauseMenu()
+    {
+        ResumeGame();
+        PauseCanvas.SetActive(false);
+        ConfirmCanvas.SetActive(false);
     }
 
     public void ResumeGame()
@@ -55,8 +67,6 @@ public class PauseMenu : MonoSingleton<PauseMenu>
         Cursor.visible = false;
 
         Time.timeScale = 1;
-        PauseCanvas.SetActive(false);
-        ConfirmCanvas.SetActive(false);
     }
 
     public void RestartGame()
