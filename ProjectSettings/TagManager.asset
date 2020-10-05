@@ -7,6 +7,13 @@ TagManager:
   - Enemy
   - Spawner
   - Fire
+  - StaminaUI
+  - ReloadingUI
+  - AmmoUI
+  - Jungle
+  - chestSpawner
+  - OuterWall
+  - InnerWall
   layers:
   - Default
   - TransparentFX
@@ -19,7 +26,7 @@ TagManager:
   - Enemy
   - Player
   - Obstacles
-  - 
+  - minimap
   - 
   - 
   - 

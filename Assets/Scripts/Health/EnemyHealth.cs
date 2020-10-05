@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : Health {
 
+    [SerializeField] int enemyPayout = 100;
+    // The amount of time between an enemy death and them disappearing
+    [SerializeField] float deathTimer = 1.5f;
+    [SerializeField] AudioSource deathSound;
     // TODO: Very basic, just to test
     protected override void Die() {
-<<<<<<< Updated upstream
-=======
         GameLogic.Instance.addScore(enemyPayout);
-        FindObjectOfType<Shop>().AddMoney(enemyPayout);
 
         // Turn off the enemy AI
         var enemyAI = GetComponent<EnemyController>();
@@ -26,7 +28,6 @@ public class EnemyHealth : Health {
 
     IEnumerator WaitAndDestroy() {
         yield return new WaitForSeconds(deathTimer);
->>>>>>> Stashed changes
         Destroy(gameObject);
     }
 }
