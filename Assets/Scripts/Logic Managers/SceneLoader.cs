@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Loads scenes using these functions
-public class SceneLoader : MonoBehaviour {
+public class SceneLoader : MonoSingleton<SceneLoader> {
+    void Start() {
+        //GameObject.Find("StartButton").GetComponentInChildren<Text>().text = "START";
+    }
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -17,7 +22,13 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void ReloadScene() {
+        //Debug.Log("Called");
         LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadMainMenu()
+    {
+        LoadScene("MainMenu");
     }
 
     public void QuitGame() {

@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
+//using System.Media;
+using System.Collections.Specialized;
+using System.IO;
 
 public class Rounds : MonoBehaviour
 {
-    [SerializeField] static Spawner[] spawners;
-    private static int roundNum = 0;
+
+    [SerializeField] Spawner[] spawners;
+    [SerializeField] int roundPayout = 1000;
+    [SerializeField] TextMeshProUGUI roundText;
+    [SerializeField] TextMeshProUGUI roundTitle;
+    [SerializeField] TextMeshProUGUI scoreAdditionText;
+
+    private int newEnemyCount = 0;
+    [SerializeField] private int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
-    //private static int enemysLeft;
-    private static int newEnemyCount;
+
     public List<GameObject> enemysAlive = new List<GameObject>();
-    public bool readyForNewRound = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
@@ -19,6 +29,11 @@ public class Rounds : MonoBehaviour
         Debug.Log("got all spawners: " + spawners.Length);
         enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         //newRound();
+
+        // Updates the round text
+        roundText.text = "Round " + roundNum;
+        roundTitle.enabled = false;
+        scoreAdditionText.enabled = false;
     }
 
     // Update is called once per frame
@@ -28,24 +43,12 @@ public class Rounds : MonoBehaviour
         timeBetweenChecks += Time.deltaTime;
         if (timeBetweenChecks >= 5.0f)
         {
+            //Debug.Log("Time between checks ellapsed");
             timeBetweenChecks = 0.0f;
             enemysAlive.Clear();
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
             Debug.Log("Enemy count updated " + enemysAlive.Count);
-
-            for(int i = 0; i< spawners.Length; i++)
-            {
-                if(spawners[i].getEnemysSpawned() >= newEnemyCount)
-                {
-                    readyForNewRound = true;
-                }
-                else
-                {
-                    readyForNewRound = false;
-                    break;
-                }
-            }
-            if (enemysAlive.Count <= 0 && readyForNewRound)
+            if (enemysAlive.Count <= 0)
             {
                 newRound();
             }
@@ -54,14 +57,29 @@ public class Rounds : MonoBehaviour
 
     void newRound()
     {
+        FindObjectOfType<TreasureHuntMain>().roll();
+        GameLogic.Instance.addScore(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
+
+        // Updates the round text
+        roundText.text = "Round " + roundNum;
+        StartCoroutine(ShowRoundTitle("Round " + roundNum, 2));
         calculateEnemyAmount();
+        Spawner[] currentSpawns = findBestSpawns();
         for (int i = 0; i < spawners.Length; i++)
         {
             //add if in range of player here
-
-            spawners[i].setMaxSpawn(newEnemyCount);
+            spawners[i].setMaxSpawn(0);
+        }
+        for (int i = 0; i < currentSpawns.Length; i++)
+        {
+            //add if in range of player here
+            currentSpawns[i].setMaxSpawn(newEnemyCount);
+        }
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            //add if in range of player here
             spawners[i].startNewRound();
         }
 
@@ -73,6 +91,27 @@ public class Rounds : MonoBehaviour
         
     }*/
 
+    // Finds the two closest spawns to the player
+    Spawner[] findBestSpawns()
+    {
+
+        Vector3 playerPos = GameObject.FindWithTag("MainCamera").transform.position;
+        float distance = 0;
+        Spawner[] returns = new Spawner[2];
+        float[] returnsDistance = { float.MaxValue, float.MaxValue };
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            float maximum = Mathf.Max(returnsDistance);
+            if (maximum > distance)
+            {
+                // Found a closer spawn, update
+                returns[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
+                returnsDistance[Array.IndexOf(returnsDistance, maximum)] = distance;
+            }
+        }
+        return returns;
+    }
     void calculateEnemyAmount()
     {
         if (newEnemyCount > 9)
@@ -84,5 +123,14 @@ public class Rounds : MonoBehaviour
             newEnemyCount = (int)Mathf.Floor((1 / 5) * roundNum) + roundNum;
         }
         Debug.Log("Max enemys: " + newEnemyCount * spawners.Length);
+    }
+    IEnumerator ShowRoundTitle(string message, float delay)
+    {
+        roundTitle.text = message;
+        roundTitle.enabled = true;
+        scoreAdditionText.enabled = true;
+        yield return new WaitForSeconds(delay);
+        roundTitle.enabled = false;
+        scoreAdditionText.enabled = false;
     }
 }
