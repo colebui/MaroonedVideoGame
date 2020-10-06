@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class TooltipManager : MonoSingleton<TooltipManager>
 
     private void Start()
     {
+
         Tooltip[] tooltips = Resources.FindObjectsOfTypeAll<Tooltip>();
         foreach(Tooltip tooltip in tooltips)
         {
