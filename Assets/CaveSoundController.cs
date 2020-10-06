@@ -12,6 +12,7 @@ public class CaveSoundController : MonoBehaviour
 
     public void InnerWallTriggered(Collider other) {
         if (lastTouched == "outer") {
+            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
             PlayMusic();
         }
         lastTouched = "inner";
@@ -20,6 +21,7 @@ public class CaveSoundController : MonoBehaviour
     public void OuterWallTriggered(Collider other) {
         if (lastTouched == "inner") {
             StopMusic();
+            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToSurface();
         }
         lastTouched = "outer";
     }
