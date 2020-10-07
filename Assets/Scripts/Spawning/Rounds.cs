@@ -19,6 +19,8 @@ public class Rounds : MonoBehaviour
     private int newEnemyCount = 0;
     [SerializeField] private int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
+    [SerializeField] private float timeBetweenRounds = 30.0f;
+    private float timerForRounds = 0.0f;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
 
@@ -41,7 +43,7 @@ public class Rounds : MonoBehaviour
     {
         //does every 5 seconds
         timeBetweenChecks += Time.deltaTime;
-        if (timeBetweenChecks >= 5.0f)
+        if ((timeBetweenChecks >= 5.0f) || Input.GetKeyDown("space"))
         {
             //Debug.Log("Time between checks ellapsed");
             timeBetweenChecks = 0.0f;
@@ -50,7 +52,14 @@ public class Rounds : MonoBehaviour
             Debug.Log("Enemy count updated " + enemysAlive.Count);
             if (enemysAlive.Count <= 0)
             {
-                newRound();
+                timerForRounds += 5;
+                //tell the player its an itermition 
+                if((timerForRounds >= timeBetweenRounds) || roundNum == 0 || Input.GetKeyDown("space"))
+                {
+                    newRound();
+                    timerForRounds = 0;
+                }
+                
             }
         }
     }
