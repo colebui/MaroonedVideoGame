@@ -12,7 +12,6 @@ public class EnemyHealth : Health {
     // TODO: Very basic, just to test
     protected override void Die() {
         GameLogic.Instance.addScore(enemyPayout);
-        FindObjectOfType<Shop>().addMoney(enemyPayout);
 
         // Turn off the enemy AI
         var enemyAI = GetComponent<EnemyController>();

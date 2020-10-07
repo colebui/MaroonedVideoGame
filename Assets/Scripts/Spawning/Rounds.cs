@@ -59,7 +59,6 @@ public class Rounds : MonoBehaviour
     {
         FindObjectOfType<TreasureHuntMain>().roll();
         GameLogic.Instance.addScore(roundPayout);
-        FindObjectOfType<Shop>().addMoney(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
 
