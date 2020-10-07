@@ -7,7 +7,6 @@ public class Shop : MonoBehaviour
 {
     static int UPGRADE_COST = 1000;
     //objects
-<<<<<<< HEAD
     CustomFirstPersonController FPController = FindObjectOfType<CustomFirstPersonController>();
     PlayerHealth healthGO = FindObjectOfType<PlayerHealth>();
     Pistol pistolGO = FindObjectOfType<Pistol>();
@@ -16,20 +15,10 @@ public class Shop : MonoBehaviour
 
     //levels
         //player
-=======
-    Pistol pistolGO = FindObjectOfType<Pistol>();
-
-    //counters
-    int pistolDamageCount = 0;
-    int pistolFRCount = 0;
-    int pistolAmmoCount = 0;
-    //ints
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
     int HPLevel = 0;
     int HPDelayLevel = 0;
     int HPRegenLevel = 0;
     int MaxStaminaLevel = 0;
-<<<<<<< HEAD
     int staminaRecLevel = 0;
         //pistol
     int pistolDamageLevel = 0;
@@ -61,16 +50,6 @@ public class Shop : MonoBehaviour
     [SerializeField] int blunderUpDamage = 8;
     [SerializeField] float blunderReduceFireRate = 0.05f;
         //harpoon
-=======
-    int MoveSpeedLevel = 0;
-    int money = 0;
-
-    //serialized fields
-    [SerializeField] int pistolUpDamage = 8;
-    [SerializeField] float pistolReduceFireRate = 0.05f;
-    [SerializeField] int pistolAddAmmo = 10;
-    
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
 
     // Start is called before the first frame update
     void Start() {
@@ -84,11 +63,7 @@ public class Shop : MonoBehaviour
         Debug.Log("Disabled");
     }
 
-<<<<<<< HEAD
     public void AddMoney(int amount) {
-=======
-    void AddMoney(int amount) {
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
         //austin
         money += amount;
     }
@@ -106,7 +81,6 @@ public class Shop : MonoBehaviour
             throw new Exception("Your broke! get some more money you piece of poop");
         }
     }
-<<<<<<< HEAD
     public int getMoney()
     {
         return money;
@@ -171,43 +145,11 @@ public class Shop : MonoBehaviour
         else
         {
             throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
-=======
-
-    void HPIncrease() {
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
-        }
-        
-        HPLevel++;
-
-    }
-
-    void HPDelayDecrease() {
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
-        }
-
-    }
-
-    void HPRegenIncrease() {
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
         }
 
     }
 
     void MaxStaminaIncrease() {
-<<<<<<< HEAD
         if (MaxStaminaLevel <= 20)
         {
             try
@@ -248,46 +190,12 @@ public class Shop : MonoBehaviour
         {
             throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
         }
-=======
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
-        }
-
-    }
-
-    void StaminaRecoveryIncrease() {
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
-            return;
-        }
-
-    }
-
-    void MoveSpeedIncrease() {
-        try {
-            RemoveMoney();
-        }
-        catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
-        }
-
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
     }
 
     //weapon upgrades
     void pistolDamageUp()
     {
-<<<<<<< HEAD
         if (pistolDamageLevel <= 20)
-=======
-        if (pistolDamageCount >= 20)
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
         {
             try
             {
@@ -300,11 +208,7 @@ public class Shop : MonoBehaviour
             }
 
             pistolGO.SetMaxWeaponDamage(pistolGO.GetMaxWeaponDamage() + pistolUpDamage);
-<<<<<<< HEAD
             pistolDamageLevel++;
-=======
-            pistolDamageCount++;
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
             return;
         }
         else
@@ -316,11 +220,7 @@ public class Shop : MonoBehaviour
 
     void pistolFireRate()
     {
-<<<<<<< HEAD
         if (pistolFRLevel <= 20)
-=======
-        if (pistolFRCount >= 20)
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
         {
             try
             {
@@ -333,11 +233,7 @@ public class Shop : MonoBehaviour
             }
 
             pistolGO.SetTimeBetweenAttacks(pistolGO.GetTimeBetweenAttacks() - pistolReduceFireRate);
-<<<<<<< HEAD
             pistolFRLevel++;
-=======
-            pistolFRCount++;
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
             return;
         }
         else
@@ -348,11 +244,7 @@ public class Shop : MonoBehaviour
     }
     void pistolMaxAmmo()
     {
-<<<<<<< HEAD
         if (pistolAmmoLevel <= 20)
-=======
-        if (pistolAmmoCount >= 20)
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
         {
             try
             {
@@ -367,7 +259,6 @@ public class Shop : MonoBehaviour
             //change to ammo
             //pistolGO.SetMaxAmmo(pistolGO.GetMaxAmmo() + pistolAddAmmo);
             Pistol.AddMaxAmmo(pistolAddAmmo);
-<<<<<<< HEAD
             pistolAmmoLevel++;
             return;
         }
@@ -394,9 +285,6 @@ public class Shop : MonoBehaviour
 
             saberGO.SetMaxWeaponDamage(saberGO.GetMaxWeaponDamage() + saberUpDamage);
             saberDamageLevel++;
-=======
-            pistolAmmoCount++;
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
             return;
         }
         else
@@ -405,7 +293,6 @@ public class Shop : MonoBehaviour
         }
 
     }
-<<<<<<< HEAD
 
     void blunderDamageUp()
     {
@@ -457,6 +344,4 @@ public class Shop : MonoBehaviour
 
     }
 
-=======
->>>>>>> 905bb2bd51f21a8d32e6f01797daef1069ce6ec3
 }
