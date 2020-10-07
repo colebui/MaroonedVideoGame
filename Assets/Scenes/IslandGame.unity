@@ -23535,8 +23535,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561143857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.02, y: -5.31, z: 4.64}
-  m_LocalScale: {x: 70.1, y: 6.4, z: 69.6}
+  m_LocalPosition: {x: -57.02, y: -1.57, z: 4.64}
+  m_LocalScale: {x: 70.1, y: 31.63, z: 69.6}
   m_Children: []
   m_Father: {fileID: 1740133758}
   m_RootOrder: 3
@@ -24410,7 +24410,7 @@ MonoBehaviour:
   inside: 0
   audioSource: {fileID: 575271050}
   caveAmbient: {fileID: 8300000, guid: 454a81c636d97e941ac0a7d0d6d04d83, type: 3}
-  FADETIME: 5
+  DURATION: 5
 --- !u!1 &575489702
 GameObject:
   m_ObjectHideFlags: 0
@@ -26643,7 +26643,7 @@ Transform:
   m_GameObject: {fileID: 627685829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -56.36, y: -5.31, z: -29.68}
-  m_LocalScale: {x: 43, y: 6.4, z: 16.5}
+  m_LocalScale: {x: 43, y: 13.97, z: 16.5}
   m_Children: []
   m_Father: {fileID: 1740133758}
   m_RootOrder: 4
@@ -53378,7 +53378,7 @@ Transform:
   m_GameObject: {fileID: 1267905707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -61.82, y: -5.31, z: -39.04}
-  m_LocalScale: {x: 36.8, y: 6.4, z: 12.5}
+  m_LocalScale: {x: 36.8, y: 12.07, z: 12.5}
   m_Children: []
   m_Father: {fileID: 1740133758}
   m_RootOrder: 6
@@ -72095,7 +72095,7 @@ MonoBehaviour:
   colliderCount: 0
   audioSource: {fileID: 1740133759}
   jungleAmbient: {fileID: 8300000, guid: d688de44393190241b09a7dfc3415986, type: 3}
-  FADETIME: 5
+  DURATION: 5
 --- !u!1 &1744420569
 GameObject:
   m_ObjectHideFlags: 0
