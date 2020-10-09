@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +12,22 @@ abstract public class DamageType : MonoBehaviour {
     protected float minWeaponDamage;
     protected float maxWeaponDamage;
 
+    public delegate void HitRegistered();
+    public static event HitRegistered OnHitRegistered;
+
     // Start is called before the first frame update
     protected virtual void Start() {
         firstPersonCamera = Camera.main;
         weapon = GetComponent<Weapon>();
         minWeaponDamage = weapon.GetMinWeaponDamage();
         maxWeaponDamage = weapon.GetMaxWeaponDamage();
+    }
+
+    protected void CallOnHitRegistered()
+    {
+        if(OnHitRegistered != null)
+        {
+            OnHitRegistered();
+        }
     }
 }

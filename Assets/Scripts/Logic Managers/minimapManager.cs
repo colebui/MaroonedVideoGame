@@ -11,6 +11,7 @@ public class minimapManager : MonoBehaviour
     {
         caveCam = GameObject.Find("CaveMinimapCamera");
         surfaceCam = GameObject.Find("IslandMinimapCamera");
+        setToSurface();
     }
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
     public void setToSurface() {

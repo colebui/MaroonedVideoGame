@@ -47,6 +47,8 @@ public class HitscanDamage : DamageType
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 
             target.TakeDamage(damageToDeal);
+
+            CallOnHitRegistered();
         }
         else { return; } // protects against null reference
     }

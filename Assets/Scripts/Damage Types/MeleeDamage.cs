@@ -104,6 +104,8 @@ public class MeleeDamage : DamageType {
                 weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
             }
             target.TakeDamage(damageToDeal);
+
+            CallOnHitRegistered();
         }
     }
 }
