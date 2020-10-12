@@ -24,8 +24,6 @@ public class Blunderbuss : PowerWeapon {
         //if(CDText != null) {
         //    CDText.text = "Blunderbuss CD: " + Mathf.Clamp((timeBetweenAttacks - timeSinceAttacking), 0f, timeBetweenAttacks).ToString("0.00");
         //}
-
-        CooldownIcon.Blunderbuss.UpdateSliderValue(Mathf.Clamp(1 - (timeSinceAttacking/timeBetweenAttacks), 0f, 1f));
     }
 
     protected override void LaunchAttack() {

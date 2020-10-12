@@ -24,8 +24,7 @@ abstract public class Weapon : MonoBehaviour {
     protected bool canAttack = true;
     protected DamageType damageType;
 
-    // FIXME: Only serialized for debugging, don't change
-    [SerializeField] protected float timeSinceAttacking = 0f;
+    protected float timeSinceAttacking;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
@@ -55,6 +54,8 @@ abstract public class Weapon : MonoBehaviour {
         if(damageType == null) {
             Debug.LogError("You MUST add a damage type to this object!");
         }
+
+        timeSinceAttacking = timeBetweenAttacks;
     }
 
     protected virtual void Update() {

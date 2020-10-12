@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class CooldownIcon : MonoBehaviour
 {
-    public enum CooldownType { Blunderbuss, HarpoonGun, HandCannon }
-
-    [SerializeField] Slider cooldownSlider;
-    [SerializeField] CooldownType weaponType;
+    public Slider cooldownSlider;
+    [SerializeField] PowerWeapon.PowerWeaponTypes weaponType;
 
     private static CooldownIcon m_blunderbussInstance;
     public static CooldownIcon Blunderbuss
@@ -61,20 +59,23 @@ public class CooldownIcon : MonoBehaviour
 
         switch(weaponType)
         {
-            case CooldownType.Blunderbuss:
+            case PowerWeapon.PowerWeaponTypes.Blunderbuss:
                 m_blunderbussInstance = this;
                 break;
-            case CooldownType.HarpoonGun:
+            case PowerWeapon.PowerWeaponTypes.HarpoonGun:
                 m_harpoongunInstance = this;
                 break;
-            case CooldownType.HandCannon:
+            case PowerWeapon.PowerWeaponTypes.HandCannon:
                 m_handcannonInstance = this;
                 break;
         }
+
+        cooldownSlider.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
     public void UpdateSliderValue(float val)
     {
+        Debug.Log("val: " + val);
         cooldownSlider.value = val;
     }
 }

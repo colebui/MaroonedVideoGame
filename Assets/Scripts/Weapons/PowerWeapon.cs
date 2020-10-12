@@ -4,6 +4,10 @@ using UnityEngine;
 
 abstract public class PowerWeapon : Weapon {
 
+    public enum PowerWeaponTypes { Blunderbuss, HarpoonGun, HandCannon }
+
+    public PowerWeaponTypes powerWeaponType;
+
     [SerializeField] string ATTACK_TRIGGER_NAME;
 
     private Animator animator;
@@ -49,6 +53,20 @@ abstract public class PowerWeapon : Weapon {
         if(!attackFinished) {
             timeSinceAttacking = 0;
         }
+
+        switch(powerWeaponType)
+        {
+            case PowerWeaponTypes.Blunderbuss:
+                CooldownIcon.Blunderbuss.UpdateSliderValue(Mathf.Clamp(1 - (timeSinceAttacking / timeBetweenAttacks), 0f, 1f));
+                break;
+            case PowerWeaponTypes.HarpoonGun:
+                CooldownIcon.HarpoonGun.UpdateSliderValue(Mathf.Clamp(1 - (timeSinceAttacking / timeBetweenAttacks), 0f, 1f));
+                break;
+            case PowerWeaponTypes.HandCannon:
+                CooldownIcon.HandCannon.UpdateSliderValue(Mathf.Clamp(1 - (timeSinceAttacking / timeBetweenAttacks), 0f, 1f));
+                break;
+        }
+        
     }
 
     public void AddPowerWeapon() {
