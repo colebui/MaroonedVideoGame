@@ -4,11 +4,13 @@ using System.Linq;
 using UnityEngine;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 public class TreasureHuntMain : MonoBehaviour
 {
     static bool activeChest; // Does the player have a map already?
     static int numberOfCompleted;
+    static GameObject currentChest;
     [SerializeField] int frequency; // How often to get a map 1/n
     [SerializeField] int ammoFrequency; // How often to get a ammo chest (vs coins) 1/n
     [SerializeField] int chestsToGetPW1;
@@ -24,6 +26,7 @@ public class TreasureHuntMain : MonoBehaviour
         Random.seed = System.DateTime.Now.Millisecond;
         activeChest = false;
         numberOfCompleted = 0;
+        currentChest = null;
         spawners = GameObject.FindGameObjectsWithTag("chestSpawner");
         for (int i = 0; i < spawners.Length; i++)
         {
@@ -56,11 +59,13 @@ public class TreasureHuntMain : MonoBehaviour
             if (numberOfCompleted == chestsToGetPW1)
             {
                 chestSpawners.transform.Find("speargunSpawner").GetComponent<chestSpawner>().setState(1);
+                currentChest = chestSpawners.transform.Find("speargunSpawner").gameObject; 
                 Debug.Log("You got a power weapon 1 map\n");
             }
             else if (numberOfCompleted == chestsToGetPW2)
             {
                 chestSpawners.transform.Find("blunderbussSpawner").GetComponent<chestSpawner>().setState(2);
+                currentChest = chestSpawners.transform.Find("blunderbussSpawner").gameObject;
                 Debug.Log("You got a power weapon 2 map\n");
             }
         }
@@ -69,16 +74,22 @@ public class TreasureHuntMain : MonoBehaviour
             int type = (Random.Range(0, ammoFrequency + 1) == 1 ? 4 : 3); 
             //ints are not maximally inclusive
             int no = Random.Range(0, spawners.Length);
-            GameObject chest = spawners[no]; //grab a random chest spawner
-            chest.GetComponent<chestSpawner>().setState(type);
+            currentChest = spawners[no]; //grab a random chest spawner
+            currentChest.GetComponent<chestSpawner>().setState(type);
             Debug.Log("You got a points or ammo map\n");
         }
         //select a chest to show
         //show notification on screen
     }
+    public bool isSurfaceChest() {
+        if (currentChest.name.Contains("cave"))
+            return false;
+        return true;
+    }
     public void chestFound()
     {
         numberOfCompleted++;
+        currentChest = null;
         activeChest = false;
     }
 }

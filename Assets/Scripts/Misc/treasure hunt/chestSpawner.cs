@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 //using System.ComponentModel;
 //using System.Security.Cryptography;
 //using System.Security.Policy;
@@ -32,6 +33,13 @@ public class chestSpawner : MonoBehaviour
             return;
         }
         gameObject.transform.Find("mapIcon").gameObject.SetActive(io);
+        if (gameObject.name.Contains("cave")) {
+            Transform x = GameObject.Find("xMarks").transform;
+            foreach (Transform child in x)
+            {
+                child.gameObject.SetActive(io); 
+            }
+        }
         if (type == 1)
         {
             gameObject.transform.Find("speargunChest").gameObject.SetActive(io);
