@@ -83137,7 +83137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975611297}
   m_Layer: 0
-  m_Name: xMarksTheSpot
+  m_Name: xMarks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
