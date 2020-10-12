@@ -54,7 +54,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            throw new Exception("Your broke! get some more money you piece of poop");
+            throw new Exception("RemoveMoney() broke: Your broke! get some more money you piece of poop");
         }
     }
 
@@ -63,7 +63,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from HPIncrease() returned exception: " + exception);
         }
         
         HPLevel++;
@@ -75,7 +75,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from HPDelayDecrease() returned exception: " + exception);
         }
 
     }
@@ -85,7 +85,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from HPRegenIncrease() returned exception: " + exception);
         }
 
     }
@@ -95,7 +95,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from MaxStaminaIncrease() from returned exception: " + exception);
         }
 
     }
@@ -105,7 +105,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from StaminaRecoveryIncrease returned exception: " + exception);
             return;
         }
 
@@ -116,7 +116,7 @@ public class Shop : MonoBehaviour
             RemoveMoney();
         }
         catch (Exception exception) {
-            Debug.Log("RemoveMoney() returned exception: " + exception);
+            Debug.Log("RemoveMoney() from MoveSpeedIncrease() returned exception: " + exception);
         }
 
     }
@@ -132,7 +132,7 @@ public class Shop : MonoBehaviour
             }
             catch (Exception exception)
             {
-                Debug.Log("RemoveMoney() returned exception: " + exception);
+                Debug.Log("RemoveMoney() from pistolDamageUp() returned exception: " + exception);
                 return;
             }
 
@@ -157,7 +157,7 @@ public class Shop : MonoBehaviour
             }
             catch (Exception exception)
             {
-                Debug.Log("RemoveMoney() returned exception: " + exception);
+                Debug.Log("RemoveMoney() from pistolFireRate() returned exception: " + exception);
                 return;
             }
 
@@ -181,7 +181,7 @@ public class Shop : MonoBehaviour
             }
             catch (Exception exception)
             {
-                Debug.Log("RemoveMoney() returned exception: " + exception);
+                Debug.Log("RemoveMoney() from pistolMaxAmmo() returned exception: " + exception);
                 return;
             }
 
