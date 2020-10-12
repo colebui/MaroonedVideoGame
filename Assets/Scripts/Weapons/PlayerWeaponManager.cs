@@ -6,7 +6,8 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager> {
 
     [SerializeField] Weapon[] standardWeapons;
 
-    // TODO: Power weapons should always be active, just out of view, maybe turn off their models in an anim
+    [SerializeField] bool isFullAuto = false;
+
     List<PowerWeapon> powerWeapons = new List<PowerWeapon>();
 
     private Weapon currentlySelectedWeapon;
@@ -16,9 +17,6 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager> {
 
     // Start is called before the first frame update
     void Start() {
-
-        //// FIXME: Change this to only have blunderbuss at start
-        //powerWeapons = new List<PowerWeapon>(GetComponentsInChildren<PowerWeapon>());
 
         currentlySelectedWeapon = standardWeapons[currentlySelectedWeaponIndex];
 
@@ -41,16 +39,25 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager> {
         }
 
         // Attacking
-        if(Input.GetButtonDown(currentlySelectedWeapon.GetAttackButtonName()) && currentlySelectedWeapon.GetCanAttack()) {
-            currentlySelectedWeapon.Attack();
-            //currentlySelectedWeapon.SetCanAttack(false);
+        if(isFullAuto)
+        {
+            if(Input.GetButton(currentlySelectedWeapon.GetAttackButtonName()) && currentlySelectedWeapon.GetCanAttack())
+            {
+                currentlySelectedWeapon.Attack();
+                //currentlySelectedWeapon.SetCanAttack(false);
+            }
+        }
+        else
+        {
+            if(Input.GetButtonDown(currentlySelectedWeapon.GetAttackButtonName()) && currentlySelectedWeapon.GetCanAttack())
+            {
+                currentlySelectedWeapon.Attack();
+                //currentlySelectedWeapon.SetCanAttack(false);
+            }
         }
 
         foreach(PowerWeapon powerWeapon in powerWeapons) {
             if(Input.GetButtonDown(powerWeapon.GetAttackButtonName()) && powerWeapon.GetCanAttack() && allowWeaponSwitching) {
-                // TODO: Replace this with starting an animation that calls this method in an event
-                // TODO: Also needs to lock all other weapons, which will need to happen on switch, as well
-                // TODO: Probably a good idea to use each weapon's canAttack member for that
                 DisableCurrentWeapon();
                 powerWeapon.Attack();
                 powerWeaponInUse = true;

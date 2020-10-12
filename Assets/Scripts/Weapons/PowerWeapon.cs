@@ -25,7 +25,10 @@ abstract public class PowerWeapon : Weapon {
         attackFinished = false;
 
         // Start animation
-        animator.SetTrigger(ATTACK_TRIGGER_NAME);
+        if(animator != null)
+        {
+            animator.SetTrigger(ATTACK_TRIGGER_NAME);
+        }
     }
 
     // Is called by an animation event to actually do the damage and stuff

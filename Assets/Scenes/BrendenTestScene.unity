@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b731dc24a7ca7e7418276c7f49e821b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerWeaponType: 0
+  powerWeaponType: 1
 --- !u!1001 &777811346751393294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2002,7 +2002,7 @@ PrefabInstance:
     - target: {fileID: 8159152670492436768, guid: 1cb892dd6f28fea4c859329358407da4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8159152670492436769, guid: 1cb892dd6f28fea4c859329358407da4,
         type: 3}
@@ -2304,6 +2304,17 @@ PrefabInstance:
     - target: {fileID: 431346109, guid: 4f9cf5e1f09907044bc6464e1467f9ee, type: 3}
       propertyPath: maxAmmo
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588740173991786092, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: projectileToSpawn
+      value: 
+      objectReference: {fileID: 3120079162787686747, guid: d3004ceb247848145bb8c7127b8ec6a9,
+        type: 3}
+    - target: {fileID: 5536546144892583149, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: projectileVelocity
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8607278278596079830, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
