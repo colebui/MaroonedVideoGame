@@ -75,7 +75,6 @@ public class CooldownIcon : MonoBehaviour
 
     public void UpdateSliderValue(float val)
     {
-        Debug.Log("val: " + val);
         cooldownSlider.value = val;
     }
 }
