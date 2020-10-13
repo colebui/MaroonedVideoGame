@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 //using System.ComponentModel;
 //using System.Security.Cryptography;
 //using System.Security.Policy;
@@ -31,7 +32,7 @@ public class chestSpawner : MonoBehaviour
             }
             return;
         }
-        gameObject.transform.Find("mapIcon").gameObject.SetActive(io);
+        //gameObject.transform.Find("mapIcon").gameObject.SetActive(io);
         if (type == 1)
         {
             gameObject.transform.Find("speargunChest").gameObject.SetActive(io);
@@ -46,6 +47,37 @@ public class chestSpawner : MonoBehaviour
         }
         else if (type == 4) {
             gameObject.transform.Find("ammoChest").gameObject.SetActive(io);
+        }
+
+        //Layering for x marks the spot and chest icon based on location
+        if (gameObject.name.Contains("cave") && FindObjectOfType<minimapManager>().inCave()) {
+            // Both the player and the chest are in the cave
+            gameObject.transform.Find("mapIcon").gameObject.SetActive(true);
+        }
+        else if (gameObject.name.Contains("cave") && !FindObjectOfType<minimapManager>().inCave())
+        {
+            //Player is on surface, but chest is in cave
+            gameObject.transform.Find("mapIcon").gameObject.SetActive(false);
+            Transform x = GameObject.Find("xMarks").transform;
+            foreach (Transform child in x)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+        else if (!gameObject.name.Contains("cave") && FindObjectOfType<minimapManager>().inCave())
+        {
+            //Player is in cave but chest is on surface. 
+            gameObject.transform.Find("mapIcon").gameObject.SetActive(false);
+            Transform x = GameObject.Find("xMarks").transform;
+            foreach (Transform child in x)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            //both player and chest are on surface
+            gameObject.transform.Find("mapIcon").gameObject.SetActive(true);
         }
     }
     public void setState(int type)
