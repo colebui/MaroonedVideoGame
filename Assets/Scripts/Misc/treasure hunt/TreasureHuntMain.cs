@@ -86,6 +86,21 @@ public class TreasureHuntMain : MonoBehaviour
             return false;
         return true;
     }
+    public void modifyXMarks(bool showOrHide) {
+        Transform x = GameObject.Find("xMarks").transform;
+        foreach (Transform child in x)
+        {
+            child.gameObject.SetActive(showOrHide);
+        }
+    }
+    public void modifyChestIcon(bool showOrHide) {
+        currentChest.transform.Find("mapIcon").gameObject.SetActive(showOrHide);
+    }
+    public bool IsActive() {
+        if (currentChest == null)
+            return false;
+        return true;
+    }
     public void chestFound()
     {
         numberOfCompleted++;
