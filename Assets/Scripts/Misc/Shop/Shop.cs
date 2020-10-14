@@ -7,25 +7,49 @@ public class Shop : MonoBehaviour
 {
     static int UPGRADE_COST = 1000;
     //objects
+    CustomFirstPersonController FPController = FindObjectOfType<CustomFirstPersonController>();
+    PlayerHealth healthGO = FindObjectOfType<PlayerHealth>();
     Pistol pistolGO = FindObjectOfType<Pistol>();
+    Saber saberGO = FindObjectOfType<Saber>();
+    Blunderbuss blunderbussGO = FindObjectOfType<Blunderbuss>();
 
-    //counters
-    int pistolDamageCount = 0;
-    int pistolFRCount = 0;
-    int pistolAmmoCount = 0;
-    //ints
+    //levels
+        //player
     int HPLevel = 0;
     int HPDelayLevel = 0;
     int HPRegenLevel = 0;
     int MaxStaminaLevel = 0;
-    int MoveSpeedLevel = 0;
+    int staminaRecLevel = 0;
+        //pistol
+    int pistolDamageLevel = 0;
+    int pistolFRLevel = 0;
+    int pistolAmmoLevel = 0;
+        //saber
+    int saberDamageLevel = 0;
+        //blunderbuss
+    int blunderDamageLevel = 0;
+    int blunderFRLevel = 0;
+        //harpoon
+    //ints
     int money = 0;
 
     //serialized fields
+        //player
+    [SerializeField] int maxHealthAdd = 10;
+    [SerializeField] float regenTimerReduc = 0.01f;
+    [SerializeField] float healthRegenPerSec = 0.10f;
+    [SerializeField] int staminaAdd = 10;
+    [SerializeField] float staminaRecDec = 0.10f;
+        //pistol
     [SerializeField] int pistolUpDamage = 8;
     [SerializeField] float pistolReduceFireRate = 0.05f;
     [SerializeField] int pistolAddAmmo = 10;
-    
+        //saber
+    [SerializeField] int saberUpDamage = 10;
+        //blunderbuss
+    [SerializeField] int blunderUpDamage = 8;
+    [SerializeField] float blunderReduceFireRate = 0.05f;
+        //harpoon
 
     // Start is called before the first frame update
     void Start() {
@@ -39,7 +63,7 @@ public class Shop : MonoBehaviour
         Debug.Log("Disabled");
     }
 
-    void AddMoney(int amount) {
+    public void AddMoney(int amount) {
         //austin
         money += amount;
     }
@@ -57,33 +81,67 @@ public class Shop : MonoBehaviour
             throw new Exception("RemoveMoney() broke: Your broke! get some more money you piece of poop");
         }
     }
+    public int getMoney()
+    {
+        return money;
+    }
 
     void HPIncrease() {
-        try {
-            RemoveMoney();
+        if (HPLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+            }
+
+            HPLevel++;
+            healthGO.SetMaxHealth(healthGO.GetMaxHealth() + maxHealthAdd);
         }
         catch (Exception exception) {
             Debug.Log("RemoveMoney() from HPIncrease() returned exception: " + exception);
         }
-        
-        HPLevel++;
-
     }
 
     void HPDelayDecrease() {
-        try {
-            RemoveMoney();
+        if (HPDelayLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+            }
+            HPDelayLevel++;
+            healthGO.SetHealthRegenTimer(healthGO.GetHealthRegenTimer() - regenTimerReduc);
         }
         catch (Exception exception) {
             Debug.Log("RemoveMoney() from HPDelayDecrease() returned exception: " + exception);
-        }
 
+        }
     }
 
     void HPRegenIncrease() {
-        try {
-            RemoveMoney();
+        if (HPRegenLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+            }
+
+            HPRegenLevel++;
+            healthGO.SetHealthRegenPerSecond(healthGO.GetHealthRegenPerSecond() + healthRegenPerSec);
         }
+
         catch (Exception exception) {
             Debug.Log("RemoveMoney() from HPRegenIncrease() returned exception: " + exception);
         }
@@ -91,13 +149,23 @@ public class Shop : MonoBehaviour
     }
 
     void MaxStaminaIncrease() {
-        try {
-            RemoveMoney();
+        if (MaxStaminaLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+            }
+
+            MaxStaminaLevel++;
+            FPController.SetMaxStamina(FPController.GetMaxStamina() + staminaAdd);
         }
         catch (Exception exception) {
             Debug.Log("RemoveMoney() from MaxStaminaIncrease() from returned exception: " + exception);
         }
-
     }
 
     void StaminaRecoveryIncrease() {
@@ -111,20 +179,18 @@ public class Shop : MonoBehaviour
 
     }
 
-    void MoveSpeedIncrease() {
-        try {
-            RemoveMoney();
+            staminaRecLevel++;
+            FPController.SetStaminaRecoveryPerSecond(FPController.GetStaminaRecoveryPerSecond() - staminaRecDec);
         }
         catch (Exception exception) {
             Debug.Log("RemoveMoney() from MoveSpeedIncrease() returned exception: " + exception);
         }
-
     }
 
     //weapon upgrades
     void pistolDamageUp()
     {
-        if (pistolDamageCount >= 20)
+        if (pistolDamageLevel <= 20)
         {
             try
             {
@@ -137,7 +203,7 @@ public class Shop : MonoBehaviour
             }
 
             pistolGO.SetMaxWeaponDamage(pistolGO.GetMaxWeaponDamage() + pistolUpDamage);
-            pistolDamageCount++;
+            pistolDamageLevel++;
             return;
         }
         else
@@ -149,7 +215,7 @@ public class Shop : MonoBehaviour
 
     void pistolFireRate()
     {
-        if (pistolFRCount >= 20)
+        if (pistolFRLevel <= 20)
         {
             try
             {
@@ -162,7 +228,7 @@ public class Shop : MonoBehaviour
             }
 
             pistolGO.SetTimeBetweenAttacks(pistolGO.GetTimeBetweenAttacks() - pistolReduceFireRate);
-            pistolFRCount++;
+            pistolFRLevel++;
             return;
         }
         else
@@ -173,7 +239,7 @@ public class Shop : MonoBehaviour
     }
     void pistolMaxAmmo()
     {
-        if (pistolAmmoCount >= 20)
+        if (pistolAmmoLevel <= 20)
         {
             try
             {
@@ -188,7 +254,7 @@ public class Shop : MonoBehaviour
             //change to ammo
             //pistolGO.SetMaxAmmo(pistolGO.GetMaxAmmo() + pistolAddAmmo);
             Pistol.AddMaxAmmo(pistolAddAmmo);
-            pistolAmmoCount++;
+            pistolAmmoLevel++;
             return;
         }
         else
@@ -197,4 +263,80 @@ public class Shop : MonoBehaviour
         }
 
     }
+
+    void saberDamageUp()
+    {
+        if (saberDamageLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+                return;
+            }
+
+            saberGO.SetMaxWeaponDamage(saberGO.GetMaxWeaponDamage() + saberUpDamage);
+            saberDamageLevel++;
+            return;
+        }
+        else
+        {
+            throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+        }
+
+    }
+
+    void blunderDamageUp()
+    {
+        if (blunderDamageLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+                return;
+            }
+
+            blunderbussGO.SetMaxWeaponDamage(blunderbussGO.GetMaxWeaponDamage() + blunderUpDamage);
+            blunderDamageLevel++;
+            return;
+        }
+        else
+        {
+            throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+        }
+
+    }
+
+    void blunderFireRate()
+    {
+        if (blunderFRLevel <= 20)
+        {
+            try
+            {
+                RemoveMoney();
+            }
+            catch (Exception exception)
+            {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+                return;
+            }
+
+            blunderbussGO.SetTimeBetweenAttacks(blunderbussGO.GetTimeBetweenAttacks() - blunderReduceFireRate);
+            blunderFRLevel++;
+            return;
+        }
+        else
+        {
+            throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+        }
+
+    }
+
 }
