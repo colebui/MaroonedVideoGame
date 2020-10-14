@@ -59,6 +59,7 @@ public class Rounds : MonoBehaviour
                     newRound();
                     timerForRounds = 0;
                 }
+
             }
         }
     }
