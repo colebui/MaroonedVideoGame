@@ -12,19 +12,22 @@ public class PlayerHealth : Health {
     [SerializeField] float healthRegenTimer = 5f;
     // The amount of health healed per second
     [SerializeField] float healthRegenPerSecond = 10f;
-    [SerializeField] RectTransform anchor;
+    //[SerializeField] RectTransform anchor;
     private float timeSinceTakingDamage = 0f;
 
     protected override void Start() {
         // Display player health 
         base.Start(); 
-        anchor.localScale = new Vector3(1f, 1f); 
+        //anchor.localScale = new Vector3(1f, 1f);
+
+        HealthBar.Instance.UpdateSliderValue(maxHealth);
     }
 
     public override void TakeDamage(float damageToTake) {
         base.TakeDamage(damageToTake);
+        HealthBar.Instance.UpdateSliderValue(Mathf.Clamp(currentHealth / maxHealth, 0f, 1f));
         // Display player health
-        anchor.localScale = new Vector3(currentHealth / 100, 1f);
+        //anchor.localScale = new Vector3(currentHealth / 100, 1f);
         timeSinceTakingDamage = 0f;
     }
 
@@ -38,12 +41,13 @@ public class PlayerHealth : Health {
 
         if(timeSinceTakingDamage >= healthRegenTimer) {
             currentHealth = Mathf.Clamp(currentHealth + (healthRegenPerSecond * Time.deltaTime), 0f, maxHealth);
-            if (currentHealth < 0) {
-                //Don't show negative health
-                anchor.localScale = new Vector3(0, 0f);
-                return;
-            }
-            anchor.localScale = new Vector3(currentHealth/100, 1f);
+            HealthBar.Instance.UpdateSliderValue(Mathf.Clamp(currentHealth/maxHealth, 0f, 1f));
+            //if (currentHealth < 0) {
+            //    //Don't show negative health
+            //    //anchor.localScale = new Vector3(0, 0f);
+            //    return;
+            //}
+            //anchor.localScale = new Vector3(currentHealth/100, 1f);
         }
     }
 

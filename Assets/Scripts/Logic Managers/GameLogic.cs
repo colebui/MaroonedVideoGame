@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 // This script will handle things like game state, player death, score, etc
 public class GameLogic : MonoSingleton<GameLogic> {
 
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] int score = 0;
-    [SerializeField] TextMeshProUGUI scoreText;
+    //[SerializeField] TextMeshProUGUI scoreText;
+
+    public static Action<int> OnScoreUpdated;
 
     private void Start() {
         // Set score text
-        scoreText.text = "Score: " + score;
+        //scoreText.text = "Score: " + score;
+        if(OnScoreUpdated != null)
+            OnScoreUpdated(score);
 
         GameOverCanvas.gameObject.SetActive(false);
     }
@@ -46,12 +51,16 @@ public class GameLogic : MonoSingleton<GameLogic> {
     public void setScore(int s) {
         score = s;
         // Set score text
-        scoreText.text = "Score: " + score;
+        //scoreText.text = "Score: " + score;
+        if(OnScoreUpdated != null)
+            OnScoreUpdated(score);
     }
     public void addScore(int s) {
         score += s;
         // Set score text
-        scoreText.text = "Score: " + score;
+        //scoreText.text = "Score: " + score;
+        if(OnScoreUpdated != null)
+            OnScoreUpdated(score);
         Debug.Log("Score is: " + score);
     }
 }
