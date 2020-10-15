@@ -11,6 +11,10 @@ public class TreasureHuntMain : MonoBehaviour
     static bool activeChest; // Does the player have a map already?
     static int numberOfCompleted;
     static GameObject currentChest;
+    static bool firstMap = false;
+    static bool firstCoins = false;
+    static bool firstBlunderbuss = false;
+    static bool firstAmmo = false;
     [SerializeField] int frequency; // How often to get a map 1/n
     [SerializeField] int ammoFrequency; // How often to get a ammo chest (vs coins) 1/n
     [SerializeField] int chestsToGetPW1;
@@ -37,7 +41,7 @@ public class TreasureHuntMain : MonoBehaviour
     //call at start of new round
     public void roll()
     {
-        FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.Enemy);
+        
         //GameObject.GetComponent<TooltipManager>().LoadTooltip(GameObject.GetComponent<TooltipManager>().TooltipTypes.Enemy);
         if (activeChest)
         { //Don't run 2 treasure hunts concurrently
@@ -48,7 +52,10 @@ public class TreasureHuntMain : MonoBehaviour
         int freq = Random.Range(0, frequency + 1);
         if (freq == 1 && frequency != 1)
             return;
-
+        if (firstMap == false) {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.firstMap);
+            firstMap = true;
+        }
         if (mapSound != null)
         {
             mapSound.PlayOneShot(mapClip, 2f);
