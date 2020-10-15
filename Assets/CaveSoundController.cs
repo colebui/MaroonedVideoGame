@@ -28,11 +28,11 @@ public class CaveSoundController : MonoBehaviour
 
     public void UpdateState() {
         if (inside && !audioSource.isPlaying) {
-            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
+            FindObjectOfType<minimapManager>().setToCave();
             PlayMusic();
         }
         else if (!inside && audioSource.isPlaying) {
-            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToSurface();
+            FindObjectOfType<minimapManager>().setToSurface();
             StopMusic();
         }
     }
