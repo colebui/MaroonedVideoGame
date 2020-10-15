@@ -128,7 +128,7 @@ public class chestSpawner : MonoBehaviour
             {
                 foundSound.PlayOneShot(sound, 4f);
             }
-            FindObjectOfType<TreasureHuntMain>().chestFound();
+            FindObjectOfType<TreasureHuntMain>().chestFound(chestType);
             setState(0);
         }
     }

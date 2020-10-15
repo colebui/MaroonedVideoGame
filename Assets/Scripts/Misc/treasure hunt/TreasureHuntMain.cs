@@ -11,10 +11,11 @@ public class TreasureHuntMain : MonoBehaviour
     static bool activeChest; // Does the player have a map already?
     static int numberOfCompleted;
     static GameObject currentChest;
+
     static bool firstMap = false;
     static bool firstCoins = false;
-    static bool firstBlunderbuss = false;
     static bool firstAmmo = false;
+
     [SerializeField] int frequency; // How often to get a map 1/n
     [SerializeField] int ammoFrequency; // How often to get a ammo chest (vs coins) 1/n
     [SerializeField] int chestsToGetPW1;
@@ -110,8 +111,27 @@ public class TreasureHuntMain : MonoBehaviour
             return false;
         return true;
     }
-    public void chestFound()
+    public void chestFound(int chestType)
     {
+        if (firstAmmo == false && chestType == 4)
+        {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.ammoChest);
+            firstAmmo = true;
+        }
+        if (firstCoins == false && chestType == 3)
+        {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.coinsChest);
+            firstCoins = true;
+        }
+        else if (chestType == 2)
+        {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.blunderbuss);
+            firstCoins = true;
+        }
+        else if (chestType == 1) { 
+            //power weapon 1
+        }
+
         numberOfCompleted++;
         currentChest = null;
         activeChest = false;
