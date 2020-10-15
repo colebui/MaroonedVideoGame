@@ -37,6 +37,8 @@ public class TreasureHuntMain : MonoBehaviour
     //call at start of new round
     public void roll()
     {
+        FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.Enemy);
+        //GameObject.GetComponent<TooltipManager>().LoadTooltip(GameObject.GetComponent<TooltipManager>().TooltipTypes.Enemy);
         if (activeChest)
         { //Don't run 2 treasure hunts concurrently
             return;
