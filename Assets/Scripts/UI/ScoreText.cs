@@ -15,6 +15,11 @@ public class ScoreText : MonoBehaviour
 
     private void SetScoreText(int score)
     {
-        scoreText.text = score + " points";
+        scoreText.text = score + " Points";
+    }
+
+    private void OnDestroy()
+    {
+        GameLogic.OnScoreUpdated -= SetScoreText;
     }
 }
