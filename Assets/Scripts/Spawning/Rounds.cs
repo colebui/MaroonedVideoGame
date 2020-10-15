@@ -24,6 +24,11 @@ public class Rounds : MonoBehaviour
 
     public List<GameObject> enemysAlive = new List<GameObject>();
 
+    // Used to update the round countdown
+    public static Action<int> OnCountdownChanged;
+    public static Action OnCountdownFinished;
+    public static Action OnCountdownStarted;
+
     void Start()
     {
         //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
@@ -53,6 +58,11 @@ public class Rounds : MonoBehaviour
             if (enemysAlive.Count <= 0)
             {
                 timerForRounds += 5;
+
+                // TODO: Make count down every second instead of every 5
+                OnCountdownChanged((int)(timeBetweenRounds - timerForRounds));
+                OnCountdownStarted();
+
                 //tell the player its an itermition 
                 if ((timerForRounds >= timeBetweenRounds) || roundNum == 0 || Input.GetKeyDown("space"))
                 {
@@ -66,6 +76,9 @@ public class Rounds : MonoBehaviour
 
     void newRound()
     {
+
+        OnCountdownFinished();
+
         FindObjectOfType<TreasureHuntMain>().roll();
         GameLogic.Instance.addScore(roundPayout);
         roundNum++;
