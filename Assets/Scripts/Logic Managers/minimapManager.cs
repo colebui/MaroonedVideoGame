@@ -6,14 +6,27 @@ public class minimapManager : MonoBehaviour
 { 
     GameObject caveCam;
     GameObject surfaceCam;
+
+    GameObject bigMap;
+    bool isBig; 
     public static bool isInCave;
     // Start is called before the first frame update
     void Start()
     {
+        isBig = false;
         isInCave = false; 
+        bigMap = GameObject.Find("bigMap");
+        bigMap.SetActive(false);
         caveCam = GameObject.Find("CaveMinimapCamera");
         surfaceCam = GameObject.Find("IslandMinimapCamera");
+
         setToSurface();
+    }
+    void Update() {
+        if (Input.GetButtonDown("bigMap")) {
+            bigMap.SetActive(isBig);
+            isBig = !isBig;
+        }
     }
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
     public void setToSurface() {
