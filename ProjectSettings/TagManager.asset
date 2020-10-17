@@ -28,9 +28,9 @@ TagManager:
   - Enemy
   - Player
   - Obstacles
-  - minimap
+  - BigMap
   - surface
-  - 
+  - Minimap
   - 
   - 
   - 
