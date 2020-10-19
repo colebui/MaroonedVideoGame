@@ -7,7 +7,7 @@ public class EnemySoundController : MonoBehaviour {
     [SerializeField] AudioSource footstep;
     [SerializeField] float MAX_SOUND_DELAY = 0.5f;
     [SerializeField] float MIN_SOUND_DELAY = 0f;
-    [SerializeField] float MIN_PITCH = 0.8f;
+    [SerializeField] float MIN_PITCH = 0.5f;
     [SerializeField] float MAX_PITCH = 1.2f;
 
 
@@ -23,7 +23,7 @@ public class EnemySoundController : MonoBehaviour {
 
     private IEnumerator DelayFootstep() {
         yield return new WaitForSeconds(UnityEngine.Random.Range(MIN_SOUND_DELAY, MAX_SOUND_DELAY));
-        //footstep.pitch = UnityEngine.Random.Range(MIN_PITCH, MAX_PITCH);
+        footstep.pitch = UnityEngine.Random.Range(MIN_PITCH, MAX_PITCH);
         Debug.Log("play skeleton footstep with volume:" + footstep.volume);
         footstep.Play();
     }

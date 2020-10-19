@@ -54,7 +54,7 @@ public class JungleMusicCounter : MonoBehaviour
         float start = audioSource.volume;
 
         while ((currentTime < duration ) && (!inside) ) {
-            Debug.Log("current time" + currentTime);
+            //Debug.Log("current time" + currentTime);
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;

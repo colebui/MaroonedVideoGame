@@ -12,9 +12,15 @@ public class PlayerHealth : Health {
     [SerializeField] float healthRegenTimer = 5f;
     // The amount of health healed per second
     [SerializeField] float healthRegenPerSecond = 10f;
+
+    [SerializeField] AudioSource hurtSound;
+
+    [SerializeField] float MIN_PITCH = 0.5f;
+    [SerializeField] float MAX_PITCH = 1.2f;
+
     //[SerializeField] RectTransform anchor;
     private float timeSinceTakingDamage = 0f;
-
+    
     protected override void Start() {
         // Display player health 
         base.Start(); 
@@ -24,11 +30,20 @@ public class PlayerHealth : Health {
     }
 
     public override void TakeDamage(float damageToTake) {
+        StartCoroutine(gameObject.GetComponentInChildren<CameraShake>().Shake(.15f, .4f));
+        StartCoroutine(playDamageNoise());
         base.TakeDamage(damageToTake);
         HealthBar.Instance.UpdateSliderValue(Mathf.Clamp(currentHealth / maxHealth, 0f, 1f));
         // Display player health
         //anchor.localScale = new Vector3(currentHealth / 100, 1f);
         timeSinceTakingDamage = 0f;
+    }
+
+    private IEnumerator playDamageNoise() {
+        yield return null;
+        hurtSound.pitch = UnityEngine.Random.Range(MIN_PITCH, MAX_PITCH);
+        Debug.Log("play hurt noise with volume" + hurtSound.volume);
+        hurtSound.Play();
     }
 
     protected override void Die() {
