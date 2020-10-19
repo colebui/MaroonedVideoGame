@@ -7,6 +7,10 @@ public class Tooltip : MonoBehaviour
 
     public TooltipManager.TooltipTypes tooltipType;
 
+    void Update() {
+        if (Input.GetKeyDown("space"))
+            CloseTooltip();
+    }
     public void CloseTooltip()
     {
         gameObject.SetActive(false);
