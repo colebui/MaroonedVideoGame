@@ -7,6 +7,13 @@ public class minimapManager : MonoBehaviour
     GameObject caveCam;
     GameObject surfaceCam;
 
+    // BRENDEN CHANGES
+    [SerializeField] Camera overHeadCameraSurface;
+    [SerializeField] Camera overHeadCameraCave;
+
+    private Camera overHeadCamera;
+    // END
+
     GameObject bigMap;
     bool isBig; 
     public static bool isInCave;
@@ -20,12 +27,24 @@ public class minimapManager : MonoBehaviour
         caveCam = GameObject.Find("CaveMinimapCamera");
         surfaceCam = GameObject.Find("IslandMinimapCamera");
 
+
+        // BRENDEN CHANGES
+        overHeadCameraSurface.gameObject.SetActive(false);
+        overHeadCameraCave.gameObject.SetActive(false);
+
+        overHeadCamera = overHeadCameraSurface;
+        // END
+
         setToSurface();
     }
     void Update() {
         if (Input.GetButtonDown("bigMap")) {
-            bigMap.SetActive(isBig);
+            // BRENDEN CHANGES
             isBig = !isBig;
+            overHeadCamera.gameObject.SetActive(isBig);
+            // END
+
+            bigMap.SetActive(isBig);
         }
     }
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
@@ -45,6 +64,13 @@ public class minimapManager : MonoBehaviour
             hunt.modifyChestIcon(false);
             hunt.modifyXMarks(true);
         }
+
+        // BRENDEN CHANGES
+        overHeadCamera = overHeadCameraSurface;
+        overHeadCameraCave.gameObject.SetActive(false);
+        overHeadCamera.gameObject.SetActive(isBig);
+        // END
+
     }
     public void setToCave() {
         isInCave = true;
@@ -62,6 +88,13 @@ public class minimapManager : MonoBehaviour
         {
             hunt.modifyChestIcon(true);
         }
+
+        // BRENDEN CHANGES
+        overHeadCamera = overHeadCameraCave;
+        overHeadCameraSurface.gameObject.SetActive(false);
+        overHeadCamera.gameObject.SetActive(isBig);
+        // END
+
     }
     public bool inCave() {
         return isInCave; 
