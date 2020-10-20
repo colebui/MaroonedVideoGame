@@ -38,13 +38,20 @@ public class minimapManager : MonoBehaviour
         setToSurface();
     }
     void Update() {
-        if (Input.GetButtonDown("bigMap")) {
-            // BRENDEN CHANGES
-            isBig = !isBig;
-            overHeadCamera.gameObject.SetActive(isBig);
-            // END
-
-            bigMap.SetActive(isBig);
+        if (Input.GetButton("bigMap"))
+        {
+            if (!isBig)
+            {
+                overHeadCamera.gameObject.SetActive(true);
+                bigMap.SetActive(true);
+            }
+            isBig = true;
+            return;
+        }
+        else if (isBig) {
+            overHeadCamera.gameObject.SetActive(false);
+            bigMap.SetActive(false);
+            isBig = false;
         }
     }
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
