@@ -23,11 +23,13 @@ public class EnemyHealth : Health {
         // Set isDead so no more damage is taken
         isDead = true;
         // Set a timer to wait to destroy the object
-        StartCoroutine(WaitAndDestroy());
+        //StartCoroutine(WaitAndDestroy());
+
+        GetComponent<EnemyController>().PlayDeathAnimation();
     }
 
-    IEnumerator WaitAndDestroy() {
-        yield return new WaitForSeconds(deathTimer);
-        Destroy(gameObject);
-    }
+    //IEnumerator WaitAndDestroy() {
+    //    yield return new WaitForSeconds(deathTimer);
+    //    Destroy(gameObject);
+    //}
 }
