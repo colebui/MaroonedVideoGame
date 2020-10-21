@@ -12,21 +12,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float MAX_SPEED = 7.5f;
     [SerializeField] private int TIME_BETWEEN_ENEMY_SPRINTS = 3;
 
-    [Header("Animation parameters")]
-    [SerializeField] float minSpawnAnimationSpeed = .4f;
-    [SerializeField] float maxSpawnAnimationSpeed = .7f;
-    [SerializeField] float minWalkAnimationSpeed = .5f;
-    [SerializeField] float maxWalkAnimationSpeed = .7f;
-
-    [Header("Amimation names")]
-    [SerializeField] string spawnSpeedParameter = "SpawnTimeScale";
-    [SerializeField] string walkSpeedParameter = "WalkTimeScale";
-    [SerializeField] string attackAnimationTrigger = "attack";
-    [SerializeField] string deathAnimationTrigger = "die";
-
-    // Used for playing animations
-    private Animator animator;
-
     public NavMeshAgent agent;
     
     private PlayerHealth playerRef;
@@ -38,9 +23,6 @@ public class EnemyController : MonoBehaviour
 
     void Start() {
         playerRef = FindObjectOfType<PlayerHealth>();
-        animator = GetComponentInChildren<Animator>();
-
-        animator.SetFloat(spawnSpeedParameter, UnityEngine.Random.Range(minSpawnAnimationSpeed, maxSpawnAnimationSpeed));
     }
 
     void Update() {
@@ -59,8 +41,7 @@ public class EnemyController : MonoBehaviour
 
         //if touching
         if (Vector3.Distance(playerPosition, this.agent.transform.position) < MAX_ATTACK_DISTANCE && agent.isStopped == false) {
-            DisableMovement();
-            //agent.isStopped = true;
+            agent.isStopped = true;
             //playerWithinRange = true;
             pauseAgent();
             // removed dealing damage here to after a delay in the AgentTimer
@@ -76,16 +57,12 @@ public class EnemyController : MonoBehaviour
     }
 
     IEnumerator AgentTimer() {
-
-        animator.SetTrigger(attackAnimationTrigger);
-
         yield return new WaitForSeconds(WAIT_TIME);
         // Brenden changed this, just to see if it works for a dodge mechanic; deal damage if still in range
         if(Vector3.Distance(playerPosition, this.agent.transform.position) < MAX_ATTACK_DISTANCE) {
             dealDamage();
         }
-        EnableMovement();
-        //agent.isStopped = false;
+        agent.isStopped = false;
         //playerWithinRange = false;
     }
 
@@ -96,23 +73,5 @@ public class EnemyController : MonoBehaviour
     // TODO: This is going to need to be changed to a hitbox or something to allow for dodges
     void dealDamage() {
         playerRef.TakeDamage(UnityEngine.Random.Range(ATTACK_DAMAGE_MIN, ATTACK_DAMAGE_MAX));
-    }
-
-    public void EnableMovement()
-    {
-        agent.isStopped = false;
-        float walkSpeed = UnityEngine.Random.Range(minWalkAnimationSpeed, maxWalkAnimationSpeed);
-        Debug.Log("Walk speed: " + walkSpeed);
-        animator.SetFloat(walkSpeedParameter, walkSpeed);
-    }
-
-    public void DisableMovement()
-    {
-        agent.isStopped = true;
-    }
-
-    public void PlayDeathAnimation()
-    {
-        animator.SetTrigger(deathAnimationTrigger);
     }
 }
