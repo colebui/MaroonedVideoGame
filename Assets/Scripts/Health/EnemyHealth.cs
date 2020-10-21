@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyHealth : Health {
+public class EnemyHealth : Health
+{
 
     [SerializeField] int enemyPayout = 100;
     // The amount of time between an enemy death and them disappearing
     [SerializeField] float deathTimer = 1.5f;
     [SerializeField] AudioSource deathSound;
     // TODO: Very basic, just to test
-    protected override void Die() {
+    protected override void Die()
+    {
         GameLogic.Instance.addScore(enemyPayout);
 
         // Turn off the enemy AI
@@ -23,11 +25,13 @@ public class EnemyHealth : Health {
         // Set isDead so no more damage is taken
         isDead = true;
         // Set a timer to wait to destroy the object
-        StartCoroutine(WaitAndDestroy());
+        //StartCoroutine(WaitAndDestroy());
+
+        GetComponent<EnemyController>().PlayDeathAnimation();
     }
 
-    IEnumerator WaitAndDestroy() {
-        yield return new WaitForSeconds(deathTimer);
-        Destroy(gameObject);
-    }
+    //IEnumerator WaitAndDestroy() {
+    //    yield return new WaitForSeconds(deathTimer);
+    //    Destroy(gameObject);
+    //}
 }
