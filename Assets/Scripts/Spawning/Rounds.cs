@@ -21,7 +21,6 @@ public class Rounds : MonoBehaviour
     private float timeBetweenChecks = 0.0f;
     [SerializeField] private float timeBetweenRounds = 30.0f;
     private float timerForRounds = 0.0f;
-    private bool spacePush = false;
     private bool roundSkip = false;
     private float dealTime = 0.0f;
     private float timeBetweenSpace = 0.0f;
