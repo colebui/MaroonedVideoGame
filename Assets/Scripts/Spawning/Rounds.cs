@@ -21,6 +21,10 @@ public class Rounds : MonoBehaviour
     private float timeBetweenChecks = 0.0f;
     [SerializeField] private float timeBetweenRounds = 30.0f;
     private float timerForRounds = 0.0f;
+    private bool roundSkip = false;
+    private float dealTime = 0.0f;
+    private float timeBetweenSpace = 0.0f;
+    private int roundCheck = 0;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
 
@@ -46,30 +50,56 @@ public class Rounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //does every 5 seconds
-        timeBetweenChecks += Time.deltaTime;
-        if ((timeBetweenChecks >= 5.0f) || Input.GetKeyDown("space"))
+        //does every second
+        dealTime = Time.deltaTime;
+        timeBetweenChecks += dealTime;
+        if ((timeBetweenChecks >= 1.0f))
         {
             //Debug.Log("Time between checks ellapsed");
             timeBetweenChecks = 0.0f;
             enemysAlive.Clear();
             enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-            Debug.Log("Enemy count updated " + enemysAlive.Count);
-            if (enemysAlive.Count <= 0)
+            //Debug.Log("Enemy count updated " + enemysAlive.Count);
+            if (enemysAlive.Count <= 0 && roundCheck == roundNum)
             {
-                timerForRounds += 5;
+                timerForRounds += 1;
 
-                // TODO: Make count down every second instead of every 5
                 OnCountdownChanged((int)(timeBetweenRounds - timerForRounds));
-                OnCountdownStarted();
-
-                //tell the player its an itermition 
-                if ((timerForRounds >= timeBetweenRounds) || roundNum == 0 || Input.GetKeyDown("space"))
+                if(roundNum != 0)
                 {
-                    newRound();
-                    timerForRounds = 0;
+                    OnCountdownStarted();
                 }
 
+                //tell the player its an itermition 
+                if ((timerForRounds >= timeBetweenRounds) || roundNum == 0)
+                {
+                    timerForRounds = 0;
+                    newRound();
+                }
+                
+
+            }
+        }
+        
+        timeBetweenSpace += dealTime;
+        if(timeBetweenSpace >= 10.0f)
+        {
+            timeBetweenSpace = 0.0f;
+            roundCheck = roundNum;
+        }
+        if (enemysAlive.Count <= 0)
+        {
+            timeBetweenSpace = 0.0f;
+            if(roundCheck == roundNum && roundNum != 0)
+            {
+                roundSkip = true;
+            }
+
+            if (Input.GetKeyDown("space") && roundSkip)
+            {
+                roundSkip = false;
+                timerForRounds = 0;
+                newRound();
             }
         }
     }
