@@ -36,7 +36,7 @@ abstract public class PowerWeapon : Weapon {
     protected abstract void LaunchAttack();
 
     // Is called by animation event to finish the attack up
-    private void FinishPowerWeaponAttack() {
+    protected virtual void FinishPowerWeaponAttack() {
         attackFinished = true;
         PlayerWeaponManager.Instance.EnableOtherWeapons();
     }

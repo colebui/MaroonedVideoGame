@@ -41,6 +41,8 @@ public class Pistol : Weapon {
 
         currentAmmo--;
         SetAmmoText();
+
+        weaponAttackParticles.Play();
     }
 
     public static void AddAmmo(int ammountToAdd) {
