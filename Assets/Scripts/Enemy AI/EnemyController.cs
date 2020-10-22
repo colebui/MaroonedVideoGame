@@ -33,10 +33,14 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 playerPosition;
 
+    //used for minimap icons
+    public bool inside;
+    public string lastTouched;
     // Used for the dodging mechanic
     //private bool playerWithinRange = false;
 
     void Start() {
+        inside = false; 
         playerRef = FindObjectOfType<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
 

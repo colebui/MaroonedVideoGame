@@ -9,7 +9,7 @@ public class OuterWallCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         Debug.Log("touch outter");
-        if (gameObject.tag == "OuterWall" && other.tag == "Player") {
+        if (gameObject.tag == "OuterWall") {
             gameObject.transform.parent.GetComponentInParent<CaveSoundController>().OuterWallTriggered(other);
         }
     }
