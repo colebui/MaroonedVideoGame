@@ -54,7 +54,7 @@ public class TreasureHuntMain : MonoBehaviour
         if (freq == 1 && frequency != 1)
             return;
         if (firstMap == false) {
-            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.firstMap);
+            StartCoroutine(delayedMapTooltip());
             firstMap = true;
         }
         if (mapSound != null)
@@ -135,5 +135,9 @@ public class TreasureHuntMain : MonoBehaviour
         numberOfCompleted++;
         currentChest = null;
         activeChest = false;
+    }
+    IEnumerator delayedMapTooltip() {
+        yield return new WaitForSeconds(2);
+        FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.firstMap);
     }
 }
