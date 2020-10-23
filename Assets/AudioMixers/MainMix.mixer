@@ -45,6 +45,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -9174795795499995426}
   - {fileID: 1291540692076987204}
+  - {fileID: -4503807976224139826}
   m_Volume: a5fb73450dddf354880ed83861e93b0a
   m_Pitch: 900b09adb01288041bb00d8b3b3b6431
   m_Send: 00000000000000000000000000000000
@@ -101,6 +102,39 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-4503807976224139826
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ChestHunt
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8f5609cacaf0732439f89d8cdcd27029
+  m_Children: []
+  m_Volume: 259fe4bc877f41a4eb30ef33f2dcf778
+  m_Pitch: 7308c657e391aa840a5385f4fd76ab24
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3500136471642901767}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-3500136471642901767
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8ba5f46aeec255e4b9d9850b73872bb1
+  m_EffectName: Attenuation
+  m_MixLevel: ca56bb71559bb6b4eb1a1e015d4120da
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1180555568749637891
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -148,6 +182,7 @@ AudioMixerController:
     - 1df8a452a1f28214291d5d857a091744
     - 92c4832d92eb5b6439f88a44307a9bc1
     - 053a9257d5f775847b48dc3ca7e99bee
+    - 8f5609cacaf0732439f89d8cdcd27029
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -198,6 +233,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: c981f7e0d22c34349b751211b7e113d5
   m_FloatValues:
     c2a679b7ce164cc4eb92c72844054a78: 0
+    259fe4bc877f41a4eb30ef33f2dcf778: 0.44032484
     afd9f2fc9bdb91c49b39cfbda1719216: -1.1315297
     c07ea1be10abe7b4b949a7017afe1c89: -14.221897
   m_TransitionOverrides: {}
