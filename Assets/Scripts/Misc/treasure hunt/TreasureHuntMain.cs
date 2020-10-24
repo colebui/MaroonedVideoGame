@@ -23,7 +23,11 @@ public class TreasureHuntMain : MonoBehaviour
 
     [SerializeField] AudioSource mapSound;
     [SerializeField] AudioClip mapClip;
-    
+    [SerializeField] AudioClip foundClip;
+    [SerializeField] AudioClip ammoFound;
+    [SerializeField] AudioClip bluderbussUnlocked;
+    [SerializeField] AudioClip speargunUnlocked;
+
     GameObject[] spawners;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,9 @@ public class TreasureHuntMain : MonoBehaviour
         numberOfCompleted = 0;
         currentChest = null;
         spawners = GameObject.FindGameObjectsWithTag("chestSpawner");
-        for (int i = 0; i < spawners.Length; i++)
+        spawners[0].GetComponent<chestSpawner>().setSounds(speargunUnlocked, bluderbussUnlocked, foundClip, ammoFound);
+        spawners[0].GetComponent<chestSpawner>().setAudioSource(mapSound);
+            for (int i = 0; i < spawners.Length; i++)
         {
             //Spawners cannot be deactivated in their start() functions. 
             spawners[i].GetComponent<chestSpawner>().setState(0);
