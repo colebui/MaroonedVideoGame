@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199934598401358259}
   - component: {fileID: 2199934598401358256}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199934598535550118}
   - component: {fileID: 2199934598535550119}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mushroom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2221247229712600514}
   - component: {fileID: 888703143997855774}
   - component: {fileID: 986686704528478013}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,6 +4990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b419129dc3d848240bb816943555ae05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b419129dc3d848240bb816943555ae05, type: 3}

@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 888774041724561141}
   - component: {fileID: 2775774347463141113}
   - component: {fileID: 6134281866185142148}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: CrystalParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4812,7 +4812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9154345097709237785}
   - component: {fileID: 5683797500606771744}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
