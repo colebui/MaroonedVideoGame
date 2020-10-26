@@ -63,7 +63,7 @@ public class Shop : MonoBehaviour
         Debug.Log("Disabled");
     }
 
-    void AddMoney(int amount) {
+    public void AddMoney(int amount) {
         //austin
         money += amount;
     }
