@@ -10,12 +10,10 @@ public class EnemyHealth : Health
     // The amount of time between an enemy death and them disappearing
     [SerializeField] float deathTimer = 1.5f;
     [SerializeField] AudioSource deathSound;
-    Shop moneyStuff = FindObjectOfType<Shop>();
     // TODO: Very basic, just to test
     protected override void Die()
     {
         GameLogic.Instance.addScore(enemyPayout);
-        moneyStuff.AddMoney(enemyPayout);
 
         // Turn off the enemy AI
         var enemyAI = GetComponent<EnemyController>();

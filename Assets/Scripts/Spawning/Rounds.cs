@@ -27,7 +27,6 @@ public class Rounds : MonoBehaviour
     private int roundCheck = 0;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
-    Shop moneyStuff = FindObjectOfType<Shop>();
 
     // Used to update the round countdown
     public static Action<int> OnCountdownChanged;
@@ -112,7 +111,6 @@ public class Rounds : MonoBehaviour
 
         FindObjectOfType<TreasureHuntMain>().roll();
         GameLogic.Instance.addScore(roundPayout);
-        moneyStuff.AddMoney(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
 
