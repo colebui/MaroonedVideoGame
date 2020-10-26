@@ -99,7 +99,7 @@ MonoBehaviour:
   MAX_ATTACK_DISTANCE: 2
   WAIT_TIME: 0.6
   MIN_SPEED: 3.5
-  MAX_SPEED: 6.5
+  MAX_SPEED: 8.5
   TIME_BETWEEN_ENEMY_SPRINTS: 3
   minSpawnAnimationSpeed: 0.4
   maxSpawnAnimationSpeed: 0.7
