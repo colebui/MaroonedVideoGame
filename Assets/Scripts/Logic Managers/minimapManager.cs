@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class minimapManager : MonoBehaviour
-{ 
+{
     GameObject caveCam;
     GameObject surfaceCam;
 
@@ -15,13 +15,13 @@ public class minimapManager : MonoBehaviour
     // END
 
     GameObject bigMap;
-    bool isBig; 
+    bool isBig;
     public static bool isInCave;
     // Start is called before the first frame update
     void Start()
     {
         isBig = false;
-        isInCave = false; 
+        isInCave = false;
         bigMap = GameObject.Find("bigMap");
         bigMap.SetActive(false);
         caveCam = GameObject.Find("CaveMinimapCamera");
@@ -37,7 +37,8 @@ public class minimapManager : MonoBehaviour
 
         setToSurface();
     }
-    void Update() {
+    void Update()
+    {
         if (Input.GetButton("bigMap"))
         {
             if (!isBig)
@@ -48,15 +49,17 @@ public class minimapManager : MonoBehaviour
             isBig = true;
             return;
         }
-        else if (isBig) {
+        else if (isBig)
+        {
             overHeadCamera.gameObject.SetActive(false);
             bigMap.SetActive(false);
             isBig = false;
         }
     }
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
-    public void setToSurface() {
-        isInCave = false; 
+    public void setToSurface()
+    {
+        isInCave = false;
         surfaceCam.SetActive(true);
         caveCam.SetActive(false);
 
@@ -80,7 +83,8 @@ public class minimapManager : MonoBehaviour
         }
 
     }
-    public void setToCave() {
+    public void setToCave()
+    {
         isInCave = true;
         surfaceCam.SetActive(false);
         caveCam.SetActive(true);
@@ -105,7 +109,8 @@ public class minimapManager : MonoBehaviour
 
 
     }
-    public bool inCave() {
-        return isInCave; 
+    public bool inCave()
+    {
+        return isInCave;
     }
 }

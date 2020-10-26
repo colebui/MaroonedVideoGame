@@ -51,7 +51,6 @@ public class CaveSoundController : MonoBehaviour
             }
             enemy.lastTouched = "outer"; 
         }
-        Debug.Log(other.tag + "hit outer\n");
         if (other.tag == "Player")
         {
             if (lastTouched == "inner")
