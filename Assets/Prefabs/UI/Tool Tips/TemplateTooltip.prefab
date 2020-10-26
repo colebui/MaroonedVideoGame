@@ -666,7 +666,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.81960785, g: 0.74509805, b: 0.6392157, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1105,7 +1105,7 @@ PrefabInstance:
     - target: {fileID: 2945833490610824738, guid: a31a6edb8af9502429b5a8bcb10c3230,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2945833490610824738, guid: a31a6edb8af9502429b5a8bcb10c3230,
         type: 3}
@@ -1147,11 +1147,32 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2945833490610824738, guid: a31a6edb8af9502429b5a8bcb10c3230,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945833490610824738, guid: a31a6edb8af9502429b5a8bcb10c3230,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4776446
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945833490610824738, guid: a31a6edb8af9502429b5a8bcb10c3230,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.825
+      objectReference: {fileID: 0}
     - target: {fileID: 8386855157618929795, guid: a31a6edb8af9502429b5a8bcb10c3230,
         type: 3}
       propertyPath: m_Name
       value: BackgroundImage
       objectReference: {fileID: 0}
+    - target: {fileID: 8939345833119600972, guid: a31a6edb8af9502429b5a8bcb10c3230,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4b9e0332ea512b47abb919b78feb26c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31a6edb8af9502429b5a8bcb10c3230, type: 3}
 --- !u!224 &3301037190363459365 stripped
