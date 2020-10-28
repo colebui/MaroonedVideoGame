@@ -156,7 +156,15 @@ public class Rounds : MonoBehaviour
         float[] returnsDistance = { float.MaxValue, float.MaxValue };
         for (int i = 0; i < spawners.Length; i++)
         {
-            distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            if(playerPos.y >= spawners[i].transform.position.y - 10 && playerPos.y <= spawners[i].transform.position.y + 12)
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            }
+            else
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position) * 5;
+            }
+                
             float maximum = Mathf.Max(returnsDistance);
             if (maximum > distance)
             {
