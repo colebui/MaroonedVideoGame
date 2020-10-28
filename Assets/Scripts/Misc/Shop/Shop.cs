@@ -7,11 +7,11 @@ public class Shop : MonoBehaviour
 {
     static int UPGRADE_COST = 1000;
     //objects
-    CustomFirstPersonController FPController = FindObjectOfType<CustomFirstPersonController>();
-    PlayerHealth healthGO = FindObjectOfType<PlayerHealth>();
-    Pistol pistolGO = FindObjectOfType<Pistol>();
-    Saber saberGO = FindObjectOfType<Saber>();
-    Blunderbuss blunderbussGO = FindObjectOfType<Blunderbuss>();
+    CustomFirstPersonController FPController;
+    PlayerHealth healthGO;
+    Pistol pistolGO;
+    Saber saberGO;
+    Blunderbuss blunderbussGO;
 
             //levels
     //player
@@ -53,7 +53,11 @@ public class Shop : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
+        FPController = FindObjectOfType<CustomFirstPersonController>();
+        healthGO = FindObjectOfType<PlayerHealth>();
+        pistolGO = FindObjectOfType<Pistol>();
+        saberGO = FindObjectOfType<Saber>();
+        blunderbussGO = FindObjectOfType<Blunderbuss>();
     }
 
     private void OnEnable() {//setActive(true) https://www.youtube.com/watch?v=OD-p1eMsyrU&ab_channel=Unity
@@ -63,7 +67,7 @@ public class Shop : MonoBehaviour
         Debug.Log("Disabled");
     }
 
-    void AddMoney(int amount) {
+    public void AddMoney(int amount) {
         //austin
         money += amount;
     }
