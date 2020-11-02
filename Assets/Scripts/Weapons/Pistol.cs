@@ -5,8 +5,8 @@ using TMPro;
 
 public class Pistol : Weapon {
 
-    private static TextMeshProUGUI ammoText;
-    private TextMeshProUGUI reloadingText;
+    private static TextMeshProUGUI currentAmmoText;
+    private static TextMeshProUGUI totalAmmoText;
 
     [Header("Ammo System")]
     [SerializeField] int maxAmmoStart = 40;
@@ -17,8 +17,9 @@ public class Pistol : Weapon {
     protected override void Start() {
         base.Start();
 
-        ammoText = GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<TextMeshProUGUI>();
-        reloadingText = GameObject.FindGameObjectWithTag("ReloadingUI").GetComponent<TextMeshProUGUI>();
+        currentAmmoText = GameObject.FindGameObjectWithTag("CurrentAmmo").GetComponent<TextMeshProUGUI>();
+        totalAmmoText = GameObject.FindGameObjectWithTag("TotalAmmo").GetComponent<TextMeshProUGUI>();
+        //reloadingText = GameObject.FindGameObjectWithTag("ReloadingUI").GetComponent<TextMeshProUGUI>();
 
         maxAmmo = maxAmmoStart;
         currentAmmo = maxAmmo;
@@ -27,7 +28,7 @@ public class Pistol : Weapon {
 
     protected override void Update() {
         base.Update();
-        reloadingText.text = "Reloading " + Mathf.Clamp((timeBetweenAttacks - timeSinceAttacking), 0f, timeBetweenAttacks).ToString("0.00");
+        //reloadingText.text = "Reloading " + Mathf.Clamp((timeBetweenAttacks - timeSinceAttacking), 0f, timeBetweenAttacks).ToString("0.00");
     }
 
     public override void Attack() {
@@ -40,6 +41,8 @@ public class Pistol : Weapon {
 
         currentAmmo--;
         SetAmmoText();
+
+        weaponAttackParticles.Play();
     }
 
     public static void AddAmmo(int ammountToAdd) {
@@ -55,7 +58,8 @@ public class Pistol : Weapon {
     }
 
     private static void SetAmmoText() {
-        ammoText.text = "Ammo: " + currentAmmo + "/" + maxAmmo;
+        currentAmmoText.text = currentAmmo.ToString();
+        totalAmmoText.text = maxAmmo.ToString();
     }
 
     // No start or update, because they don't need to be overridden

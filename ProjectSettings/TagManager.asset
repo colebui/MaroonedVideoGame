@@ -14,6 +14,8 @@ TagManager:
   - chestSpawner
   - OuterWall
   - InnerWall
+  - CurrentAmmo
+  - TotalAmmo
   layers:
   - Default
   - TransparentFX
@@ -26,13 +28,13 @@ TagManager:
   - Enemy
   - Player
   - Obstacles
-  - minimap
+  - BigMap
   - surface
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GeneralMinimap
+  - Caves
+  - CaveMinimap
+  - SurfaceMinimap
+  - CavesFX
   - 
   - 
   - 

@@ -17,20 +17,13 @@ public class MenuLogic : MonoBehaviour
         Cursor.visible = true;
         Debug.Log("Hello, World"); 
     }
-    IEnumerator StartPrepMenu()
+    public void StartButtonClicked()
     {
         TitleCanvas.gameObject.SetActive(false);
         PrepareCanvas.gameObject.SetActive(true);
-        for (int i = 7; i > -1; i--)
-        {
-            yield return new WaitForSeconds(1);
-            TimerText.text = "*" + i.ToString() + "*";
-        }
-        Time.timeScale = 1;
-        SceneLoader.Instance.LoadScene(nextSceneName);
     }
-    public void StartButtonClicked()
-    {
-        StartCoroutine( StartPrepMenu());
+    public void PrepareButtonClicked() {
+        Time.timeScale = 1;
+        SceneLoader.Instance.LoadScene("IslandGame");
     }
 }

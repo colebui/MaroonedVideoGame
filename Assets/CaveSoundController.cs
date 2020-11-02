@@ -11,28 +11,64 @@ public class CaveSoundController : MonoBehaviour
     [SerializeField] float DURATION = 5.0f;
 
     public void InnerWallTriggered(Collider other) {
-        if (lastTouched == "outer") {
-            inside = true;
-            UpdateState();
+        if (other.tag == "Enemy")
+        {
+            Debug.Log("skeleton hit inner\n");
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            if (enemy.lastTouched == "outer")
+            {
+                enemy.inside = true;
+                Debug.Log("skeleton entering cave\n");
+                other.gameObject.transform.Find("caveMini").gameObject.SetActive(true);
+                other.gameObject.transform.Find("surfaceMini").gameObject.SetActive(false);
+            }
+            enemy.lastTouched = "inner";
         }
-        lastTouched = "inner";
+        if (other.tag == "Player")
+        {
+            if (lastTouched == "outer")
+            {
+                inside = true;
+                UpdateState();
+            }
+            lastTouched = "inner";
+        }
     }
 
-    public void OuterWallTriggered(Collider other) {
-        if (lastTouched == "inner") {
-            inside = false;
-            UpdateState();
+    public void OuterWallTriggered(Collider other)
+    {
+
+        if (other.tag == "Enemy") 
+        {
+            Debug.Log("skeleton hit outer\n");
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>(); 
+            if (enemy.lastTouched == "inner") 
+            {
+                enemy.inside = false;
+                Debug.Log("skeleton leaving cave\n");
+                other.gameObject.transform.Find("caveMini").gameObject.SetActive(false);
+                other.gameObject.transform.Find("surfaceMini").gameObject.SetActive(true);
+            }
+            enemy.lastTouched = "outer"; 
         }
-        lastTouched = "outer";
+        if (other.tag == "Player")
+        {
+            if (lastTouched == "inner")
+            {
+                inside = false;
+                UpdateState();
+            }
+            lastTouched = "outer";
+        }
     }
 
     public void UpdateState() {
         if (inside && !audioSource.isPlaying) {
-            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
+            FindObjectOfType<minimapManager>().setToCave();
             PlayMusic();
         }
         else if (!inside && audioSource.isPlaying) {
-            GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToSurface();
+            FindObjectOfType<minimapManager>().setToSurface();
             StopMusic();
         }
     }
@@ -59,7 +95,7 @@ public class CaveSoundController : MonoBehaviour
         float start = audioSource.volume;
 
         while ((currentTime < duration) && (!inside)) {
-            Debug.Log("current time" + currentTime);
+           // Debug.Log("current time" + currentTime);
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;

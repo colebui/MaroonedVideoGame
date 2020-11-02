@@ -14,7 +14,7 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] private float maxWeaponDamage = 20;
     [SerializeField] private bool canSwitchDuringCooldown = false;
 
-    [SerializeField] ParticleSystem weaponAttackParticles;
+    [SerializeField] protected ParticleSystem weaponAttackParticles;
     [SerializeField] AudioSource weaponAttackSound;
     [SerializeField] AudioClip weaponAttackClip;
 
@@ -24,8 +24,7 @@ abstract public class Weapon : MonoBehaviour {
     protected bool canAttack = true;
     protected DamageType damageType;
 
-    // FIXME: Only serialized for debugging, don't change
-    [SerializeField] protected float timeSinceAttacking = 0f;
+    protected float timeSinceAttacking;
 
     // Overridden by the specific weapon, which defines its actual attacking behavior
     public virtual void Attack() {
@@ -35,10 +34,10 @@ abstract public class Weapon : MonoBehaviour {
             PlayerWeaponManager.Instance.SetAllowWeaponSwitching(false);
         }
 
-        // Not all weapons might actually have these (like melee), so best to check
-        if(weaponAttackParticles != null) {
-            weaponAttackParticles.Play();
-        }
+        //// Not all weapons might actually have these (like melee), so best to check
+        //if(weaponAttackParticles != null) {
+        //    //weaponAttackParticles.Play();
+        //}
 
         // Play the sound for attacking here
         if(weaponAttackSound != null) {
@@ -55,6 +54,8 @@ abstract public class Weapon : MonoBehaviour {
         if(damageType == null) {
             Debug.LogError("You MUST add a damage type to this object!");
         }
+
+        timeSinceAttacking = timeBetweenAttacks;
     }
 
     protected virtual void Update() {

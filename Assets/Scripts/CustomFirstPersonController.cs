@@ -52,8 +52,9 @@ public class CustomFirstPersonController : MonoBehaviour {
     private bool m_Jumping;
     private AudioSource m_AudioSource;
 
+    // TODO: Delete
     // Used to keep visually track of the current stamina
-    private TextMeshProUGUI staminaUI;
+    //private TextMeshProUGUI staminaUI;
 
     public float GetMaxStamina() { return maxStamina; }
     public void SetMaxStamina(float value) { maxStamina = value; }
@@ -75,7 +76,8 @@ public class CustomFirstPersonController : MonoBehaviour {
 
         m_IsWalking = true;
 
-        staminaUI = GameObject.FindWithTag("StaminaUI").GetComponent<TextMeshProUGUI>();
+        // TODO: Delete
+        //staminaUI = GameObject.FindWithTag("StaminaUI").GetComponent<TextMeshProUGUI>();
 
     }
 
@@ -222,7 +224,9 @@ public class CustomFirstPersonController : MonoBehaviour {
 #endif
         speed = (m_IsWalking || (currentStamina <= 0)) ? m_WalkSpeed : m_RunSpeed;
 
-        staminaUI.text = "Stamina: " + (int)currentStamina + "/" + maxStamina;
+        // TODO: Delete
+        //staminaUI.text = "Stamina: " + (int)currentStamina + "/" + maxStamina;
+        StaminaBar.Instance.UpdateSliderValue(Mathf.Clamp(currentStamina / maxStamina, 0f, 1f));
 
         m_Input = new Vector2(horizontal, vertical);
 

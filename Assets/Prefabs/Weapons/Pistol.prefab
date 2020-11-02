@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ea9f272cbe01f7d4bb4ecdaf4be79bb6, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4811,9 +4811,7 @@ MonoBehaviour:
   weaponAttackClip: {fileID: 8300000, guid: a35e4d11e0bf49741a5b1717259faa46, type: 3}
   weaponReloadSound: {fileID: 0}
   weaponReloadClip: {fileID: 8300000, guid: a1f8b1ff0c1bb49419765680fe3cc192, type: 3}
-  timeSinceAttacking: 0
-  maxAmmo: 30
-  currentAmmo: 0
+  maxAmmoStart: 40
 --- !u!114 &3240051024324784849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4830,6 +4828,7 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 256
+  drawRays: 0
 --- !u!82 &1217663717
 AudioSource:
   m_ObjectHideFlags: 0

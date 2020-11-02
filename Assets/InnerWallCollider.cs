@@ -9,7 +9,7 @@ public class InnerWallCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         Debug.Log("touch inner");
-        if (gameObject.tag == "InnerWall" && other.tag == "Player") {
+        if (gameObject.tag == "InnerWall") {
             gameObject.transform.parent.GetComponentInParent<CaveSoundController>().InnerWallTriggered(other);
         }
     }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 7b8866d60c8eba64a959138189d318e4
+=======
+guid: d40c5ffb4e59d044d93a9c308745271d
+>>>>>>> Cameron
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
