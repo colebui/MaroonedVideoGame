@@ -42,6 +42,12 @@ abstract public class PowerWeapon : Weapon {
     protected virtual void FinishPowerWeaponAttack() {
         attackFinished = true;
         PlayerWeaponManager.Instance.EnableOtherWeapons();
+        Debug.Log("Finished power weapon attack");
+    }
+
+    protected void Thingy()
+    {
+        StartCoroutine(WaitForTimeOrSomething());
     }
 
     IEnumerator WaitForTimeOrSomething() {

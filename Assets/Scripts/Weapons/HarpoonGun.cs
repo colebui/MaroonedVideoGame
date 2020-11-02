@@ -23,5 +23,7 @@ public class HarpoonGun : PowerWeapon
     {
         base.Attack();
         LaunchAttack();
+        //Thingy();
+        //FinishPowerWeaponAttack();
     }
 }

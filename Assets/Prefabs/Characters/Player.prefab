@@ -915,7 +915,6 @@ MonoBehaviour:
   standardWeapons:
   - {fileID: 431346109}
   - {fileID: 2642502293909909141}
-  isFullAuto: 0
 --- !u!114 &8607278278596079830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1587,16 @@ PrefabInstance:
         type: 3}
       propertyPath: projectileVelocity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266791072704941395, guid: ef5c30d90cbc8c048a71d9140b181490,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266791072704941395, guid: ef5c30d90cbc8c048a71d9140b181490,
+        type: 3}
+      propertyPath: powerWeaponType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336444680817881054, guid: ef5c30d90cbc8c048a71d9140b181490,
         type: 3}

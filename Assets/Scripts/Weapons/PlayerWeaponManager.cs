@@ -35,6 +35,7 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager>
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("powerWeaponInUse: " + powerWeaponInUse);
 
         // If using a power weapon, then return until it is no longer in use
         if(powerWeaponInUse || PauseMenu.Instance.isPaused) { return; }
@@ -62,6 +63,8 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager>
                 DisableCurrentWeapon();
                 powerWeapon.Attack();
                 powerWeaponInUse = true;
+
+                Debug.Log("Called the power weapon stuff");
             }
         }
 
@@ -97,6 +100,7 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager>
     {
         currentlySelectedWeapon.gameObject.SetActive(true);
         powerWeaponInUse = false;
+        Debug.Log("Called EnableOtherWeapons");
     }
 
     public void AddPowerWeapon(PowerWeapon powerWeapon)
