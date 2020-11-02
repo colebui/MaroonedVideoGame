@@ -27,6 +27,7 @@ public class Rounds : MonoBehaviour
     private int roundCheck = 0;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
+    Shop moneyStuff;
 
     // Used to update the round countdown
     public static Action<int> OnCountdownChanged;
@@ -37,6 +38,7 @@ public class Rounds : MonoBehaviour
     {
         //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
         spawners = FindObjectsOfType<Spawner>();
+        moneyStuff = FindObjectOfType<Shop>();
         Debug.Log("got all spawners: " + spawners.Length);
         enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         //newRound();
@@ -111,6 +113,7 @@ public class Rounds : MonoBehaviour
 
         FindObjectOfType<TreasureHuntMain>().roll();
         GameLogic.Instance.addScore(roundPayout);
+        moneyStuff.AddMoney(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
 
@@ -153,7 +156,15 @@ public class Rounds : MonoBehaviour
         float[] returnsDistance = { float.MaxValue, float.MaxValue };
         for (int i = 0; i < spawners.Length; i++)
         {
-            distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            if(playerPos.y >= spawners[i].transform.position.y - 10 && playerPos.y <= spawners[i].transform.position.y + 12)
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            }
+            else
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position) * 5;
+            }
+                
             float maximum = Mathf.Max(returnsDistance);
             if (maximum > distance)
             {
