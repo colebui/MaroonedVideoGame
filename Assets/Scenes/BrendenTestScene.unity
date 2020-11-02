@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 2058045838}
   - component: {fileID: 2058045842}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TestWeaponPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2314,7 +2314,17 @@ PrefabInstance:
     - target: {fileID: 5536546144892583149, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: projectileVelocity
-      value: 10
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536546144892583149, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: minWeaponDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536546144892583149, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: maxWeaponDamage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8607278278596079830, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}

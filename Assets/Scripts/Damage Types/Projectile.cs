@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
 
         if(enemyHealth != null)
         {
+            enemyHealth.TakeDamage(Random.Range(owner.harpoonGun.GetMinWeaponDamage(), owner.harpoonGun.GetMaxWeaponDamage()));
             enemiesPierced++;
             Debug.Log("Hit enemy!!");
             owner.CallOnHitRegistered();

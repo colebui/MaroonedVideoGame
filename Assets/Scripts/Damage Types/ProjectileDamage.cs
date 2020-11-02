@@ -7,7 +7,7 @@ public class ProjectileDamage : DamageType
     [SerializeField] GameObject projectileToSpawn;
     [SerializeField] Transform spawnLocation;
 
-    private HarpoonGun harpoonGun;
+    public HarpoonGun harpoonGun { get; private set; }
 
     protected override void Start()
     {
