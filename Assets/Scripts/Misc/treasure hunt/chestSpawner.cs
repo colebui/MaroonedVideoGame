@@ -110,6 +110,7 @@ public class chestSpawner : MonoBehaviour
             else if (chestType == 1)
             {
                 foundSound.PlayOneShot(speargunUnlocked, 4f);
+                FindObjectOfType<HarpoonGun>().AddPowerWeapon();
                 Debug.Log("Picked up power weapon 1\n");
             }
             else if (chestType == 2)
