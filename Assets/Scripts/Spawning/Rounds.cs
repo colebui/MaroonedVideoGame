@@ -152,8 +152,9 @@ public class Rounds : MonoBehaviour
 
         Vector3 playerPos = GameObject.FindWithTag("MainCamera").transform.position;
         float distance = 0;
-        Spawner[] returns = new Spawner[2];
-        float[] returnsDistance = { float.MaxValue, float.MaxValue };
+        Spawner[] spawnHold = new Spawner[3];
+        Spawner[] sends = new Spawner[2];
+        float[] returnsDistance = { float.MaxValue, float.MaxValue, float.MaxValue };
         for (int i = 0; i < spawners.Length; i++)
         {
             if(playerPos.y >= spawners[i].transform.position.y - 10 && playerPos.y <= spawners[i].transform.position.y + 12)
@@ -169,12 +170,24 @@ public class Rounds : MonoBehaviour
             if (maximum > distance)
             {
                 // Found a closer spawn, update
-                returns[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
+                spawnHold[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
                 returnsDistance[Array.IndexOf(returnsDistance, maximum)] = distance;
             }
         }
-        return returns;
+        float minimum = Mathf.Min(returnsDistance);
+        int j = 0;
+        for (int i = 0; i < spawnHold.Length; i++)
+        {
+            if(Array.IndexOf(returnsDistance, minimum) != i)
+            {
+                sends[j] = spawnHold[i];
+                j++;
+            }
+            
+        }
+        return sends;
     }
+
     void calculateEnemyAmount()
     {
         newEnemyCount = (int)(Mathf.Ceil(Mathf.Floor(80.0f * Mathf.Pow(1.02f, roundNum)) - 78.0f) / 2) + 1;
