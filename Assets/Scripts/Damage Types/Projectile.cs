@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [HideInInspector] public int enemiesToPierce;
+    //[HideInInspector] public int enemiesToPierce;
     [HideInInspector] public ProjectileDamage owner;
 
     private int enemiesPierced = 0;
@@ -13,16 +13,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(enemiesPierced >= 99) { return; }
+        if(enemiesPierced >= owner.harpoonGun.enemiesToPierce) { return; }
 
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
         if(enemyHealth != null)
         {
-            enemyHealth.TakeDamage(Random.Range(owner.harpoonGun.GetMinWeaponDamage(), owner.harpoonGun.GetMaxWeaponDamage()));
-            enemiesPierced++;
             Debug.Log("Hit enemy!!");
             owner.CallOnHitRegistered();
+            enemiesPierced++;
+            enemyHealth.TakeDamage(Random.Range(owner.harpoonGun.GetMinWeaponDamage(), owner.harpoonGun.GetMaxWeaponDamage()));
         }
     }
 }

@@ -35,7 +35,7 @@ public class PlayerWeaponManager : MonoSingleton<PlayerWeaponManager>
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("powerWeaponInUse: " + powerWeaponInUse);
+        //Debug.Log("powerWeaponInUse: " + powerWeaponInUse);
 
         // If using a power weapon, then return until it is no longer in use
         if(powerWeaponInUse || PauseMenu.Instance.isPaused) { return; }
