@@ -45,15 +45,15 @@ abstract public class PowerWeapon : Weapon {
         Debug.Log("Finished power weapon attack");
     }
 
-    protected void Thingy()
-    {
-        StartCoroutine(WaitForTimeOrSomething());
-    }
+    //protected void Thingy()
+    //{
+    //    StartCoroutine(WaitForTimeOrSomething());
+    //}
 
-    IEnumerator WaitForTimeOrSomething() {
-        yield return new WaitForSeconds(1.0f);
-        FinishPowerWeaponAttack();
-    }
+    //IEnumerator WaitForTimeOrSomething() {
+    //    yield return new WaitForSeconds(1.0f);
+    //    FinishPowerWeaponAttack();
+    //}
 
     protected override void Update() {
         base.Update();

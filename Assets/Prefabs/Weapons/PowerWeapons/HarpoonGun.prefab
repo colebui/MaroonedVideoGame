@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 6087950920861130031}
   - component: {fileID: 4266791072704941395}
   - component: {fileID: 7056923428396173266}
+  - component: {fileID: 6812579795888748120}
   m_Layer: 9
   m_Name: HarpoonGun
   m_TagString: Untagged
@@ -86,7 +87,7 @@ MonoBehaviour:
   weaponAttackClip: {fileID: 0}
   weaponReloadSound: {fileID: 0}
   weaponReloadClip: {fileID: 0}
-  timeSinceAttacking: 0
+  powerWeaponType: 0
   ATTACK_TRIGGER_NAME: 
   projectileVelocity: 0
   enemiesToPierce: 1
@@ -105,6 +106,25 @@ MonoBehaviour:
   projectileToSpawn: {fileID: 6500105385821814348, guid: be8216089d84f264a984780c36005da3,
     type: 3}
   spawnLocation: {fileID: 2922113925014118689}
+--- !u!95 &6812579795888748120
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577176466351751987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81bb0f4fd79374a4d840acfaa549fbef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5585700852067289141
 PrefabInstance:
   m_ObjectHideFlags: 0

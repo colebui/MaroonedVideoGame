@@ -19,11 +19,11 @@ public class HarpoonGun : PowerWeapon
         projectileDamage.LaunchProjectile();
     }
 
-    public override void Attack()
-    {
-        base.Attack();
-        LaunchAttack();
-        //Thingy();
-        //FinishPowerWeaponAttack();
-    }
+    //public override void Attack()
+    //{
+    //    base.Attack();
+    //    LaunchAttack();
+    //    //Thingy();
+    //    //FinishPowerWeaponAttack();
+    //}
 }
