@@ -29,7 +29,10 @@ abstract public class PowerWeapon : Weapon {
         attackFinished = false;
 
         // Start animation
-        animator.SetTrigger(ATTACK_TRIGGER_NAME);
+        if(animator != null)
+        {
+            animator.SetTrigger(ATTACK_TRIGGER_NAME);
+        }
     }
 
     // Is called by an animation event to actually do the damage and stuff
@@ -39,12 +42,18 @@ abstract public class PowerWeapon : Weapon {
     protected virtual void FinishPowerWeaponAttack() {
         attackFinished = true;
         PlayerWeaponManager.Instance.EnableOtherWeapons();
+        Debug.Log("Finished power weapon attack");
     }
 
-    IEnumerator WaitForTimeOrSomething() {
-        yield return new WaitForSeconds(1.0f);
-        FinishPowerWeaponAttack();
-    }
+    //protected void Thingy()
+    //{
+    //    StartCoroutine(WaitForTimeOrSomething());
+    //}
+
+    //IEnumerator WaitForTimeOrSomething() {
+    //    yield return new WaitForSeconds(1.0f);
+    //    FinishPowerWeaponAttack();
+    //}
 
     protected override void Update() {
         base.Update();

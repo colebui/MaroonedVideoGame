@@ -19,7 +19,7 @@ public class Hitmarker : MonoBehaviour
 
     private void HitRegistered()
     {
-        Debug.Log("HitReg");
+        //Debug.Log("HitReg");
         animator.SetTrigger(FIRE_TRIGGER);
         audioSource.Play();
     }
