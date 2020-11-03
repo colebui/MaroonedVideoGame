@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Shop : MonoBehaviour
-{
+public class Shop : MonoSingleton<Shop> {
     static int UPGRADE_COST = 1000;
     //objects
     CustomFirstPersonController FPController = FindObjectOfType<CustomFirstPersonController>();
@@ -32,8 +32,9 @@ public class Shop : MonoBehaviour
     //harpoon
     //ints
     int money = 0;
+    [SerializeField] GameObject moneyText;
 
-            //serialized fields
+    //serialized fields
     //player
     [SerializeField] int maxHealthAdd = 10;
     [SerializeField] float regenTimerReduc = 0.01f;
@@ -51,6 +52,7 @@ public class Shop : MonoBehaviour
     [SerializeField] float blunderReduceFireRate = 0.05f;
     //harpoon
 
+
     // Start is called before the first frame update
     void Start() {
         
@@ -63,9 +65,10 @@ public class Shop : MonoBehaviour
         Debug.Log("Disabled");
     }
 
-    void AddMoney(int amount) {
+    public void AddMoney(int amount) {
         //austin
         money += amount;
+        moneyText.GetComponent<Text>().text = "$ " + money;
     }
 
     private void RemoveMoney() {
@@ -80,10 +83,12 @@ public class Shop : MonoBehaviour
         {
             throw new Exception("RemoveMoney() broke: Your broke! get some more money you piece of poop");
         }
+        moneyText.GetComponent<Text>().text = "$ " + money;
     }
 
-    void HPIncrease()
+    public void HPIncrease()
     {
+        Debug.Log("HPIncrease() called");
         try
         {
             if (HPLevel <= 20)
@@ -96,9 +101,16 @@ public class Shop : MonoBehaviour
                 {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
                 }
-
                 HPLevel++;
+                GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades")
+                    .GetComponentInChildren<CurrentUpgradeVisual>()
+                    .updateLevelsVisualList(HPLevel);
+
                 healthGO.SetMaxHealth(healthGO.GetMaxHealth() + maxHealthAdd);
+                Debug.Log("max hp:" + healthGO.GetMaxHealth());
+            }
+            else {
+                Debug.Log("You are max level");
             }
         }
         catch (Exception exception)
@@ -352,5 +364,9 @@ public class Shop : MonoBehaviour
         }
 
     }
+
+    public int MyProperty { get; set; }
+    public float MyProperty2 { get; set; }
+
 
 }
