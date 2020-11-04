@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Harpoon : Projectile
 {
-    //[HideInInspector] public int enemiesToPierce;
-    [HideInInspector] public ProjectileDamage owner;
-
     private int enemiesPierced = 0;
 
-    public virtual void Init() { }
+    public override void Init() { }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         HarpoonGun harpoonGun = (HarpoonGun)owner.projectileWeapon;
 
@@ -27,4 +24,5 @@ public class Projectile : MonoBehaviour
             enemyHealth.TakeDamage(Random.Range(owner.projectileWeapon.GetMinWeaponDamage(), owner.projectileWeapon.GetMaxWeaponDamage()));
         }
     }
+
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Cannonball : Projectile
 {
-    // Empty to override behavior from Projectile.cs
-    protected override void OnTriggerEnter(Collider other) { }
 
     public override void Init()
     {
