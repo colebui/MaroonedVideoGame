@@ -7,12 +7,12 @@ public class ProjectileDamage : DamageType
     [SerializeField] GameObject projectileToSpawn;
     [SerializeField] Transform spawnLocation;
 
-    public HarpoonGun harpoonGun { get; private set; }
+    public ProjectileWeapon projectileWeapon { get; private set; }
 
     protected override void Start()
     {
         base.Start();
-        harpoonGun = GetComponent<HarpoonGun>();
+        projectileWeapon = GetComponent<ProjectileWeapon>();
     }
 
     public void LaunchProjectile()
@@ -34,7 +34,8 @@ public class ProjectileDamage : DamageType
 
         GameObject projectile = Instantiate(projectileToSpawn, spawnLocation.position, spawnLocation.rotation);
         projectile.GetComponent<Projectile>().owner = this;
-        projectile.GetComponent<Rigidbody>().velocity = (destination - spawnLocation.position).normalized * harpoonGun.projectileVelocity;
+        projectile.GetComponent<Projectile>().Init();
+        projectile.GetComponent<Rigidbody>().velocity = (destination - spawnLocation.position).normalized * projectileWeapon.projectileVelocity;
         //projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward.normalized * harpoonGun.projectileVelocity;
         //projectile.GetComponent<Rigidbody>().AddForce(Vector3.forward * harpoonGun.projectileVelocity);
     }

@@ -26,7 +26,7 @@ public class TestWeaponPickup : MonoBehaviour {
                 // TODO: Set these up once those weapons are actually made
                 break;
             case PowerWeaponType.HarpoonGun:
-                FindObjectOfType<HarpoonGun>().AddPowerWeapon();
+                FindObjectOfType<ProjectileWeapon>().AddPowerWeapon();
                 break;
         }
 

@@ -9,11 +9,13 @@ public class Projectile : MonoBehaviour
 
     private int enemiesPierced = 0;
 
-    // TODO: Fuck rigidbodies, make your own goddamn gravity if that's all you need
+    public virtual void Init() { }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if(enemiesPierced >= owner.harpoonGun.enemiesToPierce) { return; }
+        HarpoonGun harpoonGun = (HarpoonGun)owner.projectileWeapon;
+
+        if(enemiesPierced >= harpoonGun.enemiesToPierce) { return; }
 
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
@@ -22,7 +24,7 @@ public class Projectile : MonoBehaviour
             Debug.Log("Hit enemy!!");
             owner.CallOnHitRegistered();
             enemiesPierced++;
-            enemyHealth.TakeDamage(Random.Range(owner.harpoonGun.GetMinWeaponDamage(), owner.harpoonGun.GetMaxWeaponDamage()));
+            enemyHealth.TakeDamage(Random.Range(owner.projectileWeapon.GetMinWeaponDamage(), owner.projectileWeapon.GetMaxWeaponDamage()));
         }
     }
 }
