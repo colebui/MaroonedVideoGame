@@ -79,8 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1
   attackButtonName: Pow3
-  minWeaponDamage: 20
-  maxWeaponDamage: 20
+  minWeaponDamage: 100
+  maxWeaponDamage: 100
   canSwitchDuringCooldown: 1
   weaponAttackParticles: {fileID: 0}
   weaponAttackSound: {fileID: 0}
@@ -88,8 +88,8 @@ MonoBehaviour:
   weaponReloadSound: {fileID: 0}
   weaponReloadClip: {fileID: 0}
   powerWeaponType: 2
-  ATTACK_TRIGGER_NAME: 
-  projectileVelocity: 5
+  ATTACK_TRIGGER_NAME: Attack
+  projectileVelocity: 20
   bombFuse: 2
   bombRadius: 3
 --- !u!114 &5622359275034242469

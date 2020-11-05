@@ -2974,6 +2974,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3120079162787686747, guid: d3004ceb247848145bb8c7127b8ec6a9,
         type: 3}
+    - target: {fileID: 3815675882617369195, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: projectileVelocity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5536546144892583149, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: enemiesToPierce
