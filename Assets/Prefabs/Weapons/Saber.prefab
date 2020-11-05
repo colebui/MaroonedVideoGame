@@ -60,7 +60,6 @@ MonoBehaviour:
   weaponAttackClip: {fileID: 8300000, guid: 5521d8e1f86e4de4a831a4647182d272, type: 3}
   weaponReloadSound: {fileID: 0}
   weaponReloadClip: {fileID: 0}
-  timeSinceAttacking: 0
   swingAnimation: {fileID: 7400000, guid: 1c69dd6ef28cb4e4ba1799fc1e14f9b2, type: 2}
 --- !u!114 &3292656472881535030
 MonoBehaviour:
@@ -397,11 +396,21 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4265338650084452101, guid: da0fba04e7328054c841ee901fa43d5f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3db0413be1add5646a235b8bb68df0d9, type: 2}
     - target: {fileID: -425565630206218756, guid: da0fba04e7328054c841ee901fa43d5f,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -425565630206218756, guid: da0fba04e7328054c841ee901fa43d5f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3db0413be1add5646a235b8bb68df0d9, type: 2}
     - target: {fileID: 919132149155446097, guid: da0fba04e7328054c841ee901fa43d5f,
         type: 3}
       propertyPath: m_Name
@@ -412,11 +421,21 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2586607309129781981, guid: da0fba04e7328054c841ee901fa43d5f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b7d5d8e968034bc40b1656c745e82b0a, type: 2}
     - target: {fileID: 3566390031902043909, guid: da0fba04e7328054c841ee901fa43d5f,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566390031902043909, guid: da0fba04e7328054c841ee901fa43d5f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 234dc31b340408c46bb59f7b8fa96943, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0fba04e7328054c841ee901fa43d5f, type: 3}
 --- !u!4 &6466113630356750850 stripped

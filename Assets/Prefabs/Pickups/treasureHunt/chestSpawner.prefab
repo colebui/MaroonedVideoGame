@@ -395,6 +395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ammoChest
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d164a63c0104b741af43ce5368e04af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d164a63c0104b741af43ce5368e04af, type: 3}
 --- !u!4 &543450653574827203 stripped
@@ -485,6 +490,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: blunderbussChest
       objectReference: {fileID: 0}
+    - target: {fileID: 3260516736377909941, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e7c1259c1e954741a6f275611c8ad34, type: 2}
+    - target: {fileID: 5068254197120755687, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
+    - target: {fileID: 7464414915767744993, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
+    - target: {fileID: 7464414915767744993, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
+    - target: {fileID: 7464414915767744993, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18670b792e924e74f8abc6938201a5f3, type: 2}
+    - target: {fileID: 7464414915767744993, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18670b792e924e74f8abc6938201a5f3, type: 2}
+    - target: {fileID: 7464414915767744993, guid: 0008c2ab98c0d054e8e08eb21fae3e61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e7c1259c1e954741a6f275611c8ad34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0008c2ab98c0d054e8e08eb21fae3e61, type: 3}
 --- !u!4 &543450652083661752 stripped
@@ -575,6 +615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: coinChest
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54fc0ea71de7ec848ab7689dd54f3ca4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54fc0ea71de7ec848ab7689dd54f3ca4, type: 3}
 --- !u!4 &543450652043958522 stripped
@@ -664,6 +709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: speargunChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a78bf0d3f98a90d4798b4fce2d6e0511,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78bf0d3f98a90d4798b4fce2d6e0511, type: 3}
