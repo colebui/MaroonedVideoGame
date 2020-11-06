@@ -799,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2768385b8cc53094389760cd62c259a6,
         type: 3}
       propertyPath: m_Name
-      value: coinsChest
+      value: coinChest
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2768385b8cc53094389760cd62c259a6,
         type: 3}
