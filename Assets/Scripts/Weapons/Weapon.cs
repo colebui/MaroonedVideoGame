@@ -15,8 +15,8 @@ abstract public class Weapon : MonoBehaviour {
     [SerializeField] private bool canSwitchDuringCooldown = false;
 
     [SerializeField] protected ParticleSystem weaponAttackParticles;
-    [SerializeField] AudioSource weaponAttackSound;
-    [SerializeField] AudioClip weaponAttackClip;
+    [SerializeField] protected AudioSource weaponAttackSound;
+    [SerializeField] protected AudioClip weaponAttackClip;
 
     [SerializeField] AudioSource weaponReloadSound;
     [SerializeField] AudioClip weaponReloadClip;

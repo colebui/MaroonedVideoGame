@@ -28,6 +28,12 @@ abstract public class PowerWeapon : Weapon {
 
         attackFinished = false;
 
+        // Overriding behavior for power weapons
+        if(weaponAttackSound != null)
+        {
+            weaponAttackSound.Stop();
+        }
+
         // Start animation
         if(animator != null)
         {
@@ -36,7 +42,14 @@ abstract public class PowerWeapon : Weapon {
     }
 
     // Is called by an animation event to actually do the damage and stuff
-    protected abstract void LaunchAttack();
+    protected virtual void LaunchAttack()
+    {
+        // Play the sound for attacking here
+        if(weaponAttackSound != null)
+        {
+            weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
+        }
+    }
 
     // Is called by animation event to finish the attack up
     protected virtual void FinishPowerWeaponAttack() {

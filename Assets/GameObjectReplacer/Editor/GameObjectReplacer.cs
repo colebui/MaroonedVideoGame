@@ -99,7 +99,7 @@ namespace GOReplacer
 					newGameObject = PrefabUtility.InstantiatePrefab(GameObjectReplacement) as GameObject;
 					break;
 				case "None":
-					newGameObject = GameObject.Instantiate(GameObjectReplacement) as GameObject;
+					newGameObject = Instantiate(GameObjectReplacement);
 					newGameObject.name = GameObjectReplacement.name;
                     break;
 				}
