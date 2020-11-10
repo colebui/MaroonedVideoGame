@@ -134,8 +134,8 @@ public class TreasureHuntMain : MonoBehaviour
             FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.blunderbuss);
             firstCoins = true;
         }
-        else if (chestType == 1) { 
-            //power weapon 1
+        else if (chestType == 1) {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.harpoonGun);
         }
 
         numberOfCompleted++;

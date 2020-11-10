@@ -118,7 +118,7 @@ PrefabInstance:
     - target: {fileID: 677172097425464394, guid: a01866e3184f20447bbd41c04f6a8e52,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1415047714377969473, guid: a01866e3184f20447bbd41c04f6a8e52,
         type: 3}
@@ -919,6 +919,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598458607573229430, guid: 7a6b7a3eb8a787a47ac9bf83a3738af0,
+        type: 3}
+      propertyPath: tooltipType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 948826273989655163, guid: 7a6b7a3eb8a787a47ac9bf83a3738af0,
         type: 3}

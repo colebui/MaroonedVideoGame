@@ -30,6 +30,8 @@ public class Blunderbuss : PowerWeapon {
 
     protected override void LaunchAttack() {
 
+        base.LaunchAttack();
+
         weaponAttackParticles.Play();
         weaponAttackParticles.transform.parent = null;
 
