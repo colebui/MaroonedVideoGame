@@ -14,7 +14,7 @@ public class chestSpawner : MonoBehaviour
     static AudioClip bluderbussUnlocked;
     static AudioClip speargunUnlocked;
     int chestType;
-    // 0 = null, 1 = power weapon 1; 2 = power weapon 2; 3 = points; 4 = ammo
+    // 0 = null, 1 = power weapon 1; 2 = power weapon 2; 3 = points; 4 = ammo; 5 = power weapon 3
     void Start()
     {
         chestType = 0;
@@ -54,8 +54,13 @@ public class chestSpawner : MonoBehaviour
         {
             gameObject.transform.Find("coinChest").gameObject.SetActive(io);
         }
-        else if (type == 4) {
+        else if (type == 4)
+        {
             gameObject.transform.Find("ammoChest").gameObject.SetActive(io);
+        }
+        else if (type == 5) {
+            //will have a cannon chest eventually. 
+            gameObject.transform.Find("blunderbussChest").gameObject.SetActive(io);
         }
 
         //Layering for x marks the spot and chest icon based on location
@@ -130,6 +135,10 @@ public class chestSpawner : MonoBehaviour
                 foundSound.PlayOneShot(ammoFound, 2f);
                 Pistol.AddAmmo(20);
                 Debug.Log("Picked up ammo \n");
+            }
+            else if (chestType == 5) {
+                foundSound.PlayOneShot(foundClip, 0.5f);
+                Debug.Log("Picked up cannon\n");
             }
             else
             {
