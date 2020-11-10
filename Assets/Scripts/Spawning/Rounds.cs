@@ -27,6 +27,7 @@ public class Rounds : MonoBehaviour
     private int roundCheck = 0;
 
     public List<GameObject> enemysAlive = new List<GameObject>();
+    Shop moneyStuff;
 
     // Used to update the round countdown
     public static Action<int> OnCountdownChanged;
@@ -37,6 +38,7 @@ public class Rounds : MonoBehaviour
     {
         //spawners.AddRange(GameObject.FindGameObjectsWithTag("Spawner"));
         spawners = FindObjectsOfType<Spawner>();
+        moneyStuff = FindObjectOfType<Shop>();
         Debug.Log("got all spawners: " + spawners.Length);
         enemysAlive.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         //newRound();
@@ -111,6 +113,7 @@ public class Rounds : MonoBehaviour
 
         FindObjectOfType<TreasureHuntMain>().roll();
         GameLogic.Instance.addScore(roundPayout);
+        moneyStuff.AddMoney(roundPayout);
         roundNum++;
         Debug.Log("Round number " + roundNum);
 
@@ -149,21 +152,42 @@ public class Rounds : MonoBehaviour
 
         Vector3 playerPos = GameObject.FindWithTag("MainCamera").transform.position;
         float distance = 0;
-        Spawner[] returns = new Spawner[2];
-        float[] returnsDistance = { float.MaxValue, float.MaxValue };
+        Spawner[] spawnHold = new Spawner[3];
+        Spawner[] sends = new Spawner[2];
+        float[] returnsDistance = { float.MaxValue, float.MaxValue, float.MaxValue };
         for (int i = 0; i < spawners.Length; i++)
         {
-            distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            if(playerPos.y >= spawners[i].transform.position.y - 10 && playerPos.y <= spawners[i].transform.position.y + 12)
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position);
+            }
+            else
+            {
+                distance = Vector3.Distance(playerPos, spawners[i].transform.position) * 5;
+            }
+                
             float maximum = Mathf.Max(returnsDistance);
             if (maximum > distance)
             {
                 // Found a closer spawn, update
-                returns[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
+                spawnHold[Array.IndexOf(returnsDistance, maximum)] = spawners[i];
                 returnsDistance[Array.IndexOf(returnsDistance, maximum)] = distance;
             }
         }
-        return returns;
+        float minimum = Mathf.Min(returnsDistance);
+        int j = 0;
+        for (int i = 0; i < spawnHold.Length; i++)
+        {
+            if(Array.IndexOf(returnsDistance, minimum) != i)
+            {
+                sends[j] = spawnHold[i];
+                j++;
+            }
+            
+        }
+        return sends;
     }
+
     void calculateEnemyAmount()
     {
         newEnemyCount = (int)(Mathf.Ceil(Mathf.Floor(80.0f * Mathf.Pow(1.02f, roundNum)) - 78.0f) / 2) + 1;

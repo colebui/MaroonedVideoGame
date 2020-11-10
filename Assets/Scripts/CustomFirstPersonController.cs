@@ -35,7 +35,7 @@ public class CustomFirstPersonController : MonoBehaviour {
     [SerializeField] float currentStamina = 100;
     [SerializeField] float staminaUsePerSecond = 40;
     [SerializeField] float staminaRecoveryDelay = 1;
-    [SerializeField] float staminaRecoveryPerSecond = 50;
+    [SerializeField] float staminaRecoveryPerSecond = 20;
     private float timeSinceSprinting = 0;
 
     private Camera m_Camera;

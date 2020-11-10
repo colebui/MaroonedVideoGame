@@ -12,6 +12,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Buy Menu started");
         BuyMenuContainer.SetActive(false);
         UpgradesContainer.SetActive(false);
         PlayerBuyMenu.SetActive(false);

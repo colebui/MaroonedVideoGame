@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shop : MonoSingleton<Shop> {
+public class Shop : MonoBehaviour {
     static int UPGRADE_COST = 1000;
     //objects
-    CustomFirstPersonController FPController = FindObjectOfType<CustomFirstPersonController>();
-    PlayerHealth healthGO = FindObjectOfType<PlayerHealth>();
-    Pistol pistolGO = FindObjectOfType<Pistol>();
-    Saber saberGO = FindObjectOfType<Saber>();
-    Blunderbuss blunderbussGO = FindObjectOfType<Blunderbuss>();
+    CustomFirstPersonController FPController;
+    PlayerHealth healthGO;
+    Pistol pistolGO;
+    Saber saberGO;
+    Blunderbuss blunderbussGO;
 
             //levels
     //player
@@ -31,16 +31,16 @@ public class Shop : MonoSingleton<Shop> {
     int blunderFRLevel = 0;
     //harpoon
     //ints
-    int money = 0;
+    int money = 99990;//CHANGE THIS TO 0
     [SerializeField] GameObject moneyText;
 
     //serialized fields
     //player
-    [SerializeField] int maxHealthAdd = 10;
-    [SerializeField] float regenTimerReduc = 0.01f;
-    [SerializeField] float healthRegenPerSec = 0.10f;
-    [SerializeField] int staminaAdd = 10;
-    [SerializeField] float staminaRecDec = 0.10f;
+    [SerializeField] float maxHealthAdd = 10;
+    [SerializeField] float regenTimerReduc = 0.15f;
+    [SerializeField] float healthRegenPerSec = 0.4f;
+    [SerializeField] int staminaAdd = 8;
+    [SerializeField] float staminaRecoveryAdd = 2.0f;
     //pistol
     [SerializeField] int pistolUpDamage = 8;
     [SerializeField] float pistolReduceFireRate = 0.05f;
@@ -55,7 +55,16 @@ public class Shop : MonoSingleton<Shop> {
 
     // Start is called before the first frame update
     void Start() {
-        
+        FPController = FindObjectOfType<CustomFirstPersonController>();
+        healthGO = FindObjectOfType<PlayerHealth>();
+        pistolGO = FindObjectOfType<Pistol>();
+        saberGO = FindObjectOfType<Saber>();
+        blunderbussGO = FindObjectOfType<Blunderbuss>();
+
+    }
+
+    public int get_UPGRADE_COST() {
+        return UPGRADE_COST;
     }
 
     private void OnEnable() {//setActive(true) https://www.youtube.com/watch?v=OD-p1eMsyrU&ab_channel=Unity
@@ -68,7 +77,12 @@ public class Shop : MonoSingleton<Shop> {
     public void AddMoney(int amount) {
         //austin
         money += amount;
-        moneyText.GetComponent<Text>().text = "$ " + money;
+        moneyText.GetComponent<Text>().text = "$" + money;
+        
+        /*try { moneyText.GetComponent<Text>().text = "$ " + money; }
+        catch(Exception exception) {
+            Debug.Log(exception);
+        }*/
     }
 
     private void RemoveMoney() {
@@ -77,21 +91,22 @@ public class Shop : MonoSingleton<Shop> {
         if(money >= UPGRADE_COST)
         {
             money -= UPGRADE_COST;
+            moneyText.GetComponent<Text>().text = "$ " + money;
             return;
         }
         else
         {
             throw new Exception("RemoveMoney() broke: Your broke! get some more money you piece of poop");
         }
-        moneyText.GetComponent<Text>().text = "$ " + money;
     }
+
 
     public void HPIncrease()
     {
         Debug.Log("HPIncrease() called");
         try
         {
-            if (HPLevel <= 20)
+            if (HPLevel < 20)
             {
                 try
                 {
@@ -102,12 +117,15 @@ public class Shop : MonoSingleton<Shop> {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
                 }
                 HPLevel++;
-                GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades")
-                    .GetComponentInChildren<CurrentUpgradeVisual>()
-                    .updateLevelsVisualList(HPLevel);
-
-                healthGO.SetMaxHealth(healthGO.GetMaxHealth() + maxHealthAdd);
+                //Debug.Log(player.transform.GetComponent<Health>().);
+                healthGO.SetMaxHealth( (float)Math.Round((healthGO.GetMaxHealth() + maxHealthAdd + float.Epsilon) *100)/100);
+                //player.transform.GetComponent<PlayerHealth>().SetMaxHealth(healthGO.GetMaxHealth() + maxHealthAdd);
+                //GameObject.Find("Player").GetComponent<PlayerHealth>().SetMaxHealth(healthGO.GetMaxHealth() + maxHealthAdd);
+                //Debug.Log("max hp:" + GameObject.Find("Player").GetComponent<PlayerHealth>().GetMaxHealth());
                 Debug.Log("max hp:" + healthGO.GetMaxHealth());
+                GameObject.Find("HealthContainer/UpgradeInfo")
+                    .GetComponentInChildren<CurrentUpgradeVisual>()
+                    .updateMaxHPVisuals(HPLevel, healthGO.GetMaxHealth(), UPGRADE_COST);//.updateLevelsVisualList(HPLevel);
             }
             else {
                 Debug.Log("You are max level");
@@ -119,11 +137,12 @@ public class Shop : MonoSingleton<Shop> {
         }
     }
 
-    void HPDelayDecrease()
+    public void HPDelayDecrease()
     {
+
         try
         {
-            if (HPDelayLevel <= 20)
+            if (HPDelayLevel < 20)
             {
                 try
                 {
@@ -135,6 +154,11 @@ public class Shop : MonoSingleton<Shop> {
                 }
                 HPDelayLevel++;
                 healthGO.SetHealthRegenTimer(healthGO.GetHealthRegenTimer() - regenTimerReduc);
+                Debug.Log("hp delay lowered by:" + regenTimerReduc);
+                Debug.Log("hp delay:" + healthGO.GetHealthRegenTimer());
+                GameObject.Find("HPDelayLevelContainer/UpgradeInfo")
+                    .GetComponentInChildren<HPDelayUpgradeVisuals>()
+                    .updateHPDelayVisuals(HPDelayLevel, healthGO.GetHealthRegenTimer(), UPGRADE_COST);
             }
         }
         catch (Exception exception)
@@ -144,11 +168,12 @@ public class Shop : MonoSingleton<Shop> {
         }
     }
 
-    void HPRegenIncrease()
+    public void HPRegenIncrease()
     {
+        Debug.Log("HPRegenIncrease() called");
         try
         {
-            if (HPRegenLevel <= 20)
+            if (HPRegenLevel < 20)
             {
                 try
                 {
@@ -161,6 +186,9 @@ public class Shop : MonoSingleton<Shop> {
 
                 HPRegenLevel++;
                 healthGO.SetHealthRegenPerSecond(healthGO.GetHealthRegenPerSecond() + healthRegenPerSec);
+                GameObject.Find("HPRegenContainer/UpgradeInfo")
+                        .GetComponentInChildren<HPRegenUpgradeVisuals>()
+                        .updateHPDelayVisuals(HPRegenLevel, healthGO.GetHealthRegenPerSecond(), UPGRADE_COST);
             }
         }
 
@@ -171,11 +199,11 @@ public class Shop : MonoSingleton<Shop> {
 
     }
 
-    void MaxStaminaIncrease()
+    public void MaxStaminaIncrease()
     {
         try
         {
-            if (MaxStaminaLevel <= 20)
+            if (MaxStaminaLevel < 20)
             {
                 try
                 {
@@ -188,6 +216,9 @@ public class Shop : MonoSingleton<Shop> {
 
                 MaxStaminaLevel++;
                 FPController.SetMaxStamina(FPController.GetMaxStamina() + staminaAdd);
+                GameObject.Find("MaxStaminaContainer/UpgradeInfo")
+                    .GetComponentInChildren<MaxStaminaUpgradeVisuals>()
+                    .updateStaminaVisuals(MaxStaminaLevel, FPController.GetMaxStamina(), UPGRADE_COST);
             }
         }
         catch (Exception exception)
@@ -196,19 +227,22 @@ public class Shop : MonoSingleton<Shop> {
         }
     }
 
-    void StaminaRecoveryIncrease()
+    public void StaminaRecoveryIncrease()
     {
-        if(staminaRecLevel <= 20) { 
+        if(staminaRecLevel < 20) { 
             try
             {
                 RemoveMoney();
-                staminaRecLevel++;
-                FPController.SetStaminaRecoveryPerSecond(FPController.GetStaminaRecoveryPerSecond() - staminaRecDec);
             }
             catch (Exception exception)
             {
                 Debug.Log("RemoveMoney() from MoveSpeedIncrease() returned exception: " + exception);
             }
+            staminaRecLevel++;
+            FPController.SetStaminaRecoveryPerSecond(FPController.GetStaminaRecoveryPerSecond() + staminaRecoveryAdd);
+            GameObject.Find("StaminaRecoveryContainer/UpgradeInfo")
+                .GetComponentInChildren<StaminaRecoveryUpgradeVisuals>()
+                .updateStaminaRecoveryVisuals(staminaRecLevel, FPController.GetStaminaRecoveryPerSecond(), UPGRADE_COST);
         }
         
     }
