@@ -396,7 +396,8 @@ AudioSource:
   m_GameObject: {fileID: 1909366712}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8268138979737632478, guid: 7c7822ef1bf686e49b3b0a55a8ba3008,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1339,7 +1340,7 @@ PrefabInstance:
     - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
       propertyPath: timeBetweenAttacks
-      value: 4
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 855087182061991582, guid: 842e743fe030774438d63b4828861c93,
         type: 3}
@@ -1665,7 +1666,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.024
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 999875344332609170, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e,
+        type: 3}
+      propertyPath: weaponAttackSound
+      value: 
+      objectReference: {fileID: 259853815}
+    m_RemovedComponents:
+    - {fileID: 3232189662957793514, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e, type: 3}
 --- !u!4 &8847852661068239861 stripped
 Transform:

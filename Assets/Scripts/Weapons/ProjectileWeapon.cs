@@ -14,6 +14,8 @@ public class ProjectileWeapon : PowerWeapon
     }
     protected override void LaunchAttack()
     {
+        base.LaunchAttack();
+
         projectileDamage.LaunchProjectile();
     }
 }
