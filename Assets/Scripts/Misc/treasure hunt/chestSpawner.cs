@@ -60,7 +60,7 @@ public class chestSpawner : MonoBehaviour
         }
         else if (type == 5) {
             //will have a cannon chest eventually. 
-            gameObject.transform.Find("blunderbussChest").gameObject.SetActive(io);
+            gameObject.transform.Find("cannonChest").gameObject.SetActive(io);
         }
 
         //Layering for x marks the spot and chest icon based on location
