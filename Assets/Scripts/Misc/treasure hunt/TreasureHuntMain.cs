@@ -20,6 +20,7 @@ public class TreasureHuntMain : MonoBehaviour
     [SerializeField] int ammoFrequency; // How often to get a ammo chest (vs coins) 1/n
     [SerializeField] int chestsToGetPW1;
     [SerializeField] int chestsToGetPW2;
+    [SerializeField] int chestsToGetPW3;
 
     [SerializeField] AudioSource mapSound;
     [SerializeField] AudioClip mapClip;
@@ -69,13 +70,13 @@ public class TreasureHuntMain : MonoBehaviour
         }
         activeChest = true;
         //Make the chest
-        if (numberOfCompleted == chestsToGetPW1 || numberOfCompleted == chestsToGetPW2)
+        if (numberOfCompleted == chestsToGetPW1 || numberOfCompleted == chestsToGetPW2 || numberOfCompleted == chestsToGetPW3)
         {
             GameObject chestSpawners = GameObject.Find("ChestSpawners");
             if (numberOfCompleted == chestsToGetPW1)
             {
                 chestSpawners.transform.Find("speargunSpawner").GetComponent<chestSpawner>().setState(1);
-                currentChest = chestSpawners.transform.Find("speargunSpawner").gameObject; 
+                currentChest = chestSpawners.transform.Find("speargunSpawner").gameObject;
                 Debug.Log("You got a power weapon 1 map\n");
             }
             else if (numberOfCompleted == chestsToGetPW2)
@@ -83,6 +84,12 @@ public class TreasureHuntMain : MonoBehaviour
                 chestSpawners.transform.Find("blunderbussSpawner").GetComponent<chestSpawner>().setState(2);
                 currentChest = chestSpawners.transform.Find("blunderbussSpawner").gameObject;
                 Debug.Log("You got a power weapon 2 map\n");
+            }
+            else if (numberOfCompleted == chestsToGetPW3)
+            {
+                chestSpawners.transform.Find("handCannonSpawner").GetComponent<chestSpawner>().setState(5);
+                currentChest = chestSpawners.transform.Find("handCannonSpawner").gameObject;
+                Debug.Log("You got a power weapon 3 map\n");
             }
         }
         else
