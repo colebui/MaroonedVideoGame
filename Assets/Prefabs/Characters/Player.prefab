@@ -1439,6 +1439,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1228505872}
     m_Modifications:
+    - target: {fileID: 2892842089516264188, guid: de532d7215b929645ad2905569f54f35,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7102044614029666628, guid: de532d7215b929645ad2905569f54f35,
         type: 3}
       propertyPath: m_Name
@@ -1671,6 +1676,11 @@ PrefabInstance:
       propertyPath: weaponAttackSound
       value: 
       objectReference: {fileID: 259853815}
+    - target: {fileID: 999875344332609170, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3232189662957793514, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70c8ca9e0fb285f4fa1be0c409bebd8e, type: 3}
@@ -1691,6 +1701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HarpoonGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835900009165567784, guid: ef5c30d90cbc8c048a71d9140b181490,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6087950920861130031, guid: ef5c30d90cbc8c048a71d9140b181490,
         type: 3}
