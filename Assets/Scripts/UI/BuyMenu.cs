@@ -12,6 +12,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Buy Menu started");
         BuyMenuContainer.SetActive(false);
         UpgradesContainer.SetActive(false);
         PlayerBuyMenu.SetActive(false);
@@ -21,11 +22,13 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) {//delete this later testing
+        if (Input.GetKeyDown(KeyCode.B)) {//delete this later testing
             if (!menuOpen) {
+                menuOpen = true;
                 OpenMainBuyMenu();
             }
             else {
+                menuOpen = false;
                 CloseAllMenus();
             }
             
@@ -44,9 +47,14 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         Debug.Log("OpenPlayerBuyMenu()");
         UpgradesContainer.SetActive(false);
         PlayerBuyMenu.SetActive(true);
+        //Debug.Log("gameobject: "+GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades"));
+        //GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades")
+            //.GetComponentInChildren<CurrentUpgradeVisual>()
+            //.initializeLevelsVisuals();
     }
 
     public void CloseAllMenus() {
+        Debug.Log("CloseMainBuyMenu()");
         PlayerBuyMenu.SetActive(false);
         UpgradesContainer.SetActive(false);
         BuyMenuContainer.SetActive(false);
@@ -54,13 +62,16 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     }
 
     private void allowCursorMovement() {
-        Debug.Log("allowcursor()");
+        Debug.Log("allowCursor()");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        PauseMenu.Instance.PauseGame();
     }
 
     private void stopCursorMovement() {
+        Debug.Log("stopCursor()");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PauseMenu.Instance.ResumeGame();
     }
 }
