@@ -89,7 +89,7 @@ public class TreasureHuntMain : MonoBehaviour
             {
                 chestSpawners.transform.Find("handCannonSpawner").GetComponent<chestSpawner>().setState(5);
                 currentChest = chestSpawners.transform.Find("handCannonSpawner").gameObject;
-                Debug.Log("You got a power weapon 3 map\n");
+                Debug.Log("You got a power weapon 3  map\n");
             }
         }
         else
@@ -136,10 +136,13 @@ public class TreasureHuntMain : MonoBehaviour
             FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.coinsChest);
             firstCoins = true;
         }
+        else if (chestType == 5)
+        {
+            FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.cannon);
+        }
         else if (chestType == 2)
         {
             FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.blunderbuss);
-            firstCoins = true;
         }
         else if (chestType == 1) {
             FindObjectOfType<TooltipManager>().LoadTooltip(TooltipManager.TooltipTypes.harpoonGun);
