@@ -3011,6 +3011,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3120079162787686747, guid: d3004ceb247848145bb8c7127b8ec6a9,
         type: 3}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8949999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.46812358
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.46793038
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.53015727
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5299385
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567003023288249489, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.024
+      objectReference: {fileID: 0}
     - target: {fileID: 2818730678550562454, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: timeBetweenAttacks
@@ -3019,7 +3059,7 @@ PrefabInstance:
     - target: {fileID: 3815675882617369195, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}
       propertyPath: projectileVelocity
-      value: 10
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 3815675882617369195, guid: 4f9cf5e1f09907044bc6464e1467f9ee,
         type: 3}

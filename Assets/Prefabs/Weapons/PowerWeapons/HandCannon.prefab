@@ -89,7 +89,7 @@ MonoBehaviour:
   weaponReloadClip: {fileID: 0}
   powerWeaponType: 2
   ATTACK_TRIGGER_NAME: Attack
-  projectileVelocity: 20
+  projectileVelocity: 12.5
   bombFuse: 1
   bombRadius: 3
 --- !u!114 &5622359275034242469
