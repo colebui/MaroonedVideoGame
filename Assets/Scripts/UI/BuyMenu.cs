@@ -7,6 +7,13 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     [SerializeField] GameObject BuyMenuContainer;
     [SerializeField] GameObject UpgradesContainer;
     [SerializeField] GameObject PlayerBuyMenu;
+    [SerializeField] GameObject SaberBuyMenu;
+    [SerializeField] GameObject PistolBuyMenu;
+    [SerializeField] GameObject BlunderbussBuyMenu;
+
+    [SerializeField] GameObject moneyText;
+    [SerializeField] GameObject moneyTextInBuy;
+    
 
     bool menuOpen = false;
     // Start is called before the first frame update
@@ -16,7 +23,9 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         BuyMenuContainer.SetActive(false);
         UpgradesContainer.SetActive(false);
         PlayerBuyMenu.SetActive(false);
-        
+        SaberBuyMenu.SetActive(false);
+        PistolBuyMenu.SetActive(false);
+        BlunderbussBuyMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +49,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         allowCursorMovement();
         BuyMenuContainer.SetActive(true);
         UpgradesContainer.SetActive(true);
+        moneyText.SetActive(false);
     }
 
 
@@ -53,11 +63,32 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
             //.initializeLevelsVisuals();
     }
 
+    public void OpenSaberBuyMenu() {
+        Debug.Log("OpenSaberBuyMenu()");
+        UpgradesContainer.SetActive(false);
+        SaberBuyMenu.SetActive(true);
+    }
+    public void OpenPistolBuyMenu() {
+        Debug.Log("OpenSaberBuyMenu()");
+        UpgradesContainer.SetActive(false);
+        PistolBuyMenu.SetActive(true);
+    }
+
+    public void OpenBlunderbussBuyMenu() {
+        Debug.Log("OpenSaberBuyMenu()");
+        UpgradesContainer.SetActive(false);
+        BlunderbussBuyMenu.SetActive(true);
+    }
+
     public void CloseAllMenus() {
         Debug.Log("CloseMainBuyMenu()");
         PlayerBuyMenu.SetActive(false);
         UpgradesContainer.SetActive(false);
         BuyMenuContainer.SetActive(false);
+        SaberBuyMenu.SetActive(false);
+        PistolBuyMenu.SetActive(false);
+        moneyText.SetActive(true);
+        BlunderbussBuyMenu.SetActive(false);
         stopCursorMovement();
     }
 

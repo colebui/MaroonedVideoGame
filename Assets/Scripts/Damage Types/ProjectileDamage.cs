@@ -17,7 +17,6 @@ public class ProjectileDamage : DamageType
 
     public void LaunchProjectile()
     {
-
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
         RaycastHit hit;
 

@@ -23,9 +23,14 @@ abstract public class DamageType : MonoBehaviour {
         maxWeaponDamage = weapon.GetMaxWeaponDamage();
     }
 
+    public void updateWeaponDamage() {
+        minWeaponDamage = weapon.GetMinWeaponDamage();
+        maxWeaponDamage = weapon.GetMaxWeaponDamage();
+    }
+
     public void CallOnHitRegistered()
     {
-        if(OnHitRegistered != null)
+        if (OnHitRegistered != null)
         {
             OnHitRegistered();
         }
