@@ -95,7 +95,7 @@ public class MeleeDamage : DamageType {
             enemiesHitThisSwing.Add(target);
 
             //hitboxActive = false;
-
+            updateWeaponDamage();
             float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 

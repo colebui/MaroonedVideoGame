@@ -29,7 +29,7 @@ public class ShotgunHitscanDamage : HitscanDamage
 
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if(target == null) { return; } // protects against null reference
-
+            updateWeaponDamage();
             float damageToDeal = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage); // Simple damage spread
             Debug.Log("Deal " + damageToDeal + " damage to " + target.transform.name);
 

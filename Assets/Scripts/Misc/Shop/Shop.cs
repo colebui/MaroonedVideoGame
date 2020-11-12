@@ -31,8 +31,9 @@ public class Shop : MonoBehaviour {
     int blunderFRLevel = 0;
     //harpoon
     //ints
-    int money = 99990;//CHANGE THIS TO 0
+    int money = 50000;//CHANGE THIS TO 0
     [SerializeField] GameObject moneyText;
+    [SerializeField] GameObject moneyTextInBuy;
 
     //serialized fields
     //player
@@ -49,7 +50,7 @@ public class Shop : MonoBehaviour {
     [SerializeField] int saberUpDamage = 10;
     //blunderbuss
     [SerializeField] int blunderUpDamage = 8;
-    [SerializeField] float blunderReduceFireRate = 0.05f;
+    [SerializeField] float blunderReduceFireRate = 0.15f;
     //harpoon
 
 
@@ -78,7 +79,7 @@ public class Shop : MonoBehaviour {
         //austin
         money += amount;
         moneyText.GetComponent<Text>().text = "$" + money;
-        
+        moneyTextInBuy.GetComponent<Text>().text = "$ " + money;
         /*try { moneyText.GetComponent<Text>().text = "$ " + money; }
         catch(Exception exception) {
             Debug.Log(exception);
@@ -92,6 +93,7 @@ public class Shop : MonoBehaviour {
         {
             money -= UPGRADE_COST;
             moneyText.GetComponent<Text>().text = "$ " + money;
+            moneyTextInBuy.GetComponent<Text>().text = "$ " + money;
             return;
         }
         else
@@ -115,6 +117,7 @@ public class Shop : MonoBehaviour {
                 catch (Exception exception)
                 {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
                 }
                 HPLevel++;
                 //Debug.Log(player.transform.GetComponent<Health>().);
@@ -134,6 +137,7 @@ public class Shop : MonoBehaviour {
         catch (Exception exception)
         {
             Debug.Log("RemoveMoney() from HPIncrease() returned exception: " + exception);
+            return;
         }
     }
 
@@ -151,6 +155,7 @@ public class Shop : MonoBehaviour {
                 catch (Exception exception)
                 {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
                 }
                 HPDelayLevel++;
                 healthGO.SetHealthRegenTimer(healthGO.GetHealthRegenTimer() - regenTimerReduc);
@@ -164,7 +169,7 @@ public class Shop : MonoBehaviour {
         catch (Exception exception)
         {
             Debug.Log("RemoveMoney() from HPDelayDecrease() returned exception: " + exception);
-
+            return;
         }
     }
 
@@ -182,6 +187,7 @@ public class Shop : MonoBehaviour {
                 catch (Exception exception)
                 {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
                 }
 
                 HPRegenLevel++;
@@ -195,6 +201,7 @@ public class Shop : MonoBehaviour {
         catch (Exception exception)
         {
             Debug.Log("RemoveMoney() from HPRegenIncrease() returned exception: " + exception);
+            return;
         }
 
     }
@@ -212,6 +219,7 @@ public class Shop : MonoBehaviour {
                 catch (Exception exception)
                 {
                     Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
                 }
 
                 MaxStaminaLevel++;
@@ -224,6 +232,7 @@ public class Shop : MonoBehaviour {
         catch (Exception exception)
         {
             Debug.Log("RemoveMoney() from MaxStaminaIncrease() from returned exception: " + exception);
+            return;
         }
     }
 
@@ -237,6 +246,7 @@ public class Shop : MonoBehaviour {
             catch (Exception exception)
             {
                 Debug.Log("RemoveMoney() from MoveSpeedIncrease() returned exception: " + exception);
+                return;
             }
             staminaRecLevel++;
             FPController.SetStaminaRecoveryPerSecond(FPController.GetStaminaRecoveryPerSecond() + staminaRecoveryAdd);
@@ -248,9 +258,9 @@ public class Shop : MonoBehaviour {
     }
 
     //weapon upgrades
-    void pistolDamageUp()
+    public void pistolDamageUp()
     {
-        if (pistolDamageLevel <= 20)
+        if (pistolDamageLevel < 20)
         {
             try
             {
@@ -261,9 +271,12 @@ public class Shop : MonoBehaviour {
                 Debug.Log("RemoveMoney() from pistolDamageUp() returned exception: " + exception);
                 return;
             }
-
+            pistolGO.SetMinWeaponDamage(pistolGO.GetMinWeaponDamage() + pistolUpDamage);
             pistolGO.SetMaxWeaponDamage(pistolGO.GetMaxWeaponDamage() + pistolUpDamage);
             pistolDamageLevel++;
+            GameObject.Find("DamageContainer/UpgradeInfo")
+                .GetComponentInChildren<PistolDamageUpgradeVisuals>()
+                .updatePistolDamageVisuals(pistolDamageLevel, pistolGO.GetMaxWeaponDamage(), UPGRADE_COST);
             return;
         }
         else
@@ -273,9 +286,9 @@ public class Shop : MonoBehaviour {
 
     }
 
-    void pistolFireRate()
+    public void pistolFireRate()
     {
-        if (pistolFRLevel <= 20)
+        if (pistolFRLevel < 20)
         {
             try
             {
@@ -289,6 +302,9 @@ public class Shop : MonoBehaviour {
 
             pistolGO.SetTimeBetweenAttacks(pistolGO.GetTimeBetweenAttacks() - pistolReduceFireRate);
             pistolFRLevel++;
+            GameObject.Find("ReloadTimeContainer/UpgradeInfo")
+                .GetComponentInChildren<PistolReloadTimeUpgradeVisuals>()
+                .updatePistolReloadTimeVisuals(pistolFRLevel, pistolGO.GetTimeBetweenAttacks(), UPGRADE_COST);
             return;
         }
         else
@@ -297,9 +313,9 @@ public class Shop : MonoBehaviour {
         }
 
     }
-    void pistolMaxAmmo()
+    public void pistolMaxAmmo()
     {
-        if (pistolAmmoLevel <= 20)
+        if (pistolAmmoLevel < 20)
         {
             try
             {
@@ -315,6 +331,9 @@ public class Shop : MonoBehaviour {
             //pistolGO.SetMaxAmmo(pistolGO.GetMaxAmmo() + pistolAddAmmo);
             Pistol.AddMaxAmmo(pistolAddAmmo);
             pistolAmmoLevel++;
+            GameObject.Find("MaxAmmoContainer/UpgradeInfo")
+                .GetComponentInChildren<MaxAmmoUpgradeVisuals>()
+                .updatePistolMaxAmmoVisuals(pistolAmmoLevel, pistolGO.GetMaxAmmo(), UPGRADE_COST);
             return;
         }
         else
@@ -324,9 +343,9 @@ public class Shop : MonoBehaviour {
 
     }
 
-    void saberDamageUp()
+    public void saberDamageUp()
     {
-        if (saberDamageLevel <= 20)
+        if (saberDamageLevel < 20)
         {
             try
             {
@@ -337,9 +356,12 @@ public class Shop : MonoBehaviour {
                 Debug.Log("RemoveMoney() returned exception: " + exception);
                 return;
             }
-
+            saberGO.SetMinWeaponDamage(saberGO.GetMinWeaponDamage() + saberUpDamage);
             saberGO.SetMaxWeaponDamage(saberGO.GetMaxWeaponDamage() + saberUpDamage);
             saberDamageLevel++;
+            GameObject.Find("DamageContainer/UpgradeInfo")
+                .GetComponentInChildren<SaberDamageUpgradeVisuals>()
+                .updateSaberDamageVisuals(saberDamageLevel, saberGO.GetMaxWeaponDamage(), UPGRADE_COST);
             return;
         }
         else
@@ -349,9 +371,9 @@ public class Shop : MonoBehaviour {
 
     }
 
-    void blunderDamageUp()
+    public void blunderDamageUp()
     {
-        if (blunderDamageLevel <= 20)
+        if (blunderDamageLevel < 20)
         {
             try
             {
@@ -365,6 +387,9 @@ public class Shop : MonoBehaviour {
 
             blunderbussGO.SetMaxWeaponDamage(blunderbussGO.GetMaxWeaponDamage() + blunderUpDamage);
             blunderDamageLevel++;
+            GameObject.Find("DamageContainer/UpgradeInfo")
+                .GetComponentInChildren<BlunderbussDamageUpgradeVisuals>()
+                .updateBlunderDamageVisuals(blunderDamageLevel, blunderbussGO.GetMaxWeaponDamage(), UPGRADE_COST);
             return;
         }
         else
@@ -374,9 +399,9 @@ public class Shop : MonoBehaviour {
 
     }
 
-    void blunderFireRate()
+    public void blunderFireRate()
     {
-        if (blunderFRLevel <= 20)
+        if (blunderFRLevel < 20)
         {
             try
             {
@@ -390,6 +415,9 @@ public class Shop : MonoBehaviour {
 
             blunderbussGO.SetTimeBetweenAttacks(blunderbussGO.GetTimeBetweenAttacks() - blunderReduceFireRate);
             blunderFRLevel++;
+            GameObject.Find("ReloadTimeContainer/UpgradeInfo")
+                .GetComponentInChildren<BlunderbussReloadUpgradeVisuals>()
+                .updateBlunderReloadTimeVisuals(blunderFRLevel, blunderbussGO.GetTimeBetweenAttacks(), UPGRADE_COST);
             return;
         }
         else

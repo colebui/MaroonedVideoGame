@@ -34,7 +34,7 @@ public class Pistol : Weapon {
     public override void Attack() {
 
         if(currentAmmo <= 0) { return; }
-
+        
         base.Attack();
         Debug.Log("Fired pistol");
         ((HitscanDamage)damageType).ProcessShot();
@@ -60,6 +60,14 @@ public class Pistol : Weapon {
     private static void SetAmmoText() {
         currentAmmoText.text = currentAmmo.ToString();
         totalAmmoText.text = maxAmmo.ToString();
+    }
+
+    public int GetMaxAmmo() {
+        return maxAmmo;
+    }
+
+    public int GetMaxAmmoStart() {
+        return maxAmmoStart;
     }
 
     // No start or update, because they don't need to be overridden
