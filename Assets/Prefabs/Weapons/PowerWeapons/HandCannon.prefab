@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4080804408705822703}
   m_LocalRotation: {x: -0.0000487864, y: 0.11680275, z: -0.014572561, w: 0.99304825}
-  m_LocalPosition: {x: -0.184, y: 0.2347, z: -0.126}
+  m_LocalPosition: {x: -0.3974, y: 0.3028, z: -0.009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8905064089543702360}
@@ -89,8 +89,8 @@ MonoBehaviour:
   weaponReloadClip: {fileID: 0}
   powerWeaponType: 2
   ATTACK_TRIGGER_NAME: Attack
-  projectileVelocity: 20
-  bombFuse: 2
+  projectileVelocity: 12.5
+  bombFuse: 1
   bombRadius: 3
 --- !u!114 &5622359275034242469
 MonoBehaviour:
