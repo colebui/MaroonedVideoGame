@@ -13,17 +13,19 @@ public class chestSpawner : MonoBehaviour
     static AudioClip ammoFound;
     static AudioClip bluderbussUnlocked;
     static AudioClip speargunUnlocked;
+    static AudioClip cannonUnlocked;
     int chestType;
     // 0 = null, 1 = power weapon 1; 2 = power weapon 2; 3 = points; 4 = ammo; 5 = power weapon 3
     void Start()
     {
         chestType = 0;
     }
-    public void setSounds(AudioClip aspeargunUnlocked, AudioClip ablunderbussUnlocked, AudioClip afoundClip, AudioClip aammoFound) {
+    public void setSounds(AudioClip aspeargunUnlocked, AudioClip ablunderbussUnlocked, AudioClip acannonUnlocked, AudioClip afoundClip, AudioClip aammoFound) {
         foundClip = afoundClip;
         ammoFound = aammoFound; 
         bluderbussUnlocked = ablunderbussUnlocked;
         speargunUnlocked = aspeargunUnlocked;
+        cannonUnlocked = acannonUnlocked;
     }
     public void setAudioSource(AudioSource afoundSound) {
         foundSound = afoundSound;
@@ -120,8 +122,8 @@ public class chestSpawner : MonoBehaviour
             }
             else if (chestType == 2)
             {
-                FindObjectOfType<Blunderbuss>().AddPowerWeapon();
                 foundSound.PlayOneShot(bluderbussUnlocked, 4f);
+                FindObjectOfType<Blunderbuss>().AddPowerWeapon();
                 Debug.Log("Picked up power weapon 2\n");
             }
             else if (chestType == 3)
@@ -137,8 +139,8 @@ public class chestSpawner : MonoBehaviour
                 Debug.Log("Picked up ammo \n");
             }
             else if (chestType == 5) {
+                foundSound.PlayOneShot(cannonUnlocked, 4f);
                 FindObjectOfType<HandCannon>().AddPowerWeapon();
-                foundSound.PlayOneShot(foundClip, 0.5f);
                 Debug.Log("Picked up cannon\n");
             }
             else
