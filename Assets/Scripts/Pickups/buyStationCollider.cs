@@ -12,8 +12,11 @@ public class buyStationCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        //if (col.gameObject.name == "Player")
-        //{
-        //}
+        if (col.tag == "Player") {
+            Debug.Log("touch buy menu");
+            BuyMenu.Instance.OpenMainBuyMenu();
+        }
+        
+
     }
 }

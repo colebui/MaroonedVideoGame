@@ -42,7 +42,6 @@ public class PlayerHealth : Health {
     private IEnumerator playDamageNoise() {
         yield return null;
         hurtSound.pitch = UnityEngine.Random.Range(MIN_PITCH, MAX_PITCH);
-        Debug.Log("play hurt noise with volume" + hurtSound.volume);
         hurtSound.Play();
     }
 
