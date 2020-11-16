@@ -10,6 +10,8 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     [SerializeField] GameObject SaberBuyMenu;
     [SerializeField] GameObject PistolBuyMenu;
     [SerializeField] GameObject BlunderbussBuyMenu;
+    [SerializeField] GameObject CloseMenu;
+    [SerializeField] GameObject BackToMainMenu;
 
     [SerializeField] GameObject moneyText;
     [SerializeField] GameObject moneyTextInBuy;
@@ -26,12 +28,14 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         SaberBuyMenu.SetActive(false);
         PistolBuyMenu.SetActive(false);
         BlunderbussBuyMenu.SetActive(false);
+        CloseMenu.SetActive(false);
+        BackToMainMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) {//delete this later testing
+        /*if (Input.GetKeyDown(KeyCode.B)) {//delete this later testing
             if (!menuOpen) {
                 menuOpen = true;
                 OpenMainBuyMenu();
@@ -41,7 +45,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
                 CloseAllMenus();
             }
             
-        }
+        }*/
     }
 
     public void OpenMainBuyMenu() {
@@ -49,13 +53,22 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         allowCursorMovement();
         BuyMenuContainer.SetActive(true);
         UpgradesContainer.SetActive(true);
+        CloseMenu.SetActive(true);
+        BackToMainMenu.SetActive(false);
         moneyText.SetActive(false);
+        Debug.Log("end");
+    }
+
+    public void GoBackToMainBuyMenu() {
+        CloseAllMenus();
+        OpenMainBuyMenu();
     }
 
 
     public void OpenPlayerBuyMenu() {
         Debug.Log("OpenPlayerBuyMenu()");
         UpgradesContainer.SetActive(false);
+        BackToMainMenu.SetActive(true);
         PlayerBuyMenu.SetActive(true);
         //Debug.Log("gameobject: "+GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades"));
         //GameObject.Find("HealthContainer/UpgradeInfo/CurrentUpgrades")
@@ -67,17 +80,20 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         Debug.Log("OpenSaberBuyMenu()");
         UpgradesContainer.SetActive(false);
         SaberBuyMenu.SetActive(true);
+        BackToMainMenu.SetActive(true);
     }
     public void OpenPistolBuyMenu() {
         Debug.Log("OpenSaberBuyMenu()");
         UpgradesContainer.SetActive(false);
         PistolBuyMenu.SetActive(true);
+        BackToMainMenu.SetActive(true);
     }
 
     public void OpenBlunderbussBuyMenu() {
         Debug.Log("OpenSaberBuyMenu()");
         UpgradesContainer.SetActive(false);
         BlunderbussBuyMenu.SetActive(true);
+        BackToMainMenu.SetActive(true);
     }
 
     public void CloseAllMenus() {
@@ -89,6 +105,8 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         PistolBuyMenu.SetActive(false);
         moneyText.SetActive(true);
         BlunderbussBuyMenu.SetActive(false);
+        CloseMenu.SetActive(false);
+        BackToMainMenu.SetActive(false);
         stopCursorMovement();
     }
 

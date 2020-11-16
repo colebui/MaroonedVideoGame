@@ -9,8 +9,6 @@ public class CameraShake : MonoBehaviour
         originalPos = transform.localPosition;
     }
     public IEnumerator Shake (float duration, float magnitude) {
-        Debug.Log("shake");
-        
         float elapsed = 0.0f;
 
         while (elapsed < duration) {
