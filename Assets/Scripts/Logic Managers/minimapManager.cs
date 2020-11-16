@@ -60,14 +60,15 @@ public class minimapManager : MonoBehaviour
     public void setToSurface()
     {
         isInCave = false;
+
+        //Set minimap to surface
         surfaceCam.SetActive(true);
         caveCam.SetActive(false);
 
-        // BRENDEN CHANGES
+        //Set overHeadCamera to surface
         overHeadCamera = overHeadCameraSurface;
         overHeadCameraCave.gameObject.SetActive(false);
-        overHeadCamera.gameObject.SetActive(isBig);
-        // END
+        overHeadCamera.gameObject.SetActive(true);
 
         TreasureHuntMain hunt = FindObjectOfType<TreasureHuntMain>();
         if (!hunt.IsActive())
@@ -75,6 +76,7 @@ public class minimapManager : MonoBehaviour
         if (hunt.isSurfaceChest())
         {
             hunt.modifyChestIcon(true);
+            hunt.modifyXMarks(false);
         }
         else
         {
@@ -86,23 +88,27 @@ public class minimapManager : MonoBehaviour
     public void setToCave()
     {
         isInCave = true;
+
+        //Set minimap to cave
         surfaceCam.SetActive(false);
         caveCam.SetActive(true);
-        TreasureHuntMain hunt = FindObjectOfType<TreasureHuntMain>();
-        hunt.modifyXMarks(false);
-        // BRENDEN CHANGES
+
+        //Set overheadCamera to cave
         overHeadCamera = overHeadCameraCave;
         overHeadCameraSurface.gameObject.SetActive(false);
-        overHeadCamera.gameObject.SetActive(isBig);
-        // END
+        overHeadCamera.gameObject.SetActive(true);
+
+        TreasureHuntMain hunt = FindObjectOfType<TreasureHuntMain>();
         if (!hunt.IsActive())
             return;
         if (hunt.isSurfaceChest())
         {
             hunt.modifyChestIcon(false);
+            hunt.modifyXMarks(true);
         }
         else
         {
+            hunt.modifyXMarks(false);
             hunt.modifyChestIcon(true);
         }
 
