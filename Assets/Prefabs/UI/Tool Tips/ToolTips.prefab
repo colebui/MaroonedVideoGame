@@ -1011,7 +1011,7 @@ PrefabInstance:
     - target: {fileID: 1091050105451842192, guid: 837d1528a8881a945850bceaa261fcff,
         type: 3}
       propertyPath: tooltipType
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1091050105451842196, guid: 837d1528a8881a945850bceaa261fcff,
         type: 3}
