@@ -14,7 +14,7 @@ public class SaberDamageUpgradeVisuals : MonoBehaviour
     void Start() {
         saberGO = FindObjectOfType<Saber>();
         Debug.Log("CurrentUpgradeVisual instantiated");
-        updateSaberDamageVisuals(0, saberGO.GetMaxWeaponDamage(), GameObject.Find("BuyMenu").GetComponent<Shop>().get_UPGRADE_COST());
+        updateSaberDamageVisuals(0, saberGO.GetMaxWeaponDamage(), FindObjectOfType<Shop>().get_UPGRADE_COST());
     }
 
     // Update is called once per frame
