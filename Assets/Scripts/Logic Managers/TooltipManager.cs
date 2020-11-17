@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TooltipManager : MonoSingleton<TooltipManager>
 {
-    public enum TooltipTypes { Enemy , firstMap, blunderbuss, ammoChest, coinsChest, harpoonGun, cannon};
+    public enum TooltipTypes { Enemy , firstMap, blunderbuss, ammoChest, coinsChest, harpoonGun, cannon, buyStation};
 
     private Dictionary<TooltipTypes, Tooltip> tooltipsToTypes = new Dictionary<TooltipTypes, Tooltip>();
 
