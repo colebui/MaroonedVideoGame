@@ -7,9 +7,8 @@ public class Cannonball : Projectile
     [SerializeField] GameObject explosionVFX;
     [SerializeField] float explosionTime = .5f;
     [SerializeField] float gravityMultiplier = 1f;
+    [SerializeField] bool explodeOnContactWithEnemy = true;
     
-    // TODO: Audio
-
     float fuse;
     float radius;
     Rigidbody myRigidbody;
@@ -66,5 +65,17 @@ public class Cannonball : Projectile
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 3f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!explodeOnContactWithEnemy) { return; }
+
+        EnemyHealth enemyHealth = collision.collider.GetComponent<EnemyHealth>();
+        if(enemyHealth != null)
+        {
+            StopAllCoroutines();
+            Explode();
+        }
     }
 }
