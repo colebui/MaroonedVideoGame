@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class SaberDamageUpgradeVisuals : MonoBehaviour
 {
     Saber saberGO;
+    [SerializeField] GameObject SaberObject;
     [SerializeField] List<GameObject> levelsVisualList = new List<GameObject>();
     [SerializeField] GameObject UPGRADE_COST_Text;
     [SerializeField] GameObject damageText;
     // Start is called before the first frame update
     void Start() {
-        saberGO = FindObjectOfType<Saber>();
+        saberGO = SaberObject.GetComponent<Saber>();
         Debug.Log("CurrentUpgradeVisual instantiated");
         updateSaberDamageVisuals(0, saberGO.GetMaxWeaponDamage(), FindObjectOfType<Shop>().get_UPGRADE_COST());
     }

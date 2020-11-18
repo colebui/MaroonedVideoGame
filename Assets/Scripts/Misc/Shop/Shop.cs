@@ -35,6 +35,8 @@ public class Shop : MonoBehaviour {
     [SerializeField] GameObject moneyText;
     [SerializeField] GameObject moneyTextInBuy;
 
+    [SerializeField] GameObject SaberObject;
+
     //serialized fields
     //player
     [SerializeField] float maxHealthAdd = 10;
@@ -59,7 +61,7 @@ public class Shop : MonoBehaviour {
         FPController = FindObjectOfType<CustomFirstPersonController>();
         healthGO = FindObjectOfType<PlayerHealth>();
         pistolGO = FindObjectOfType<Pistol>();
-        saberGO = FindObjectOfType<Saber>();
+        saberGO = SaberObject.GetComponent<Saber>();
         blunderbussGO = FindObjectOfType<Blunderbuss>();
 
     }
