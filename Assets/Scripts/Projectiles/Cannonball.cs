@@ -55,6 +55,7 @@ public class Cannonball : Projectile
                 float damageToDeal = Random.Range(owner.projectileWeapon.GetMinWeaponDamage(), owner.projectileWeapon.GetMaxWeaponDamage());
                 Debug.Log("Do " + damageToDeal + " to " + collider.name);
                 enemyHealth.TakeDamage(damageToDeal);
+                owner.CallOnHitRegistered();
             }
         }
 
