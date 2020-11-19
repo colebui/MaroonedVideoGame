@@ -45,6 +45,10 @@ public class EnemyController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         animator.SetFloat(spawnSpeedParameter, UnityEngine.Random.Range(minSpawnAnimationSpeed, maxSpawnAnimationSpeed));
+
+        Debug.Log("difficultyModifier is " + LoadingOptions.difficultyModifier);
+        MIN_SPEED *= LoadingOptions.difficultyModifier;
+        MAX_SPEED *= LoadingOptions.difficultyModifier;
     }
 
     void Update() {

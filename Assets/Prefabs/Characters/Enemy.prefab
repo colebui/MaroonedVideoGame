@@ -98,8 +98,8 @@ MonoBehaviour:
   ATTACK_DAMAGE_MIN: 10
   MAX_ATTACK_DISTANCE: 2
   WAIT_TIME: 0.6
-  MIN_SPEED: 4
-  MAX_SPEED: 8.5
+  MIN_SPEED: 5
+  MAX_SPEED: 10
   TIME_BETWEEN_ENEMY_SPRINTS: 3
   minSpawnAnimationSpeed: 0.4
   maxSpawnAnimationSpeed: 0.7
