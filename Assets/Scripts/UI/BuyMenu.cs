@@ -82,6 +82,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         SaberBuyMenu.SetActive(true);
         BackToMainMenu.SetActive(true);
     }
+
     public void OpenPistolBuyMenu() {
         Debug.Log("OpenSaberBuyMenu()");
         UpgradesContainer.SetActive(false);
