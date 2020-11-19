@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Spawner : Rounds
+public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject spawnee;
     [SerializeField] bool stopSpawning = false;
     [SerializeField] float spawnTime = 1;
     [SerializeField] float spawnDelay = 5;
     [SerializeField] int maxSpawn;
+    [SerializeField] float enemyHealthIncrease = 25.0f;
 
     private int enemysSpawned = 0;
     
@@ -45,7 +46,8 @@ public class Spawner : Rounds
         //needs to be the last thing in the method
         if (!stopSpawning)
         {
-            Instantiate(spawnee, transform.position, transform.rotation);
+            GameObject enemySpawned = Instantiate(spawnee, transform.position, transform.rotation);
+            enemySpawned.GetComponent<EnemyHealth>().SetMaxHealth(enemySpawned.GetComponent<EnemyHealth>().GetMaxHealth() + (enemyHealthIncrease * (Rounds.Instance.roundNum - 1)));
         }
         
     }
