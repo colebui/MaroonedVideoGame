@@ -1635,11 +1635,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2892842089516264188, guid: de532d7215b929645ad2905569f54f35,
         type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2892842089516264188, guid: de532d7215b929645ad2905569f54f35,
-        type: 3}
       propertyPath: weaponAttackSound
       value: 
       objectReference: {fileID: 8482871963440051033}
