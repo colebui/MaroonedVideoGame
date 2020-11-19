@@ -3225,6 +3225,7 @@ MonoBehaviour:
   SaberBuyMenu: {fileID: 2570619171596312579}
   PistolBuyMenu: {fileID: 812383397076147625}
   BlunderbussBuyMenu: {fileID: 5913283555230555927}
+  HarpoonBuyMenu: {fileID: 9035994648731957519}
   CloseMenu: {fileID: 4796253358890475516}
   BackToMainMenu: {fileID: 1372538842312834902}
   moneyText: {fileID: 8375456051405811925}
@@ -3255,6 +3256,8 @@ MonoBehaviour:
   saberUpDamage: 10
   blunderUpDamage: 8
   blunderReduceFireRate: 0.15
+  harpoonUpDamage: 8
+  harpoonReduceFireRate: 0.15
 --- !u!1 &709381447277888476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5538,7 +5541,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4590175799754276711}
-        m_MethodName: OpenPistolBuyMenu
+        m_MethodName: OpenHarpoonBuyMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9893,7 +9896,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8445521042118272571}
-        m_MethodName: blunderFireRate
+        m_MethodName: harpoonFireRate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14144,6 +14147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3555189777795635039}
   - component: {fileID: 6284064574745113977}
+  - component: {fileID: 397301023583968025}
   m_Layer: 0
   m_Name: UpgradeInfo
   m_TagString: Untagged
@@ -14205,6 +14209,41 @@ MonoBehaviour:
   - {fileID: 474617212653441754}
   UPGRADE_COST_Text: {fileID: 3292643345933456241}
   reloadTime: {fileID: 9171464989500810014}
+--- !u!114 &397301023583968025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3739214165639873017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2035aec80768dd4bb0ed0f1cb111725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelsVisualList:
+  - {fileID: 6660158561982464531}
+  - {fileID: 6947120049369924521}
+  - {fileID: 182128748836836258}
+  - {fileID: 577064074438882377}
+  - {fileID: 3385998490559865795}
+  - {fileID: 6778785970584301329}
+  - {fileID: 2774255963399994537}
+  - {fileID: 5003929383717301680}
+  - {fileID: 3559988155338752825}
+  - {fileID: 3634812963311459579}
+  - {fileID: 3550518724793472417}
+  - {fileID: 4680023862396547823}
+  - {fileID: 6253407674634685629}
+  - {fileID: 4622583026647425152}
+  - {fileID: 6961926500014899016}
+  - {fileID: 2941861491686261872}
+  - {fileID: 3329428437554615534}
+  - {fileID: 2935177313154778869}
+  - {fileID: 619183528674835339}
+  - {fileID: 474617212653441754}
+  UPGRADE_COST_Text: {fileID: 3292643345933456241}
+  reloadText: {fileID: 9171464989500810014}
 --- !u!1 &3762120758616678664
 GameObject:
   m_ObjectHideFlags: 0
@@ -18325,7 +18364,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8445521042118272571}
-        m_MethodName: blunderDamageUp
+        m_MethodName: harpoonDamageUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25786,7 +25825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5489015889188593207}
-  - component: {fileID: 7467621774888207156}
+  - component: {fileID: 7782817278498723891}
   m_Layer: 0
   m_Name: UpgradeInfo
   m_TagString: Untagged
@@ -25813,7 +25852,7 @@ Transform:
   m_Father: {fileID: 4471830941325952883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7467621774888207156
+--- !u!114 &7782817278498723891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25822,7 +25861,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7363419894570856046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9875f57a132d6b459ae4133b6509c37, type: 3}
+  m_Script: {fileID: 11500000, guid: 82dc6d7e3ba2af84f96cf066fb1523ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelsVisualList:

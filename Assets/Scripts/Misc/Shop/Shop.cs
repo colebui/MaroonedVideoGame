@@ -12,6 +12,7 @@ public class Shop : MonoBehaviour {
     Pistol pistolGO;
     Saber saberGO;
     Blunderbuss blunderbussGO;
+    HarpoonGun harpoonGO;
 
             //levels
     //player
@@ -30,8 +31,14 @@ public class Shop : MonoBehaviour {
     int blunderDamageLevel = 0;
     int blunderFRLevel = 0;
     //harpoon
+    int harpoonDamageLevel = 0;
+    int harpoonFRLevel = 0;
+    //cannon
+    int cannonDamageLevel = 0;
+    int cannonFRLevel = 0;
+
     //ints
-    int money = 50000;//CHANGE THIS TO 0
+    int money = 500300;//CHANGE THIS TO 0
     [SerializeField] GameObject moneyText;
     [SerializeField] GameObject moneyTextInBuy;
 
@@ -54,6 +61,11 @@ public class Shop : MonoBehaviour {
     [SerializeField] int blunderUpDamage = 8;
     [SerializeField] float blunderReduceFireRate = 0.15f;
     //harpoon
+    [SerializeField] int harpoonUpDamage = 8;
+    [SerializeField] float harpoonReduceFireRate = 0.15f;
+    //cannon
+    [SerializeField] int cannonUpDamage = 8;
+    [SerializeField] float cannonReduceFireRate = 0.15f;
 
 
     // Start is called before the first frame update
@@ -63,6 +75,7 @@ public class Shop : MonoBehaviour {
         pistolGO = FindObjectOfType<Pistol>();
         saberGO = SaberObject.GetComponent<Saber>();
         blunderbussGO = FindObjectOfType<Blunderbuss>();
+        harpoonGO = FindObjectOfType<HarpoonGun>();
 
     }
 
@@ -388,6 +401,7 @@ public class Shop : MonoBehaviour {
             }
 
             blunderbussGO.SetMaxWeaponDamage(blunderbussGO.GetMaxWeaponDamage() + blunderUpDamage);
+            blunderbussGO.SetMinWeaponDamage(blunderbussGO.GetMinWeaponDamage() + blunderUpDamage);
             blunderDamageLevel++;
             GameObject.Find("DamageContainer/UpgradeInfo")
                 .GetComponentInChildren<BlunderbussDamageUpgradeVisuals>()
@@ -428,6 +442,57 @@ public class Shop : MonoBehaviour {
         }
 
     }
+
+    public void harpoonDamageUp() {
+        if (harpoonDamageLevel < 20) {
+            try {
+                RemoveMoney();
+            }
+            catch (Exception exception) {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+                return;
+            }
+            harpoonGO.SetMaxWeaponDamage(harpoonGO.GetMaxWeaponDamage() + harpoonUpDamage);
+            harpoonGO.SetMinWeaponDamage(harpoonGO.GetMinWeaponDamage() + harpoonUpDamage);
+            harpoonDamageLevel++;
+            GameObject.Find("DamageContainer/UpgradeInfo")
+                .GetComponentInChildren<HarpoonDamageUpgradeVisuals>()
+                .updateHarpoonDamageVisuals(harpoonDamageLevel, harpoonGO.GetMaxWeaponDamage(), UPGRADE_COST);
+            return;
+        }
+        else {
+            throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+        }
+    }
+
+    public void harpoonFireRate() {
+        try {
+            if (harpoonFRLevel < 20) {
+                try {
+                    RemoveMoney();
+                }
+                catch (Exception exception) {
+                    Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
+                }
+                harpoonGO.SetTimeBetweenAttacks(harpoonGO.GetTimeBetweenAttacks() - harpoonReduceFireRate);
+                harpoonFRLevel++;
+                GameObject.Find("ReloadTimeContainer/UpgradeInfo")
+                    .GetComponentInChildren<HarpoonReloadUpgradeVisuals>()
+                    .updateHarpoonReloadVisuals(harpoonFRLevel, harpoonGO.GetTimeBetweenAttacks(), UPGRADE_COST);
+                return;
+            }
+            else {
+                throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+            }
+        }
+        catch (Exception exception) {
+            Debug.Log("harpoonFireRate() returned exception: " + exception);
+            return;
+        }
+    }
+
+
 
     public int MyProperty { get; set; }
     public float MyProperty2 { get; set; }
