@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e6332f60b75db4f8eb7f394c78ce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 15
   attackButtonName: Pow3
   minWeaponDamage: 100
   maxWeaponDamage: 100
@@ -91,7 +91,7 @@ MonoBehaviour:
   ATTACK_TRIGGER_NAME: Attack
   projectileVelocity: 12.5
   bombFuse: 1
-  bombRadius: 3
+  bombRadius: 5
 --- !u!114 &5622359275034242469
 MonoBehaviour:
   m_ObjectHideFlags: 0
