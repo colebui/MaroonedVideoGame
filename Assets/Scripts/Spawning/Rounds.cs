@@ -7,7 +7,7 @@ using System;
 using System.Collections.Specialized;
 using System.IO;
 
-public class Rounds : MonoBehaviour
+public class Rounds : MonoSingleton<Rounds>
 {
 
     [SerializeField] Spawner[] spawners;
@@ -17,7 +17,7 @@ public class Rounds : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreAdditionText;
 
     private int newEnemyCount = 0;
-    [SerializeField] private int roundNum = 0;
+    [SerializeField] public int roundNum = 0;
     private float timeBetweenChecks = 0.0f;
     [SerializeField] private float timeBetweenRounds = 30.0f;
     private float timerForRounds = 0.0f;

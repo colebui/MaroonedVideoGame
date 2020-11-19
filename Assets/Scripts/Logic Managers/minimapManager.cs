@@ -10,6 +10,8 @@ public class minimapManager : MonoBehaviour
     // BRENDEN CHANGES
     [SerializeField] Camera overHeadCameraSurface;
     [SerializeField] Camera overHeadCameraCave;
+    [SerializeField] GameObject surfaceBuyStations;
+    [SerializeField] GameObject caveBuyStations;
 
     private Camera overHeadCamera;
     // END
@@ -59,7 +61,12 @@ public class minimapManager : MonoBehaviour
     //GameObject.Find("/Managers/MinimapManager").GetComponent<minimapManager>().setToCave();
     public void setToSurface()
     {
+
         isInCave = false;
+
+        //handle buyStations
+        surfaceBuyStations.gameObject.SetActive(true);
+        caveBuyStations.gameObject.SetActive(false);
 
         //Set minimap to surface
         surfaceCam.SetActive(true);
@@ -88,6 +95,10 @@ public class minimapManager : MonoBehaviour
     public void setToCave()
     {
         isInCave = true;
+
+        //handle buyStations
+        surfaceBuyStations.gameObject.SetActive(false);
+        caveBuyStations.gameObject.SetActive(true);
 
         //Set minimap to cave
         surfaceCam.SetActive(false);

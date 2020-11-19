@@ -16,12 +16,12 @@ MonoBehaviour:
   - gameObject: {fileID: 5391284138219037949, guid: 3f2ba7132d8efbe4a83a3d5a0ac37ff8,
       type: 3}
     settings:
-      m_Strength: 58
+      m_Strength: 48.20168
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 360, y: 360, z: 360}
-      m_ScaleRangeMin: {x: 1, y: 1.1971831, z: 1}
-      m_ScaleRangeMax: {x: 6.9859157, y: 4.4366198, z: 1}
-      m_UniformScale: {x: 0.6153846, y: 7.923077}
+      m_RotationRangeMax: {x: 0, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 5, y: 5}
       m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 1
@@ -47,20 +47,3 @@ MonoBehaviour:
       m_YScaleBool: 0
       m_ZScaleBool: 0
     name: Mushroom1
-  - gameObject: {fileID: 4930788284812992132, guid: d6b0e151b92c5a44abc22ff661dcf88f,
-      type: 3}
-    settings:
-      m_Strength: 50
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 0, z: 0}
-      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
-      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 1, y: 1}
-      m_UniformBool: 1
-      m_XRotationBool: 0
-      m_YRotationBool: 0
-      m_ZRotationBool: 0
-      m_XScaleBool: 0
-      m_YScaleBool: 0
-      m_ZScaleBool: 0
-    name: BarrelProp
