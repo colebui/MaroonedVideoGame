@@ -28,6 +28,7 @@ public class PauseMenu : MonoSingleton<PauseMenu>
             if(isPaused)
             {
                 ClosePauseMenu();
+                BuyMenu.Instance.CloseAllMenus();
             }
             else
             {
