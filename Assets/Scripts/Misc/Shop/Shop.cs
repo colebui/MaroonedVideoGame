@@ -13,8 +13,9 @@ public class Shop : MonoBehaviour {
     Saber saberGO;
     Blunderbuss blunderbussGO;
     HarpoonGun harpoonGO;
+    HandCannon handCannonGO;
 
-            //levels
+    //levels
     //player
     int HPLevel = 0;
     int HPDelayLevel = 0;
@@ -76,6 +77,7 @@ public class Shop : MonoBehaviour {
         saberGO = SaberObject.GetComponent<Saber>();
         blunderbussGO = FindObjectOfType<Blunderbuss>();
         harpoonGO = FindObjectOfType<HarpoonGun>();
+        handCannonGO = FindObjectOfType<HandCannon>();
 
     }
 
@@ -492,6 +494,55 @@ public class Shop : MonoBehaviour {
         }
     }
 
+    public void cannonDamageUp() {
+        if (cannonDamageLevel < 20) {
+            try {
+                RemoveMoney();
+            }
+            catch (Exception exception) {
+                Debug.Log("RemoveMoney() returned exception: " + exception);
+                return;
+            }
+            handCannonGO.SetMaxWeaponDamage(handCannonGO.GetMaxWeaponDamage() + cannonUpDamage);
+            handCannonGO.SetMinWeaponDamage(handCannonGO.GetMinWeaponDamage() + cannonUpDamage);
+            cannonDamageLevel++;
+            GameObject.Find("DamageContainer/UpgradeInfo")
+                .GetComponentInChildren<CannonDamageUpgradeVisuals>()
+                .updateCannonDamageVisuals(cannonDamageLevel, handCannonGO.GetMaxWeaponDamage(), UPGRADE_COST);
+            return;
+        }
+        else {
+            throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+        }
+    }
+
+    public void cannonFireRate() {
+        try {
+            if (cannonFRLevel < 20) {
+                try {
+                    RemoveMoney();
+                }
+                catch (Exception exception) {
+                    Debug.Log("RemoveMoney() returned exception: " + exception);
+                    return;
+                }
+                handCannonGO.SetTimeBetweenAttacks(handCannonGO.GetTimeBetweenAttacks() - cannonReduceFireRate);
+                cannonFRLevel++;
+                CannonReloadUpgradeVisuals.Instance.updateCannonReloadTimeVisuals(cannonFRLevel, handCannonGO.GetTimeBetweenAttacks(), UPGRADE_COST);
+                /*GameObject.Find("ReloadTimeContainer/UpgradeInfo")
+                    .GetComponentInChildren<CannonReloadUpgradeVisuals>()
+                    .updateCannonReloadTimeVisuals(cannonFRLevel, handCannonGO.GetTimeBetweenAttacks(), UPGRADE_COST);*/
+                return;
+            }
+            else {
+                throw new Exception("Your at max upgrades, are you kidding you want more after all ive done for you!");
+            }
+        }
+        catch (Exception exception) {
+            Debug.Log("cannonFireRate() returned exception: " + exception);
+            return;
+        }
+    }
 
 
     public int MyProperty { get; set; }
