@@ -334,7 +334,7 @@ MeshRenderer:
   - {fileID: -482006009104835071, guid: 7d164a63c0104b741af43ce5368e04af, type: 3}
   - {fileID: -8626307248111201755, guid: 7d164a63c0104b741af43ce5368e04af, type: 3}
   - {fileID: -3093739675943940146, guid: 7d164a63c0104b741af43ce5368e04af, type: 3}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
   - {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
   - {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
   - {fileID: 2100000, guid: 18670b792e924e74f8abc6938201a5f3, type: 2}
@@ -698,6 +698,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2161380252200010554, guid: a78bf0d3f98a90d4798b4fce2d6e0511,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c5879ef07f3a6c49badfa3de183b581, type: 2}
     - target: {fileID: 5901893356585517859, guid: a78bf0d3f98a90d4798b4fce2d6e0511,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
