@@ -11,6 +11,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
     [SerializeField] GameObject PistolBuyMenu;
     [SerializeField] GameObject BlunderbussBuyMenu;
     [SerializeField] GameObject HarpoonBuyMenu;
+    [SerializeField] GameObject CannonBuyMenu;
 
     [SerializeField] GameObject CloseMenu;
     [SerializeField] GameObject BackToMainMenu;
@@ -26,11 +27,14 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         Debug.Log("Buy Menu started");
         BuyMenuContainer.SetActive(false);
         UpgradesContainer.SetActive(false);
+        
         PlayerBuyMenu.SetActive(false);
         SaberBuyMenu.SetActive(false);
         PistolBuyMenu.SetActive(false);
         BlunderbussBuyMenu.SetActive(false);
         HarpoonBuyMenu.SetActive(false);
+        CannonBuyMenu.SetActive(false);
+
         CloseMenu.SetActive(false);
         BackToMainMenu.SetActive(false);
     }
@@ -106,6 +110,14 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         HarpoonBuyMenu.SetActive(true);
         BackToMainMenu.SetActive(true);
     }
+
+    public void OpenCannonBuyMenu() {
+        Debug.Log("OpenSaberBuyMenu()");
+        UpgradesContainer.SetActive(false);
+        CannonBuyMenu.SetActive(true);
+        BackToMainMenu.SetActive(true);
+    }
+
     public void CloseAllMenus() {
         Debug.Log("CloseMainBuyMenu()");
         PlayerBuyMenu.SetActive(false);
@@ -115,6 +127,7 @@ public class BuyMenu : MonoSingleton<BuyMenu> {
         PistolBuyMenu.SetActive(false);
         BlunderbussBuyMenu.SetActive(false);
         HarpoonBuyMenu.SetActive(false);
+        CannonBuyMenu.SetActive(false);
 
         CloseMenu.SetActive(false);
         BackToMainMenu.SetActive(false);
