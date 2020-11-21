@@ -87,7 +87,6 @@ public class EnemyController : MonoBehaviour
                 UpdateEveryThreeSecond();
             }
         }
-        Debug.Log("agent.speed: " + agent.speed);
     }
 
 
