@@ -44,19 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1157d6e01bcadef468e00abe91740f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners: []
-  roundPayout: 1000
-  roundText: {fileID: 0}
-  roundTitle: {fileID: 0}
-  scoreAdditionText: {fileID: 0}
-  roundNum: 0
-  timeBetweenRounds: 30
-  enemysAlive: []
   spawnee: {fileID: 3926593790028234041, guid: 9c9aebaeba1be1144a136915495800fd, type: 3}
   stopSpawning: 0
   spawnTime: 1
   spawnDelay: 5
   maxSpawn: 0
+  enemyHealthIncrease: 25
 --- !u!1001 &5375662118556489614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,10 +127,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: -5962750784498419614, guid: 57c249535e035d04bbc07bd3d545e738,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -3592420646564268378, guid: 57c249535e035d04bbc07bd3d545e738,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57c249535e035d04bbc07bd3d545e738,
         type: 3}
       propertyPath: m_Name
       value: skullCross_v01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57c249535e035d04bbc07bd3d545e738,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783439341115630200, guid: 57c249535e035d04bbc07bd3d545e738,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c249535e035d04bbc07bd3d545e738, type: 3}
