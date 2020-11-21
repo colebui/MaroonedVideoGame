@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float WAIT_TIME = 3.0f;
     [SerializeField] private float MIN_SPEED = 0.5f;
     [SerializeField] private float MAX_SPEED = 7.5f;
+    [SerializeField] private float FAR_AWAY_SPEED = 12.0f;
     [SerializeField] private int TIME_BETWEEN_ENEMY_SPRINTS = 3;
 
     [Header("Animation parameters")]
@@ -51,10 +52,7 @@ public class EnemyController : MonoBehaviour
     }
 
     void Update() {
-        if (Time.time >= TIME_BETWEEN_ENEMY_SPRINTS) { 
-            TIME_BETWEEN_ENEMY_SPRINTS = Mathf.FloorToInt(Time.time) + 1;
-            UpdateEveryThreeSecond();
-        }
+        controlSpeed();
 
         playerPosition = playerRef.transform.position;
 
@@ -76,6 +74,22 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(playerPosition);
         }
     }
+
+    void controlSpeed() {
+        float distanceFromPlayer = Vector3.Distance(playerPosition, this.agent.transform.position);
+        if (distanceFromPlayer > 60) {
+            agent.speed = FAR_AWAY_SPEED;
+        }
+        else {
+            //Debug.Log("close");
+            if (Time.time >= TIME_BETWEEN_ENEMY_SPRINTS) {
+                TIME_BETWEEN_ENEMY_SPRINTS = Mathf.FloorToInt(Time.time) + 1;
+                UpdateEveryThreeSecond();
+            }
+        }
+        Debug.Log("agent.speed: " + agent.speed);
+    }
+
 
     void UpdateEveryThreeSecond() {
         //variable move speed over time with an average of 3.5 speed
