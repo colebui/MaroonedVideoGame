@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 6387603519683961639, guid: 9263831d023664d44ad1d4eca5e84641,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7002772781553876000, guid: 9263831d023664d44ad1d4eca5e84641,
         type: 3}
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
-  m_FlexibleHeight: 3
+  m_FlexibleHeight: 2
   m_LayoutPriority: 1
 --- !u!1 &1224873984
 GameObject:
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4b9e0332ea512b47abb919b78feb26c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d28e2c0bc2ef3ae45b41cd752037910f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1496,8 +1496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19.800049, y: 5}
-  m_SizeDelta: {x: 1676.0879, y: 305.94775}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3407173340991487992
 MonoBehaviour:
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Marooned!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8635de725bac76349ae3f1678f0e31e0, type: 2}
   m_sharedMaterial: {fileID: -8147752911952765094, guid: 8635de725bac76349ae3f1678f0e31e0,
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.05
+  m_fontSize: 72
   m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1855,13 +1855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Brenden Hover
-
-    Austin Offill
-
-    Izzy Rollo
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8635de725bac76349ae3f1678f0e31e0, type: 2}
   m_sharedMaterial: {fileID: -8147752911952765094, guid: 8635de725bac76349ae3f1678f0e31e0,
@@ -2063,13 +2057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cole Bui
-
-    Cameron Cassidy
-
-    Sydney Houk
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8635de725bac76349ae3f1678f0e31e0, type: 2}
   m_sharedMaterial: {fileID: -8147752911952765094, guid: 8635de725bac76349ae3f1678f0e31e0,
