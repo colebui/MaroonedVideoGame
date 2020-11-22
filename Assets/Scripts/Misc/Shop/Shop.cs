@@ -39,7 +39,7 @@ public class Shop : MonoBehaviour {
     int cannonFRLevel = 0;
 
     //ints
-    int money = 500300;//CHANGE THIS TO 0
+    int money = 0;//CHANGE THIS TO 0
     [SerializeField] GameObject moneyText;
     [SerializeField] GameObject moneyTextInBuy;
 
