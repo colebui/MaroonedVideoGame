@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8919486542395975388}
   - component: {fileID: 8919486542395975389}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: CaveBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
