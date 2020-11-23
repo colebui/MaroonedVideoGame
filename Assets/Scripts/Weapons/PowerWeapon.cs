@@ -49,6 +49,8 @@ abstract public class PowerWeapon : Weapon {
         {
             weaponAttackSound.PlayOneShot(weaponAttackClip, 0.3f);
         }
+
+        StartCoroutine(EnableWeaponsAfterTime());
     }
 
     // Is called by animation event to finish the attack up
@@ -58,15 +60,11 @@ abstract public class PowerWeapon : Weapon {
         Debug.Log("Finished power weapon attack");
     }
 
-    //protected void Thingy()
-    //{
-    //    StartCoroutine(WaitForTimeOrSomething());
-    //}
-
-    //IEnumerator WaitForTimeOrSomething() {
-    //    yield return new WaitForSeconds(1.0f);
-    //    FinishPowerWeaponAttack();
-    //}
+    IEnumerator EnableWeaponsAfterTime()
+    {
+        yield return new WaitForSeconds(1.0f);
+        FinishPowerWeaponAttack();
+    }
 
     protected override void Update() {
         base.Update();
